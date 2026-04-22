@@ -1,592 +1,856 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#6366f1" />
-    <link rel="icon" href="icons/icon-192x192-A.png" type="image/png" /> 
-    <!-- ini untuk ikon -->
-    <link rel="manifest" href="manifest.json">
-    <title>TaskFlow - Kelola Tugas Anda</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/Ikon Starlume.png" />
+  <title>Starlume · Premium Music Experience</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Poppins', sans-serif;
+    }
 
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #818cf8;
-            --bg-dark: #ffffff;
-            --bg-card: #1e293b;
-            --text-light: #f8fafc;
-            --text-gray: #cbd5e1;
-            --success: #22c55e;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-        }
+    body {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+      color: #FFFFFF;
+      padding-bottom: 2rem;
+      min-height: 100vh;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #1856bb 100%);
-            color: var(--text-light);
-            min-height: 100vh;
-            padding-bottom: 80px;
-        }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
 
-        .header {
-            background: #1856bb;
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
 
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      border-radius: 10px;
+    }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
-        }
+    /* NAVBAR PREMIUM */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      background: rgba(10, 10, 10, 0.7);
+      backdrop-filter: blur(20px);
+      padding: 0.8rem 2rem;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
 
-        h1 {
-            font-size: 24px;
-            font-weight: 700;
-        }
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
 
-        .stats {
-            display: flex;
-            gap: 16px;
-            font-size: 14px;
-            color: var(--text-gray);
-        }
+    .logo-icon {
+      font-size: 2rem;
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+      animation: starPulse 2s ease-in-out infinite;
+    }
 
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+    @keyframes starPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
 
-        .stat-number {
-            color: var(--primary-light);
-            font-weight: 700;
-        }
+    .logo-text {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 3px;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 24px 20px;
-        }
+    .logo-badge {
+      font-size: 0.7rem;
+      background: rgba(255, 215, 0, 0.2);
+      padding: 2px 8px;
+      border-radius: 20px;
+      color: #FFD700;
+      margin-left: 8px;
+    }
 
-        .input-section {
-            background: var(--bg-card);
-            padding: 24px;
-            border-radius: 16px;
-            margin-bottom: 24px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(99, 102, 241, 0.1);
-        }
+    .nav-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
 
-        .input-group {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
+    .nav-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      color: #FFFFFF;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
 
-        input[type="text"] {
-            flex: 1;
-            padding: 14px 18px;
-            background: var(--bg-dark);
-            border: 2px solid rgba(99, 102, 241, 0.3);
-            border-radius: 12px;
-            color: var(--text-light);
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
+    .nav-btn.active, .nav-btn:hover {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #000000;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+      border-color: transparent;
+      transform: translateY(-2px);
+    }
 
-        input[type="text"]:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
-        }
+    /* HERO SPECTACULAR */
+    .hero {
+      background: url('icons/20.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 4rem 2rem;
+      border-radius: 2rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .btn {
-            padding: 14px 28px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    /* Tambahan overlay gelap tipis biar teks tetap terbaca */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
-        }
+    .hero h2, .hero p {
+      position: relative;
+      z-index: 1;
+    }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
-        }
+    .hero h2 {
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700, #FFFFFF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 800;
+      letter-spacing: 4px;
+      position: relative;
+      display: inline-block;
+      animation: textShine 3s ease-in-out infinite;
+    }
 
-        .btn-primary:active {
-            transform: translateY(0);
-        }
+    @keyframes textShine {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.3); }
+    }
 
-        .priority-selector {
-            display: flex;
-            gap: 8px;
-        }
+    .hero h2::before {
+      content: '✦';
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #FFD700;
+      opacity: 0.8;
+    }
 
-        .priority-btn {
-            flex: 1;
-            padding: 10px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            background: transparent;
-            color: var(--text-gray);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
+    .hero h2::after {
+      content: '✦';
+      position: absolute;
+      right: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #FFD700;
+      opacity: 0.8;
+    }
 
-        .priority-btn.active {
-            border-color: currentColor;
-            background: rgba(255, 255, 255, 0.1);
-            font-weight: 600;
-        }
+    .hero p {
+      color: #CCCCCC;
+      font-size: 1.1rem;
+      background: rgba(0, 0, 0, 0.5);
+      display: inline-block;
+      padding: 0.5rem 2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(8px);
+      margin-top: 0.5rem;
+      border: 1px solid rgba(255, 215, 0, 0.2);
+    }
 
-        .priority-btn.high {
-            color: var(--danger);
-        }
+    /* STATS BAR */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
 
-        .priority-btn.medium {
-            color: var(--warning);
-        }
+    .stat-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      padding: 0.8rem 1.8rem;
+      border-radius: 60px;
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        .priority-btn.low {
-            color: var(--success);
-        }
+    .stat-number {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #FFD700;
+    }
 
-        .filter-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-            overflow-x: auto;
-            padding-bottom: 4px;
-        }
+    .stat-label {
+      font-size: 0.85rem;
+      color: #AAAAAA;
+    }
 
-        .filter-tab {
-            padding: 10px 20px;
-            background: var(--bg-card);
-            border: 2px solid transparent;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            font-size: 14px;
-            font-weight: 500;
-            color: #ffffff;
-        }
+    .mood-section {
+      margin-bottom: 2rem;
+    }
 
-        .filter-tab.active {
-            background: var(--primary);
-            border-color: var(--primary-light);
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-        }
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #FFFFFF, #FFD700);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 1px;
+    }
 
-        .tasks-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+    /* MOOD BUTTONS MIUM */
+    .mood-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
 
-        .task-item {
-            background: var(--bg-card);
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            transition: all 0.3s ease;
-            animation: slideIn 0.3s ease;
-        }
+    .mood-btn {
+      background: rgba(20, 20, 20, 0.8);
+      backdrop-filter: blur(8px);
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      color: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+    }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
+    .mood-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 215, 0, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .mood-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
 
-        .task-item:hover {
-            transform: translateX(4px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-        }
+    .mood-btn:hover, .mood-btn.active {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #000000;
+      transform: translateY(-4px) scale(1.02);
+      border-color: transparent;
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+    }
 
-        .task-item.high {
-            border-left-color: var(--danger);
-        }
+    .results-container {
+      margin-top: 1rem;
+      animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        .task-item.medium {
-            border-left-color: var(--warning);
-        }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .task-item.low {
-            border-left-color: var(--success);
-        }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
 
-        .task-checkbox {
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--primary);
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
+    /* MUSIC CARD PREMIUM */
+    .music-card {
+      background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(15, 15, 15, 0.95));
+      backdrop-filter: blur(10px);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 215, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
 
-        .task-checkbox:hover {
-            background: rgba(99, 102, 241, 0.1);
-        }
+    .music-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
 
-        .task-checkbox.checked {
-            background: var(--primary);
-        }
+    .music-card:hover::after {
+      transform: scaleX(1);
+    }
 
-        .task-content {
-            flex: 1;
-        }
+    .music-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255, 215, 0, 0.4);
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
+    }
 
-        .task-text {
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
 
-        .task-text.completed {
-            text-decoration: line-through;
-            opacity: 0.6;
-        }
+    .music-card:hover .card-img {
+      transform: scale(1.05);
+    }
 
-        .task-meta {
-            display: flex;
-            gap: 12px;
-            font-size: 12px;
-            color: var(--text-gray);
-        }
+    .card-body {
+      padding: 1.3rem;
+    }
 
-        .task-time {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
 
-        .task-actions {
-            display: flex;
-            gap: 8px;
-        }
+    .artist-name {
+      font-size: 0.85rem;
+      color: #FFD700;
+      margin-bottom: 8px;
+    }
 
-        .btn-icon {
-            width: 36px;
-            height: 36px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            font-size: 18px;
-        }
+    .fav-icon {
+      cursor: pointer;
+      font-size: 1.5rem;
+      transition: all 0.2s ease;
+    }
 
-        .btn-delete {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--danger);
-        }
+    .fav-icon:hover {
+      transform: scale(1.2);
+    }
 
-        .btn-delete:hover {
-            background: var(--danger);
-            color: white;
-        }
+    .fav-icon.active {
+      color: #FFD700;
+      text-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+      animation: starPop 0.3s ease;
+    }
 
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-gray);
-        }
+    @keyframes starPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
 
-        .empty-icon {
-            font-size: 64px;
-            margin-bottom: 16px;
-            opacity: 0.5;
-        }
+    .music-quote {
+      background: rgba(255, 215, 0, 0.05);
+      padding: 0.8rem 1rem;
+      border-radius: 14px;
+      margin: 12px 0;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: #CCCCCC;
+      border-left: 3px solid #FFD700;
+      font-style: italic;
+      transition: 0.2s;
+    }
 
-        .progress-bar {
-            background: var(--bg-card);
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 16px 0;
-        }
+    .music-card:hover .music-quote {
+      background: rgba(255, 215, 0, 0.08);
+    }
 
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
-            transition: width 0.5s ease;
-            border-radius: 4px;
-        }
+    .track-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+    }
 
-        @media (max-width: 640px) {
-            .header-content {
-                flex-direction: column;
-                gap: 12px;
-            }
+    .track-links a {
+      color: #FFFFFF;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      background: rgba(30, 30, 30, 0.9);
+      padding: 8px 18px;
+      border-radius: 40px;
+      transition: all 0.25s ease;
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      justify-content: center;
+    }
 
-            .input-group {
-                flex-direction: column;
-            }
+    .track-links a:hover {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #000000;
+      border-color: transparent;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    }
 
-            .stats {
-                width: 100%;
-                justify-content: space-around;
-            }
-        }
+    .empty-fav {
+      text-align: center;
+      padding: 4rem;
+      background: linear-gradient(135deg, rgba(20, 20, 20, 0.5), rgba(10, 10, 10, 0.5));
+      border-radius: 2rem;
+      margin: 1rem 0;
+      color: #AAAAAA;
+      border: 1px dashed rgba(255, 215, 0, 0.3);
+    }
 
-        .logo h1 {
-            font-size: 50px;
-            font-weight: 800;
-        }
-    </style>
+    .toast-msg {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+      border-left: 4px solid #FFD700;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      animation: slideInRight 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      color: white;
+      font-weight: 500;
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(60px);}
+      to { opacity: 1; transform: translateX(0);}
+    }
+
+    .back-btn {
+      background: rgba(30,30,30,0.8);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      padding: 0.6rem 1.8rem;
+      border-radius: 40px;
+      color: #FFFFFF;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #000000;
+      transform: translateX(-5px);
+      border-color: transparent;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      opacity: 0.6;
+      font-size: 0.8rem;
+      color: #888888;
+      border-top: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 1rem; }
+      .hero h2 { font-size: 1.6rem; letter-spacing: 2px; }
+      .hero h2::before, .hero h2::after { display: none; }
+      .hero { padding: 2rem 1rem; }
+      .card-grid { grid-template-columns: 1fr; }
+      .track-links a { padding: 6px 12px; font-size: 0.7rem; }
+      .mood-btn { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+      .logo-text { font-size: 1.2rem; }
+      .logo-icon { font-size: 1.5rem; }
+      .stat-card { padding: 0.5rem 1rem; }
+      .stat-number { font-size: 1.2rem; }
+    }
+  </style>
 </head>
-
 <body>
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">
-                <div class="logo-icon">✓</div>
-                <h1 class="text-judul">TaskFlow</h1>
+
+<div class="container" id="appRoot"></div>
+
+<script>
+  // Mapping gambar dari folder icons (1.png - 60.png, kecuali 20.png)
+  const iconImages = [];
+  for (let i = 1; i <= 60; i++) {
+    if (i !== 20) {
+      iconImages.push(`icons/${i}.png`);
+    }
+  }
+
+  function getIconImage(index) {
+    return iconImages[index % iconImages.length];
+  }
+
+  const quotesByMood = {
+    senang: ["✨ Kebahagiaan bukan tentang memiliki apa yang kita inginkan, tapi mensyukuri apa yang kita miliki.", "🌞 Dunia ini indah jika kita melihatnya dengan mata yang penuh rasa syukur.", "💫 Hal-hal baik akan datang kepada mereka yang menunggu, namun hal-hal yang lebih baik akan datang kepada mereka yang menjemputnya dengan senyuman.", "🏔️ Tertawalah, maka dunia akan tertawa bersamamu. Bersedihlah, maka kau akan bersedih sendirian.", "🎈 Kegembiraan adalah bentuk keberanian tertinggi yang bisa kita pilih setiap hari.", "🌸 Setiap senyuman yang kamu tebarkan adalah benih kebahagiaan yang akan tumbuh kembali padamu.", "🌟 Kebahagiaan sejati ditemukan ketika kita berhenti membandingkan diri dengan orang lain.", "💃 Tarian terindah adalah ketika hatimu menari karena kebahagiaan yang tulus.", "🌻 Hidup terlalu singkat untuk tidak bahagia, tertawalah selagi kamu masih bisa.", "🎨 Kamu adalah pelukis kebahagiaanmu sendiri, goreskan warna-warna cerah setiap harinya."],
+    sedih: ["💧 Sesuatu yang patah tidak selalu harus diperbaiki; terkadang, itu hanya perlu dibiarkan untuk menjadi bagian dari proses pendewasaan.", "🌧️ Air mata adalah cara hati untuk berbicara ketika bibir tidak sanggup lagi mengucapkan rasa sakit.", "🌙 Hujan tidak pernah memilih tempat untuk jatuh, begitu pula rasa sedih yang kadang datang tanpa permisi.", "🍂 Terkadang kita baru menyadari nilai seseorang setelah mereka benar-benar pergi.", "🕯️ Dalam kegelapan yang paling pekat, belajarlah untuk menjadi cahaya bagi dirimu sendiri.", "🌊 Kesedihan adalah samudra yang harus kamu seberangi untuk sampai ke pelabuhan kedamaian.", "📖 Setiap air mata yang jatuh adalah halaman baru dalam buku kehidupannu.", "🌅 Setelah malam yang panjang, fajar pasti akan tiba. Bersabarlah.", "💔 Patah hati bukan akhir dari segalanya, tapi awal dari perjalanan menemukan dirimu kembali.", "🍃 Terkadang menangis adalah cara terbaik untuk menyirami taman hati yang mulai layu."],
+    galau: ["💭 Terkadang kita terlalu sibuk memikirkan masa depan sampai lupa bahwa kita sedang berdiri di atas ketidakpastian.", "🌀 Memahami perasaan sendiri adalah teka-teki paling sulit yang pernah ada.", "💔 Hati ingin menetap, tapi logika menyuruh untuk angkat kaki. Di situlah letak segala kegalauan dimulai.", "🌫️ Galau adalah kabut yang membuat kita tidak bisa melihat jalan, tapi yakinlah matahari akan menyapunya.", "🎭 Terkadang kita memainkan terlalu banyak peran hingga lupa siapa kita sebenarnya.", "🌙 Malam adalah saksi bisu dari segala kegalauan yang tak terucapkan.", "📝 Menulis adalah pelarian terbaik ketika pikiran terlalu bising untuk didengar.", "🎢 Perasaan ini seperti roller coaster, naik turun tapi suatu saat akan berhenti.", "💫 Kebingungan adalah tanda bahwa kamu sedang tumbuh dan keluar dari zona nyaman.", "🌌 Di tengah kebingungan, diamlah sejenak dan dengarkan suara hatimu."],
+    romantis: ["❤️ Cinta tidak mencari orang yang sempurna, tapi belajar melihat kesempurnaan pada orang yang tidak sempurna.", "📖 Jika aku bisa menuliskan kisah kita, aku tidak akan mengubah satu bab pun, karena setiap detiknya adalah bagian dari favoritku.", "🏠 Rumah bukan hanya sekadar bangunan, rumah adalah kamu.", "💕 Cinta sejati tidak pernah berakhir, ia hanya terus berkembang seiring waktu.", "🌹 Setiap hari bersamamu adalah hari yang layak untuk dirayakan.", "✨ Kamu adalah bintang yang paling terang di langit malamku.", "💑 Bersamamu, aku belajar bahwa cinta bukan tentang memiliki, tapi tentang menghargai.", "🎵 Kamu adalah melodi yang membuat hidupku begitu indah untuk didengar.", "🌅 Setiap senja, aku bersyukur karena masih bisa melihat wajahmu di sampingku.", "💝 Cinta adalah ketika dua jiwa saling mengenali satu sama lain di tengah keramaian dunia."],
+    marah: ["🔥 Amarah adalah api yang membakar pembawanya lebih dulu sebelum menghanguskan orang lain.", "⚠️ Jangan mengambil keputusan saat sedang marah, dan jangan membuat janji saat sedang terlalu bahagia.", "🤐 Diam adalah respons terbaik untuk kemarahan yang tidak perlu dipertanggungjawabkan.", "💨 Kemarahan adalah angin topan yang merusak apa pun yang dilewatinya, termasuk dirimu sendiri.", "🧘 Tarik napas dalam-dalam, hitung sampai sepuluh, dan biarkan amarah itu berlalu.", "🌪️ Orang yang marah mengendalikan lidahnya, tapi orang yang bijak mengendalikan amarahnya sebelum keluar.", "🕊️ Melepaskan amarah adalah tanda kekuatan, bukan kelemahan.", "🌊 Biarkan amarah mengalir seperti air, jangan ditahan karena hanya akan meledak.", "💎 Kemarahan adalah batu bara yang bisa menjadi berlian jika dikelola dengan benar.", "🧠 Orang hebat adalah yang bisa mengalahkan amarahnya sendiri."],
+    fokus: ["🎯 Keberhasilan adalah jumlah dari upaya-upaya kecil yang dilakukan secara konsisten hari demi hari.", "⏰ Janganlah kamu menunggu waktu yang tepat, karena waktu tidak akan pernah tepat. Mulailah dari mana pun kamu berada.", "🌉 Disiplin adalah jembatan antara tujuan dan pencapaian.", "🚀 Bintang tidak akan pernah tercapai jika kamu takut untuk melompat.", "📚 Fokus bukan tentang menghilangkan distraksi, tapi tentang memilih apa yang paling penting.", "💪 Konsistensi lebih penting daripada intensitas.", "🎪 Jangan lihat seberapa cepat kamu bergerak, tapi lihat seberapa jauh kamu telah melangkah.", "🏆 Setiap master pernah menjadi pemula yang tidak pernah menyerah.", "🧠 Pikiran yang fokus adalah pikiran yang paling kuat.", "⚡ Hari ini adalah kesempatan untuk membangun masa depan yang kamu impikan."],
+    relax: ["🌊 Bernapaslah perlahan. Kamu tidak harus menyelesaikan dunia hari ini.", "🍃 Terkadang, langkah paling produktif yang bisa kamu ambil adalah beristirahat sejenak.", "💧 Biarkan semuanya mengalir seperti air; apa yang menjadi milikmu akan tetap tinggal, dan apa yang bukan, akan pergi dengan sendirinya.", "🌅 Ketenangan adalah kunci untuk membuka pintu kebijaksanaan.", "🎐 Jangan terburu-buru, hidup ini bukan perlombaan tapi perjalanan yang dinikmati.", "🌙 Beristirahatlah, karena besok adalah hari baru yang penuh dengan kemungkinan.", "🌸 Kedamaian dimulai dari satu napas yang dalam.", "🍵 Luangkan waktu untuk menikmati momen kecil yang sering terlewatkan.", "🌿 Alam tidak terburu-buru, tapi semua tetap tercapai dengan indah.", "💤 Tidur yang cukup adalah investasi terbaik untuk kesehatanmu."]
+  };
+
+  function generateSongsForMood(mood, moodName, startIndex) {
+    const songs = [];
+    const songTitlesByMood = {
+      senang: ["Happy", "Can't Stop The Feeling", "Good as Hell", "On Top of The World", "Levitating", "Uptown Funk", "Shake It Off", "Roar", "Don't Stop Me Now", "Walking On Sunshine", "Here Comes The Sun", "I Wanna Dance With Somebody", "Dancing Queen", "Celebration", "Good Vibrations", "September", "I Gotta Feeling", "Party Rock Anthem", "Happy Together", "Best Day Of My Life", "Sugar", "Marry You", "Love On Top", "Treasure", "Get Lucky", "Blinding Lights", "Can't Hold Us", "Counting Stars", "Feel This Moment", "Wake Me Up", "Hey Ya", "Beautiful Day", "Live While We're Young", "What Makes You Beautiful", "Dynamite", "Cheap Thrills", "This Is What You Came For", "Sorry", "Despacito", "Shape of You", "Havana", "Senorita", "Dance Monkey", "Don't Start Now", "Physical", "Break My Heart", "Levitating", "Kiss Me More", "Stay", "As It Was"],
+      sedih: ["Someone Like You", "Fix You", "All I Want", "Let Her Go", "Hello", "When I Was Your Man", "Stay With Me", "Say Something", "The Scientist", "Hurt", "Tears In Heaven", "Nothing Compares 2 U", "I Will Always Love You", "My Heart Will Go On", "Everybody Hurts", "Mad World", "Skinny Love", "Jar of Hearts", "Breakeven", "The A Team", "Liability", "Lovely", "when the party's over", "idontwannabeyouanymore", "listen before i go", "I Love You", "Cherry Wine", "Take Me To Church", "Someone New", "Exile", "Cardigan", "August", "All Too Well", "Back To December", "The Night We Met", "Youth", "Lost Boy", "Let You Down", "Happier", "Hold On", "Sorry", "Love Yourself", "Too Good At Goodbyes", "Dusk Till Dawn", "What About Us", "Say You Won't Let Go", "Photograph", "Thinking Out Loud", "Perfect", "Shape of You"],
+      galau: ["Terlukis Indah", "Risalah Hati", "Pupus", "Separuh Aku", "Rindu", "Mengejar Matahari", "Bawalah Cintaku", "Aku Yang Tersakiti", "Hampa", "Aku Bukan Untukmu", "Cukup Tau", "Rasa Ini", "Takkan Terganti", "Kekasih Bayangan", "Cinta Terlarang", "Akad", "Zona Nyaman", "Cinta Luar Biasa", "Jikalau", "Hari Ini Esok Lusa", "Mungkin Nanti", "Menghapus Jejakmu", "Laskar Pelangi", "Semua Tentang Kita", "Tentang Rindu", "Hingga Tua", "Kekasih", "Selimut Tetesan Hujan", "Cinta Dalam Hati", "Sakit Hati", "Pemilik Hati", "Bukan Cinta Biasa", "Jangan Menyerah", "Karena Ku Sanggup", "Tak Pernah Padam", "Andai Ku Tahu", "Seluruh Nafas Ini", "Jujur", "Dia", "Menjadi Dia", "Tak Ada Yang Abadi", "Cinta Putih", "Samudra Biru", "Waktu Yang Salah", "Lebih Indah", "Jatuh Hati", "Kisah Tanpa Dirimu", "Rumah Kita", "Bahagia", "Merindu Lagi"],
+      romantis: ["Perfect", "All of Me", "A Thousand Years", "Thinking Out Loud", "Just The Way You Are", "Marry Me", "Everything", "I'm Yours", "Lucky", "The Way You Look Tonight", "At Last", "Can't Help Falling In Love", "Unchained Melody", "Your Song", "Make You Feel My Love", "I Don't Want To Miss A Thing", "Truly Madly Deeply", "From This Moment On", "Because You Loved Me", "Love Me Like You Do", "Say You Won't Let Go", "Photograph", "How Long Will I Love You", "Yellow", "The Scientist", "Fix You", "Everglow", "Halo", "Because of You", "Beautiful In White", "Everything Has Changed", "Enchanted", "Lover", "Paper Rings", "Call It What You Want", "Daylight", "Invisible String", "Willow", "Cardigan", "August", "Betty", "Cruel Summer", "Cornelia Street", "New Year's Day", "Begin Again", "Mine", "Sparks Fly", "Ours", "Stay Stay Stay", "Love Story"],
+      marah: ["In The End", "Break Stuff", "Killing In The Name", "Numb", "Crawling", "Faint", "Given Up", "One Step Closer", "Points of Authority", "Somewhere I Belong", "Lying From You", "From The Inside", "Nobody's Listening", "Hit The Floor", "Easier To Run", "Figure.09", "Don't Stay", "My December", "Session", "Forgotten", "By Myself", "Papercut", "Runaway", "With You", "Pushing Me Away", "A Place For My Head", "Forgotten", "High Voltage", "Part Of Me", "Carousel", "Qwerty", "And One", "She Couldn't", "Could Have Been", "Slip Out The Back", "Step Up", "It's Goin' Down", "Dedicated", "Standing In The Middle", "Nobody's Listening", "Sold My Soul To Yo Mama", "Across The Line", "What I've Done", "Bleed It Out", "Shadow of The Day", "Leave Out All The Rest", "Hands Held High", "No More Sorrow", "Valentine's Day", "In Pieces"],
+      fokus: ["Deep Focus", "Synthwave Study", "Brain Power", "Lofi Study Beats", "Ambient Focus", "Classical Piano", "Mozart Effect", "Beethoven Symphony", "Bach Cello Suite", "Chopin Nocturne", "Debussy Clair De Lune", "Vivaldi Four Seasons", "Tchaikovsky Waltz", "Electronic Focus", "Chillstep Mix", "Productivity Beats", "Work Music", "Study Session", "Concentration Mix", "Mindfulness Tunes", "Deep Work Flow", "Programming Beats", "Coding Focus", "Reading Playlist", "Writing Inspiration", "Creative Flow", "Design Focus", "Art Studio Vibes", "Architecture Dreams", "Math Genius", "Science Lab", "Research Mode", "Analysis Mode", "Strategic Planning", "Problem Solving", "Critical Thinking", "Learning Mode", "Memory Boost", "Cognition Enhancer", "Brainwave Sync", "Alpha Waves", "Beta Waves", "Theta Meditation", "Delta Sleep", "Gamma Focus", "Neural Beats", "Cognitive Flow", "Smart Thinking", "Genius Mode", "Mastery State"],
+      relax: ["Weightless", "Clair de Lune", "River Flows In You", "Gymnopedie No.1", "Air On G String", "Canon In D", "Nocturne Op.9", "Moonlight Sonata", "Fur Elise", "Ave Maria", "Meditation", "The Swan", "Salut D'Amour", "Liebestraum", "Consolation No.3", "Arabesque No.1", "Reverie", "Girl With Flaxen Hair", "Jesu Joy of Man's Desiring", "Sheep May Safely Graze", "Dreaming", "Träumerei", "Morning Mood", "Solveig's Song", "Peer Gynt Suite", "Holberg Suite", "Pavane", "Gymnopedie No.2", "Gymnopedie No.3", "Gnossienne No.1", "Satie", "Erik Satie", "Yiruma", "Ludovico Einaudi", "Nuvole Bianche", "I Giorni", "Primavera", "Divenire", "Experience", "Fly", "Night", "Walk", "Una Mattina", "Berlin Song", "Andare", "Oltremare", "Le Onde", "The Earth Prelude", "Life", "Time Lapse"]
+    };
+    
+    const artistsByMood = {
+      senang: ["Pharrell Williams", "Justin Timberlake", "Lizzo", "Imagine Dragons", "Dua Lipa", "Bruno Mars", "Taylor Swift", "Katy Perry", "Queen", "Katrina & The Waves", "The Beatles", "Whitney Houston", "ABBA", "Kool & The Gang", "The Beach Boys", "Earth Wind & Fire", "Black Eyed Peas", "LMFAO", "The Turtles", "American Authors", "Maroon 5", "Bruno Mars", "Beyonce", "Bruno Mars", "Daft Punk", "The Weeknd", "Macklemore", "OneRepublic", "Pitbull", "Avicii", "OutKast", "U2", "One Direction", "One Direction", "BTS", "Sia", "Calvin Harris", "Justin Bieber", "Luis Fonsi", "Ed Sheeran", "Camila Cabello", "Shawn Mendes", "Tones And I", "Dua Lipa", "Dua Lipa", "Dua Lipa", "Dua Lipa", "Doja Cat", "The Kid LAROI", "Harry Styles"],
+      sedih: ["Adele", "Coldplay", "Kodaline", "Passenger", "Adele", "Bruno Mars", "Sam Smith", "A Great Big World", "Coldplay", "Johnny Cash", "Eric Clapton", "Sinead O'Connor", "Whitney Houston", "Celine Dion", "R.E.M.", "Gary Jules", "Bon Iver", "Christina Perri", "The Script", "Ed Sheeran", "Lorde", "Billie Eilish", "Billie Eilish", "Billie Eilish", "Billie Eilish", "Billie Eilish", "Hozier", "Hozier", "Hozier", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Lord Huron", "Daughter", "Ruth B", "NF", "Marshmello", "Tom Grennan", "Justin Bieber", "Justin Bieber", "Justin Bieber", "Zayn", "Pink", "James Bay", "Ed Sheeran", "Ed Sheeran", "Ed Sheeran", "Ed Sheeran"],
+      galau: ["Rizky Febian", "Dewa 19", "Dewa 19", "Noah", "Raisa", "Keisya Levronka", "Afgan", "Judika", "Rio Febrian", "Rossa", "Vierra", "D'Masiv", "Marcell", "Cakra Khan", "Ungu", "Andmesh", "Fourtwnty", "Maliq & D'Essentials", "Tulus", "Diskoria", "Noah", "Peterpan", "Nidji", "Peterpan", "Virgoun", "Armada", "Kangen Band", "Yovie & Nuno", "ST12", "Kerispatih", "Gita Gutawa", "Afgan", "Melly Goeslaw", "Ari Lasso", "Padi", "Repvblik", "Last Child", "Geisha", "D'Bagindas", "Wali", "ST12", "Kangen Band", "Vierra", "D'Masiv", "Drive", "Yovie & Nuno", "Ungu", "Kerispatih", "Noah", "Rossa"],
+      romantis: ["Ed Sheeran", "John Legend", "Christina Perri", "Ed Sheeran", "Bruno Mars", "Bruno Mars", "Michael Buble", "Jason Mraz", "Jason Mraz", "Frank Sinatra", "Etta James", "Elvis Presley", "Righteous Brothers", "Elton John", "Adele", "Aerosmith", "Savage Garden", "Shania Twain", "Celine Dion", "Ellie Goulding", "James Bay", "Ed Sheeran", "Corinne Bailey Rae", "Coldplay", "Coldplay", "Coldplay", "Coldplay", "Beyonce", "Kelly Clarkson", "Shane Filan", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift"],
+      marah: ["Linkin Park", "Limp Bizkit", "Rage Against The Machine", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park"],
+      fokus: ["Lofi Girl", "Astral Throb", "Marlo", "Study Beats", "Ambient Music", "Classical Piano", "Mozart", "Beethoven", "Bach", "Chopin", "Debussy", "Vivaldi", "Tchaikovsky", "Electronic Music", "Chillstep", "Productivity", "Work Music", "Study Music", "Concentration", "Mindfulness", "Deep Work", "Programming", "Coding", "Reading", "Writing", "Creative", "Design", "Art", "Architecture", "Math", "Science", "Research", "Analysis", "Strategic", "Problem", "Critical", "Learning", "Memory", "Cognition", "Brainwave", "Alpha Waves", "Beta Waves", "Theta", "Delta", "Gamma", "Neural", "Cognitive", "Smart", "Genius", "Mastery"],
+      relax: ["Marconi Union", "Debussy", "Yiruma", "Erik Satie", "Bach", "Pachelbel", "Chopin", "Beethoven", "Beethoven", "Schubert", "Massenet", "Saint-Saens", "Elgar", "Liszt", "Liszt", "Debussy", "Debussy", "Debussy", "Bach", "Bach", "Schumann", "Schumann", "Grieg", "Grieg", "Grieg", "Grieg", "Faure", "Satie", "Satie", "Satie", "Satie", "Satie", "Yiruma", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi"]
+    };
+    
+    for (let i = 0; i < 50; i++) {
+      const titleList = songTitlesByMood[mood];
+      const artistList = artistsByMood[mood];
+      const quoteList = quotesByMood[mood];
+      
+      songs.push({
+        id: `${mood}_${startIndex + i}`,
+        title: titleList[i % titleList.length] + (i >= titleList.length ? ` ${Math.floor(i / titleList.length) + 1}` : ""),
+        artist: artistList[i % artistList.length],
+        mood: moodName,
+        img: getIconImage(startIndex + i),
+        youtube: `https://www.youtube.com/results?search_query=${encodeURIComponent(titleList[i % titleList.length] + " " + artistList[i % artistList.length])}`,
+        spotify: `https://open.spotify.com/search/${encodeURIComponent(titleList[i % titleList.length] + " " + artistList[i % artistList.length])}`,
+        quote: quoteList[i % quoteList.length]
+      });
+    }
+    return songs;
+  }
+
+  const songsDatabase = {
+    senang: generateSongsForMood("senang", "Senang", 0),
+    sedih: generateSongsForMood("sedih", "Sedih", 50),
+    galau: generateSongsForMood("galau", "Galau", 100),
+    romantis: generateSongsForMood("romantis", "Romantis", 150),
+    marah: generateSongsForMood("marah", "Marah", 200),
+    fokus: generateSongsForMood("fokus", "Fokus", 250),
+    relax: generateSongsForMood("relax", "Relax", 300)
+  };
+
+  let allSongs = [];
+  for(let moodKey in songsDatabase) {
+    allSongs = allSongs.concat(songsDatabase[moodKey]);
+  }
+
+  let currentPage = "home";
+  let selectedMood = null;
+  let favorites = JSON.parse(localStorage.getItem("starlume_fav")) || [];
+
+  function saveFav() { localStorage.setItem("starlume_fav", JSON.stringify(favorites)); }
+
+  function showNotif(message) {
+    let oldToast = document.querySelector(".toast-msg");
+    if(oldToast) oldToast.remove();
+    let toast = document.createElement("div");
+    toast.className = "toast-msg";
+    toast.innerText = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2800);
+  }
+
+  function toggleFavorite(songId) {
+    const index = favorites.indexOf(songId);
+    if(index === -1) {
+      favorites.push(songId);
+      showNotif("✨ Ditambahkan ke favorit! ✨");
+    } else {
+      favorites.splice(index,1);
+      showNotif("⭐ Dihapus dari favorit");
+    }
+    saveFav();
+    render();
+  }
+
+  function isFavorite(songId) { return favorites.includes(songId); }
+
+  function getMoodDisplayName(moodKey) {
+    const names = { senang:"Senang", sedih:"Sedih", galau:"Galau", romantis:"Romantis", marah:"Marah", fokus:"Fokus", relax:"Relax" };
+    return names[moodKey] || moodKey;
+  }
+
+  function renderRecommendations() {
+    if (!selectedMood) return '';
+    const songs = songsDatabase[selectedMood] || [];
+    
+    if (songs.length === 0) return '<div class="empty-fav">Tidak ada lagu untuk mood ini</div>';
+    
+    let html = `<div class="results-container"><div class="card-grid">`;
+    
+    songs.forEach(song => {
+      html += `
+        <div class="music-card">
+          <img class="card-img" src="${song.img}" alt="${song.title}" loading="lazy" onerror="this.src='https://picsum.photos/id/100/400/250'">
+          <div class="card-body">
+            <div class="card-title">
+              🎵 ${song.title}
+              <span class="fav-icon ${isFavorite(song.id) ? 'active' : ''}" data-id="${song.id}">${isFavorite(song.id) ? '★' : '☆'}</span>
             </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <span>📝</span>
-                    <span>Total: <span class="stat-number" id="totalTasks">0</span></span>
-                </div>
-                <div class="stat-item">
-                    <span>✅</span>
-                    <span>Selesai: <span class="stat-number" id="completedTasks">0</span></span>
-                </div>
+            <div class="artist-name">${song.artist}</div>
+            <div class="music-quote">
+              “${song.quote}”
             </div>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="input-section">
-            <div class="input-group">
-                <input type="text" id="taskInput" placeholder="Tambahkan tugas baru..."
-                    onkeypress="if(event.key==='Enter') addTask()" />
-                <button class="btn btn-primary" onclick="addTask()">
-                    <span>➕</span>
-                    <span>Tambah</span>
-                </button>
+            <div class="track-links">
+              <a href="${song.youtube}" target="_blank">▶️ YouTube</a>
+              <a href="${song.spotify}" target="_blank">🎧 Spotify</a>
             </div>
-            <div class="priority-selector">
-                <button class="priority-btn high" onclick="setPriority('high')">🔴 Tinggi</button>
-                <button class="priority-btn medium active" onclick="setPriority('medium')">🟡 Sedang</button>
-                <button class="priority-btn low" onclick="setPriority('low')">🟢 Rendah</button>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressBar" style="width: 0%"></div>
-            </div>
-        </div>
-
-        <div class="filter-tabs">
-            <button class="filter-tab active" onclick="filterTasks('all')">Semua</button>
-            <button class="filter-tab" onclick="filterTasks('active')">Aktif</button>
-            <button class="filter-tab" onclick="filterTasks('completed')">Selesai</button>
-            <button class="filter-tab" onclick="filterTasks('high')">🔴 Prioritas Tinggi</button>
-            <button class="filter-tab" onclick="filterTasks('medium')">🟡 Prioritas Sedang</button>
-            <button class="filter-tab" onclick="filterTasks('low')">🟢 Prioritas Rendah</button>
-        </div>
-
-        <div class="tasks-list" id="tasksList"></div>
-    </div>
-
-    <script>
-        let tasks = [];
-        let currentPriority = 'medium';
-        let currentFilter = 'all';
-
-        function loadTasks() {
-            const saved = localStorage.getItem('taskflow_tasks');
-            if (saved) {
-                tasks = JSON.parse(saved);
-                renderTasks();
-            }
-        }
-
-        function saveTasks() {
-            localStorage.setItem('taskflow_tasks', JSON.stringify(tasks));
-        }
-
-        function setPriority(priority) {
-            currentPriority = priority;
-            document.querySelectorAll('.priority-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-        }
-
-        function addTask() {
-            const input = document.getElementById('taskInput');
-            const text = input.value.trim();
-
-            if (text === '') return;
-
-            const task = {
-                id: Date.now(),
-                text: text,
-                completed: false,
-                priority: currentPriority,
-                createdAt: new Date().toLocaleString('id-ID')
-            };
-
-            tasks.unshift(task);
-            input.value = '';
-            saveTasks();
-            renderTasks();
-        }
-
-        function toggleTask(id) {
-            const task = tasks.find(t => t.id === id);
-            if (task) {
-                task.completed = !task.completed;
-                saveTasks();
-                renderTasks();
-            }
-        }
-
-        function deleteTask(id) {
-            tasks = tasks.filter(t => t.id !== id);
-            saveTasks();
-            renderTasks();
-        }
-
-        function filterTasks(filter) {
-            currentFilter = filter;
-            document.querySelectorAll('.filter-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            renderTasks();
-        }
-
-        function renderTasks() {
-            const container = document.getElementById('tasksList');
-
-            let filteredTasks = tasks;
-
-            if (currentFilter === 'active') {
-                filteredTasks = tasks.filter(t => !t.completed);
-            } else if (currentFilter === 'completed') {
-                filteredTasks = tasks.filter(t => t.completed);
-            } else if (['high', 'medium', 'low'].includes(currentFilter)) {
-                filteredTasks = tasks.filter(t => t.priority === currentFilter);
-            }
-
-            if (filteredTasks.length === 0) {
-                container.innerHTML = `
-          <div class="empty-state">
-            <div class="empty-icon">📋</div>
-            <h3>Tidak ada tugas</h3>
-            <p>Mulai tambahkan tugas baru untuk memulai!</p>
           </div>
-        `;
-            } else {
-                container.innerHTML = filteredTasks.map(task => `
-          <div class="task-item ${task.priority}">
-            <div class="task-checkbox ${task.completed ? 'checked' : ''}" onclick="toggleTask(${task.id})">
-              ${task.completed ? '✓' : ''}
-            </div>
-            <div class="task-content">
-              <div class="task-text ${task.completed ? 'completed' : ''}">${task.text}</div>
-              <div class="task-meta">
-                <span class="task-time">🕒 ${task.createdAt}</span>
-                <span>📌 ${task.priority === 'high' ? 'Tinggi' : task.priority === 'medium' ? 'Sedang' : 'Rendah'}</span>
+        </div>
+      `;
+    });
+    html += `</div></div>`;
+    return html;
+  }
+
+  function render() {
+    const app = document.getElementById("appRoot");
+    const totalMoods = Object.keys(songsDatabase).length;
+    
+    if (currentPage === "home") {
+      let html = `
+        <div class="navbar">
+          <div class="logo">
+            <span class="logo-icon">✨</span>
+            <span class="logo-text">STARLUME</span>
+            <span class="logo-badge">PREMIUM</span>
+          </div>
+          <div class="nav-links">
+            <button class="nav-btn active" data-page="home">🏠 Beranda</button>
+            <button class="nav-btn" data-page="favorites">⭐ Favorit (${favorites.length})</button>
+          </div>
+        </div>
+        
+        <div class="hero">
+          <h2>Pilih Mood, Rasakan Getaran</h2>
+          <p>${allSongs.length}+ lagu premium dengan quotes inspiratif yang menyentuh hati</p>
+        </div>
+        
+        <div class="stats-bar">
+          <div class="stat-card">
+            <span class="stat-number">${allSongs.length}</span>
+            <span class="stat-label">Total Lagu</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">7</span>
+            <span class="stat-label">Mood</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">${favorites.length}</span>
+            <span class="stat-label">Favorit</span>
+          </div>
+        </div>
+        
+        <div class="mood-section">
+          <div class="section-title">🎭 Bagaimana perasaanmu sekarang?</div>
+          <div class="mood-grid">
+            <button class="mood-btn ${selectedMood === 'senang' ? 'active' : ''}" data-mood="senang">😄 Senang</button>
+            <button class="mood-btn ${selectedMood === 'sedih' ? 'active' : ''}" data-mood="sedih">😢 Sedih</button>
+            <button class="mood-btn ${selectedMood === 'galau' ? 'active' : ''}" data-mood="galau">🌧️ Galau</button>
+            <button class="mood-btn ${selectedMood === 'romantis' ? 'active' : ''}" data-mood="romantis">❤️ Romantis</button>
+            <button class="mood-btn ${selectedMood === 'marah' ? 'active' : ''}" data-mood="marah">😠 Marah</button>
+            <button class="mood-btn ${selectedMood === 'fokus' ? 'active' : ''}" data-mood="fokus">🎯 Fokus</button>
+            <button class="mood-btn ${selectedMood === 'relax' ? 'active' : ''}" data-mood="relax">🍃 Relax</button>
+          </div>
+        </div>
+        ${selectedMood ? renderRecommendations() : '<div style="text-align:center; padding:2.5rem; background: rgba(255,215,0,0.03); border-radius: 2rem; border: 1px dashed rgba(255,215,0,0.2);"><span style="font-size: 3rem;">✨</span><p style="margin-top: 1rem; color: #AAAAAA;">Klik salah satu mood di atas untuk memulai perjalanan musikmu</p></div>'}
+        <footer>© 2025 Starlume — ${allSongs.length}+ lagu | Klik ★ untuk favorit | Nikmati setiap nada</footer>
+      `;
+      app.innerHTML = html;
+      attachHomeEvents();
+    }
+    else if (currentPage === "favorites") {
+      const favSongs = allSongs.filter(s => favorites.includes(s.id));
+      let html = `
+        <div class="navbar">
+          <div class="logo">
+            <span class="logo-icon">✨</span>
+            <span class="logo-text">STARLUME</span>
+            <span class="logo-badge">PREMIUM</span>
+          </div>
+          <div class="nav-links">
+            <button class="nav-btn" data-page="home">🏠 Beranda</button>
+            <button class="nav-btn active" data-page="favorites">⭐ Favorit (${favSongs.length})</button>
+          </div>
+        </div>
+        <div class="hero" style="padding: 2rem;">
+          <h2 style="font-size: 2rem;">⭐ Koleksi Favoritmu ⭐</h2>
+          <p>${favSongs.length} dari ${allSongs.length} lagu tersimpan di hati</p>
+        </div>
+        <button class="back-btn" id="backHomeBtn">← Kembali ke Beranda</button>
+      `;
+      if(favSongs.length === 0) {
+        html += `<div class="empty-fav">✨ Belum ada favorit. Pilih lagu dari ${allSongs.length}+ koleksi dan klik bintang ✨</div>`;
+      } else {
+        html += `<div class="card-grid">`;
+        favSongs.forEach(s => {
+          html += `
+            <div class="music-card">
+              <img class="card-img" src="${s.img}" alt="${s.title}" onerror="this.src='https://picsum.photos/id/100/400/250'">
+              <div class="card-body">
+                <div class="card-title">🎵 ${s.title}</div>
+                <div class="artist-name">${s.artist}</div>
+                <div class="music-quote">“${s.quote}”</div>
+                <div class="track-links">
+                  <a href="${s.youtube}" target="_blank">▶️ YouTube</a>
+                  <a href="${s.spotify}" target="_blank">🎧 Spotify</a>
+                </div>
+                <div style="margin-top: 12px;"><span class="fav-icon active" data-id="${s.id}">★ Hapus dari favorit</span></div>
               </div>
             </div>
-            <div class="task-actions">
-              <button class="btn-icon btn-delete" onclick="deleteTask(${task.id})">🗑️</button>
-            </div>
-          </div>
-        `).join('');
-            }
+          `;
+        });
+        html += `</div>`;
+      }
+      app.innerHTML = html;
+      attachFavEvents();
+    }
+  }
 
-            updateStats();
-        }
+  function attachHomeEvents() {
+    document.querySelectorAll(".mood-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const moodVal = btn.getAttribute("data-mood");
+        selectedMood = moodVal;
+        const moodName = getMoodDisplayName(moodVal);
+        showNotif(`🎵 Mood "${moodName}" terpilih! 50 lagu siap menemani harimu. 🎵`);
+        render();
+      });
+    });
 
-        function updateStats() {
-            const total = tasks.length;
-            const completed = tasks.filter(t => t.completed).length;
-            const progress = total > 0 ? (completed / total) * 100 : 0;
+    document.querySelectorAll(".fav-icon").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        if(id) toggleFavorite(id);
+      });
+    });
 
-            document.getElementById('totalTasks').textContent = total;
-            document.getElementById('completedTasks').textContent = completed;
-            document.getElementById('progressBar').style.width = progress + '%';
-        }
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const page = btn.getAttribute("data-page");
+        if(page === "home") { currentPage = "home"; render(); }
+        if(page === "favorites") { currentPage = "favorites"; render(); }
+      });
+    });
+  }
 
-        loadTasks();
+  function attachFavEvents() {
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const page = btn.getAttribute("data-page");
+        if(page === "home") { currentPage = "home"; render(); }
+        if(page === "favorites") { currentPage = "favorites"; render(); }
+      });
+    });
 
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./service-worker.js')
-                    .then(() => console.log('Service Worker registered'))
-                    .catch(err => console.error('Service Worker error:', err));
-            });
-        }
-    </script>
+    document.querySelectorAll(".fav-icon").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        if(id) toggleFavorite(id);
+      });
+    });
 
+    const backHome = document.getElementById("backHomeBtn");
+    if(backHome) backHome.addEventListener("click", () => { currentPage = "home"; render(); });
+  }
+
+  render();
+  
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(() => console.log('SW registered!'))
+      .catch(err => console.error('SW gagal:', err));
+  }
+</script>
 </body>
-
 </html>
