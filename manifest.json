@@ -1,23 +1,23 @@
 {
   "id": "./",
-  "name": "PWA Template Responsif",
-  "short_name": "PWA Demo",
-  "description": "Aplikasi PWA responsif untuk demonstrasi template dasar Progressive Web App dengan dukungan offline dan installable.",
+  "name": "Starlume",
+  "short_name": "Starlume",
+  "description": "Starlume - Aplikasi musik premium dengan mood playlist dan quotes inspiratif. Nikmati pengalaman musik yang menyentuh hati.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#4F46E5",
-  "theme_color": "#4F46E5",
+  "background_color": "#0a0a0a",
+  "theme_color": "#FFD700",
   "orientation": "portrait",
   "lang": "id",
   "icons": [
     {
-      "src": "Logo Starlume.png",
+      "src": "icons/Logo Starlume.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "Ikon Starlume.png",
+      "src": "icons/Logo Starlume.png",
       "sizes": "512x512",
       "type": "image/png"
     }
@@ -41,14 +41,15 @@
       "url": "./index.html",
       "icons": [
         {
-          "src": "icons/Ikon Starlume.png",
+          "src": "icons/Logo Starlume.png",
           "sizes": "192x192"
         }
       ]
     }
   ],
   "categories": [
-    "productivity",
-    "utilities"
+    "music",
+    "entertainment",
+    "lifestyle"
   ]
 }
