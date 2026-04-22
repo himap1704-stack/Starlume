@@ -12,12 +12,12 @@
   "lang": "id",
   "icons": [
     {
-      "src": "icons/Logo Starlume.png",
+      "src": "icons/Ikon Starlume.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icons/Logo Starlume.png",
+      "src": "icons/Ikon Starlume.png",
       "sizes": "512x512",
       "type": "image/png"
     }
