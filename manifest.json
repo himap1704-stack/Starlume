@@ -12,13 +12,13 @@
   "lang": "id",
   "icons": [
     {
-      "src": "icons/LogoStarlume.png",
-      "sizes": "500x500",
+      "src": "icons/IkonStarlume.png",
+      "sizes": "192x192",
       "type": "image/png"
     },
     {
       "src": "icons/LogoStarlume.png",
-      "sizes": "677x369",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
@@ -42,7 +42,7 @@
       "icons": [
         {
           "src": "icons/LogoStarlume.png",
-          "sizes": "500x500"
+          "sizes": "192x192"
         }
       ]
     }
