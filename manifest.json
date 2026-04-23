@@ -10,6 +10,7 @@
   "theme_color": "#FFD700",
   "orientation": "portrait",
   "lang": "id",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "icons/LogoStarlume.png",
