@@ -12,12 +12,12 @@
   "lang": "id",
   "icons": [
     {
-      "src": "icons/Ikon Starlume.png",
-      "sizes": "192x192",
+      "src": "icons/IkonStarlume.png",
+      "sizes": "500x500",
       "type": "image/png"
     },
     {
-      "src": "icons/Ikon Starlume.png",
+      "src": "icons/LogoStarlume.png",
       "sizes": "512x512",
       "type": "image/png"
     }
@@ -41,7 +41,7 @@
       "url": "./index.html",
       "icons": [
         {
-          "src": "icons/Ikon Starlume.png",
+          "src": "icons/LogoStarlume.png",
           "sizes": "192x192"
         }
       ]
