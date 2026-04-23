@@ -26,9 +26,11 @@
   ],
   "screenshots": [
     {
-      "src": "icons/screenshot.png.png",
+      "src": "icons/Screenshot.png.png",
       "sizes": "1442x3090",
-      "type": "image/png"
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Tampilan Desktop Starlume"
     },
     {
       "src": "icons/screenshot2.png",
