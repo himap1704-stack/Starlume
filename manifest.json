@@ -11,6 +11,7 @@
   "orientation": "portrait",
   "lang": "id",
   "prefer_related_applications": false,
+  "related_applications": [],
   "icons": [
     {
       "src": "icons/LogoStarlume.png",
@@ -25,7 +26,7 @@
   ],
   "screenshots": [
     {
-      "src": "icons/screenshot1.png",
+      "src": "icons/screenshot.png.png",
       "sizes": "1442x3090",
       "type": "image/png"
     },
