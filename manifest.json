@@ -17,7 +17,7 @@
       "type": "image/png"
     },
     {
-      "src": "icons/LogoStarlume.png",
+      "src": "icons/IkonStarlume.png",
       "sizes": "512x512",
       "type": "image/png"
     }
@@ -41,7 +41,7 @@
       "url": "./index.html",
       "icons": [
         {
-          "src": "icons/LogoStarlume.png",
+          "src": "icons/IkonStarlume.png",
           "sizes": "192x192"
         }
       ]
