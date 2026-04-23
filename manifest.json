@@ -33,9 +33,11 @@
       "label": "Tampilan Desktop Starlume"
     },
     {
-      "src": "icons/screenshot2.png",
+      "src": "icons/mobile.png",
       "sizes": "1442x3090",
-      "type": "image/png"
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Tampilan Mobile"
     }
   ],
   "shortcuts": [
