@@ -9,32 +9,47 @@
   <meta name="theme-color" content="#0a0a0a" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icons/IkonStarlume.png" />
-  <title>Starlume · Premium Music Experience</title>
+  <title>Starlume · Premium Music, Movie, Novel & Anime Experience</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Poppins', sans-serif;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+      background: linear-gradient(145deg, #0a0a0f 0%, #14141e 40%, #0f0f1a 100%);
       color: #FFFFFF;
       padding-bottom: 2rem;
       min-height: 100vh;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 30% 20%, rgba(255, 215, 0, 0.03) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 80%, rgba(255, 215, 0, 0.02) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
     }
 
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 6px;
     }
 
     ::-webkit-scrollbar-track {
-      background: #1a1a1a;
+      background: #14141e;
     }
 
     ::-webkit-scrollbar-thumb {
-      background: linear-gradient(135deg, #FFD700, #FFA500);
+      background: linear-gradient(180deg, #FFD700, #F5A623);
       border-radius: 10px;
     }
 
@@ -42,22 +57,24 @@
       max-width: 1400px;
       margin: 0 auto;
       padding: 1.5rem;
+      position: relative;
+      z-index: 1;
     }
 
-    /* NAVBAR PREMIUM */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-      margin-bottom: 2rem;
-      background: rgba(10, 10, 10, 0.7);
-      backdrop-filter: blur(20px);
-      padding: 0.8rem 2rem;
+      margin-bottom: 2.5rem;
+      background: rgba(20, 20, 30, 0.6);
+      backdrop-filter: blur(30px) saturate(1.2);
+      -webkit-backdrop-filter: blur(30px) saturate(1.2);
+      padding: 0.6rem 1.8rem;
       border-radius: 100px;
-      border: 1px solid rgba(255, 215, 0, 0.15);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 215, 0, 0.08);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.03);
     }
 
     .logo {
@@ -67,63 +84,141 @@
     }
 
     .logo-icon {
-      font-size: 2rem;
-      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
-      animation: starPulse 2s ease-in-out infinite;
+      font-size: 1.8rem;
+      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
+      animation: starPulse 3s ease-in-out infinite;
     }
 
     @keyframes starPulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.1); opacity: 0.8; }
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+      50% { transform: scale(1.1) rotate(5deg); opacity: 0.9; }
     }
 
     .logo-text {
-      font-size: 1.6rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700);
+      font-size: 1.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #FFD700, #F5A623, #FFD700);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 40px rgba(255, 215, 0, 0.1);
     }
 
     .logo-badge {
-      font-size: 0.7rem;
-      background: rgba(255, 215, 0, 0.2);
-      padding: 2px 8px;
+      font-size: 0.6rem;
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.05));
+      padding: 3px 12px;
       border-radius: 20px;
       color: #FFD700;
-      margin-left: 8px;
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
-      gap: 0.8rem;
+      gap: 0.6rem;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     .nav-btn {
       background: transparent;
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      padding: 0.5rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0.5rem 1.4rem;
       border-radius: 40px;
-      color: #FFFFFF;
+      color: rgba(255, 255, 255, 0.6);
       font-weight: 600;
+      font-size: 0.85rem;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       backdrop-filter: blur(4px);
     }
 
     .nav-btn.active, .nav-btn:hover {
-      background: linear-gradient(135deg, #FFD700, #FFA500);
-      color: #000000;
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      color: #0a0a0f;
+      box-shadow: 0 4px 25px rgba(255, 215, 0, 0.35);
       border-color: transparent;
       transform: translateY(-2px);
     }
 
-    /* HERO SPECTACULAR */
+    .nav-btn .badge-count {
+      background: rgba(255, 215, 0, 0.2);
+      padding: 0 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      color: #FFD700;
+      margin-left: 4px;
+    }
+
+    .nav-btn.active .badge-count {
+      background: rgba(0, 0, 0, 0.2);
+      color: #0a0a0f;
+    }
+
+    .user-btn {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      padding: 0.4rem 1.2rem 0.4rem 0.8rem;
+      border-radius: 40px;
+      color: #FFD700;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(4px);
+    }
+
+    .user-btn:hover {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 215, 0, 0.1));
+      transform: scale(1.02);
+    }
+
+    .user-btn .user-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #0a0a0f;
+      font-weight: 700;
+    }
+
+    .user-btn .user-name {
+      max-width: 80px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .login-btn {
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      border: none;
+      padding: 0.5rem 1.6rem;
+      border-radius: 40px;
+      color: #0a0a0f;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .login-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 25px rgba(255, 215, 0, 0.35);
+    }
+
     .hero {
+      position: relative;
       background: url('icons/20.png');
       background-size: cover;
       background-position: center;
@@ -132,12 +227,15 @@
       border-radius: 2rem;
       margin-bottom: 2.5rem;
       text-align: center;
-      border: 1px solid rgba(255, 215, 0, 0.2);
-      position: relative;
       overflow: hidden;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 215, 0, 0.08);
     }
 
-    /* Tambahan overlay gelap tipis biar teks tetap terbaca */
     .hero::before {
       content: '';
       position: absolute;
@@ -145,138 +243,229 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
       z-index: 0;
+      transition: background 0.5s ease;
     }
 
-    .hero h2, .hero p {
+    .hero:hover::before {
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero .star-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255,215,0,0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,215,0,0.2), transparent),
+        radial-gradient(2px 2px at 50px 160px, rgba(255,215,0,0.4), transparent),
+        radial-gradient(2px 2px at 90px 40px, rgba(255,215,0,0.2), transparent),
+        radial-gradient(2px 2px at 130px 80px, rgba(255,215,0,0.3), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(255,215,0,0.2), transparent),
+        radial-gradient(1px 1px at 200px 120px, rgba(255,215,0,0.4), transparent),
+        radial-gradient(2px 2px at 250px 50px, rgba(255,215,0,0.2), transparent),
+        radial-gradient(1px 1px at 300px 90px, rgba(255,215,0,0.3), transparent),
+        radial-gradient(2px 2px at 350px 40px, rgba(255,215,0,0.2), transparent);
+      background-size: 400px 200px;
+      animation: starTwinkle 4s ease-in-out infinite alternate;
+      z-index: 0;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    @keyframes starTwinkle {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.8; }
+    }
+
+    .hero .music-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero .music-particles span {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0.15;
+      animation: floatParticle 15s linear infinite;
+      color: #FFD700;
+    }
+
+    .hero .music-particles span:nth-child(1) { left: 5%; animation-delay: 0s; font-size: 1.5rem; }
+    .hero .music-particles span:nth-child(2) { left: 15%; animation-delay: 2s; font-size: 1rem; }
+    .hero .music-particles span:nth-child(3) { left: 25%; animation-delay: 4s; font-size: 2rem; }
+    .hero .music-particles span:nth-child(4) { left: 35%; animation-delay: 1s; font-size: 1.2rem; }
+    .hero .music-particles span:nth-child(5) { left: 45%; animation-delay: 3s; font-size: 1.8rem; }
+    .hero .music-particles span:nth-child(6) { left: 55%; animation-delay: 5s; font-size: 1rem; }
+    .hero .music-particles span:nth-child(7) { left: 65%; animation-delay: 2s; font-size: 1.6rem; }
+    .hero .music-particles span:nth-child(8) { left: 75%; animation-delay: 4s; font-size: 1.2rem; }
+    .hero .music-particles span:nth-child(9) { left: 85%; animation-delay: 1s; font-size: 1.4rem; }
+    .hero .music-particles span:nth-child(10) { left: 92%; animation-delay: 3s; font-size: 1rem; }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(100%) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.15; }
+      90% { opacity: 0.15; }
+      100% { transform: translateY(-100%) rotate(720deg); opacity: 0; }
+    }
+
+    .hero .wave-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.2), rgba(255,215,0,0.5), rgba(255,215,0,0.2), transparent);
+      z-index: 1;
+      animation: wavePulse 3s ease-in-out infinite;
+    }
+
+    @keyframes wavePulse {
+      0%, 100% { transform: scaleX(0.8); opacity: 0.3; }
+      50% { transform: scaleX(1); opacity: 0.8; }
+    }
+
+    .hero h2, .hero p, .hero .hero-emoji {
       position: relative;
       z-index: 1;
     }
 
     .hero h2 {
-      font-size: 3.2rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700, #FFFFFF);
+      font-size: 3.5rem;
+      margin-bottom: 0.8rem;
+      background: linear-gradient(135deg, #FFD700, #F5A623, #FFD700, #FFFFFF);
+      background-size: 300% 300%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      font-weight: 800;
-      letter-spacing: 4px;
-      position: relative;
-      display: inline-block;
-      animation: textShine 3s ease-in-out infinite;
+      font-weight: 900;
+      letter-spacing: 2px;
+      animation: textShine 4s ease-in-out infinite;
+      text-shadow: 0 0 60px rgba(255, 215, 0, 0.1);
     }
 
     @keyframes textShine {
-      0%, 100% { filter: brightness(1); }
-      50% { filter: brightness(1.3); }
-    }
-
-    .hero h2::before {
-      content: '✦';
-      position: absolute;
-      left: -40px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2rem;
-      color: #FFD700;
-      opacity: 0.8;
-    }
-
-    .hero h2::after {
-      content: '✦';
-      position: absolute;
-      right: -40px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2rem;
-      color: #FFD700;
-      opacity: 0.8;
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
     .hero p {
-      color: #CCCCCC;
+      color: rgba(255, 255, 255, 0.9);
       font-size: 1.1rem;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.4);
       display: inline-block;
       padding: 0.5rem 2rem;
       border-radius: 60px;
-      backdrop-filter: blur(8px);
-      margin-top: 0.5rem;
-      border: 1px solid rgba(255, 215, 0, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 215, 0, 0.1);
+      font-weight: 400;
     }
 
-    /* STATS BAR */
+    .hero .hero-emoji {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 0.5rem;
+      animation: floatEmoji 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.2));
+    }
+
+    @keyframes floatEmoji {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-10px) scale(1.05); }
+    }
+
     .stats-bar {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      margin-bottom: 2rem;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
       flex-wrap: wrap;
     }
 
     .stat-card {
       background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
-      padding: 0.8rem 1.8rem;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 0.7rem 1.8rem;
       border-radius: 60px;
-      border: 1px solid rgba(255, 215, 0, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.04);
       display: flex;
       align-items: center;
       gap: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 215, 0, 0.1);
+      transform: translateY(-2px);
     }
 
     .stat-number {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 800;
-      color: #FFD700;
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .stat-label {
-      font-size: 0.85rem;
-      color: #AAAAAA;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 500;
     }
 
-    .mood-section {
-      margin-bottom: 2rem;
+    .stat-icon {
+      font-size: 1.2rem;
     }
 
     .section-title {
       text-align: center;
       margin-bottom: 2rem;
       font-size: 1.8rem;
-      font-weight: 700;
+      font-weight: 800;
       background: linear-gradient(135deg, #FFFFFF, #FFD700);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
 
-    /* MOOD BUTTONS MIUM */
     .mood-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.8rem;
       margin-bottom: 2.5rem;
     }
 
     .mood-btn {
-      background: rgba(20, 20, 20, 0.8);
-      backdrop-filter: blur(8px);
-      padding: 0.9rem 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 0.8rem 1.8rem;
       border-radius: 60px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      border: 1px solid rgba(255, 215, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.05);
       display: inline-flex;
       align-items: center;
       gap: 10px;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      color: #FFFFFF;
+      color: rgba(255, 255, 255, 0.7);
       position: relative;
       overflow: hidden;
     }
@@ -289,22 +478,88 @@
       width: 0;
       height: 0;
       border-radius: 50%;
-      background: rgba(255, 215, 0, 0.3);
+      background: rgba(255, 215, 0, 0.15);
       transform: translate(-50%, -50%);
       transition: width 0.6s, height 0.6s;
     }
 
     .mood-btn:hover::before {
-      width: 300px;
-      height: 300px;
+      width: 400px;
+      height: 400px;
     }
 
     .mood-btn:hover, .mood-btn.active {
-      background: linear-gradient(135deg, #FFD700, #FFA500);
-      color: #000000;
-      transform: translateY(-4px) scale(1.02);
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      color: #0a0a0f;
+      transform: translateY(-3px) scale(1.02);
       border-color: transparent;
-      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+      box-shadow: 0 8px 35px rgba(255, 215, 0, 0.3);
+    }
+
+    .mood-btn .mood-emoji {
+      font-size: 1.2rem;
+    }
+
+    .tab-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0.7rem 2rem;
+      border-radius: 40px;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      color: #0a0a0f;
+      border-color: transparent;
+      box-shadow: 0 4px 25px rgba(255, 215, 0, 0.25);
+    }
+
+    .tab-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .genre-filter {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .genre-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.85rem;
+    }
+
+    .genre-btn.active {
+      background: rgba(255, 215, 0, 0.15);
+      color: #FFD700;
+      border-color: rgba(255, 215, 0, 0.2);
+    }
+
+    .genre-btn:hover {
+      transform: translateY(-2px);
+      color: white;
     }
 
     .results-container {
@@ -313,229 +568,669 @@
     }
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 2rem;
     }
 
-    /* MUSIC CARD PREMIUM */
     .music-card {
-      background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(15, 15, 15, 0.95));
-      backdrop-filter: blur(10px);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-radius: 1.5rem;
       overflow: hidden;
-      border: 1px solid rgba(255, 215, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.04);
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
     }
 
-    .music-card::after {
+    .music-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #FFD700, #F5A623, transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
 
-    .music-card:hover::after {
-      transform: scaleX(1);
+    .music-card:hover::before {
+      opacity: 1;
     }
 
     .music-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(255, 215, 0, 0.4);
-      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
+      transform: translateY(-8px);
+      border-color: rgba(255, 215, 0, 0.15);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.03);
     }
 
     .card-img {
       width: 100%;
       height: 200px;
       object-fit: cover;
-      transition: transform 0.6s ease;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
     }
 
     .music-card:hover .card-img {
-      transform: scale(1.05);
+      transform: scale(1.04);
+    }
+
+    .card-img-placeholder {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      font-size: 3rem;
+      color: rgba(255, 215, 0, 0.3);
     }
 
     .card-body {
-      padding: 1.3rem;
+      padding: 1.3rem 1.5rem 1.5rem;
     }
 
     .card-title {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       display: flex;
       justify-content: space-between;
       align-items: center;
       color: #FFFFFF;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+    }
+
+    .card-title .title-icon {
+      margin-right: 6px;
     }
 
     .artist-name {
-      font-size: 0.85rem;
-      color: #FFD700;
+      font-size: 0.8rem;
+      color: rgba(255, 215, 0, 0.7);
       margin-bottom: 8px;
+      font-weight: 500;
     }
 
-    .fav-icon {
+    .action-icons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .fav-icon, .journal-icon, .play-icon, .watch-icon, .read-icon {
       cursor: pointer;
-      font-size: 1.5rem;
-      transition: all 0.2s ease;
+      font-size: 1.2rem;
+      transition: all 0.25s ease;
     }
 
-    .fav-icon:hover {
+    .fav-icon:hover, .journal-icon:hover, .play-icon:hover, .watch-icon:hover, .read-icon:hover {
       transform: scale(1.2);
     }
 
     .fav-icon.active {
       color: #FFD700;
-      text-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
-      animation: starPop 0.3s ease;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+      animation: starPop 0.4s ease;
+    }
+
+    .play-icon {
+      color: rgba(76, 175, 80, 0.8);
+    }
+
+    .play-icon:hover {
+      color: #66bb6a;
+      text-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+    }
+
+    .watch-icon {
+      color: rgba(255, 100, 100, 0.8);
+    }
+
+    .watch-icon:hover {
+      color: #ff6b6b;
+      text-shadow: 0 0 20px rgba(255, 100, 100, 0.3);
+    }
+
+    .read-icon {
+      color: rgba(100, 200, 255, 0.8);
+    }
+
+    .read-icon:hover {
+      color: #66d9ff;
+      text-shadow: 0 0 20px rgba(100, 200, 255, 0.3);
+    }
+
+    .journal-icon {
+      color: rgba(187, 187, 255, 0.6);
+    }
+
+    .journal-icon.has-note {
+      color: #FFD700;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     }
 
     @keyframes starPop {
       0% { transform: scale(1); }
-      50% { transform: scale(1.3); }
+      30% { transform: scale(1.4); }
       100% { transform: scale(1); }
     }
 
     .music-quote {
-      background: rgba(255, 215, 0, 0.05);
-      padding: 0.8rem 1rem;
-      border-radius: 14px;
-      margin: 12px 0;
-      font-size: 0.8rem;
-      line-height: 1.5;
-      color: #CCCCCC;
-      border-left: 3px solid #FFD700;
+      background: rgba(255, 215, 0, 0.04);
+      padding: 0.7rem 1rem;
+      border-radius: 12px;
+      margin: 10px 0;
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.6);
+      border-left: 2px solid rgba(255, 215, 0, 0.2);
       font-style: italic;
-      transition: 0.2s;
-    }
-
-    .music-card:hover .music-quote {
-      background: rgba(255, 215, 0, 0.08);
     }
 
     .track-links {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       margin-top: 12px;
+      flex-wrap: wrap;
     }
 
     .track-links a {
-      color: #FFFFFF;
-      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.75rem;
       font-weight: 600;
       text-decoration: none;
-      background: rgba(30, 30, 30, 0.9);
-      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 7px 16px;
       border-radius: 40px;
       transition: all 0.25s ease;
-      border: 1px solid rgba(255, 215, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.04);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       flex: 1;
       justify-content: center;
     }
 
     .track-links a:hover {
-      background: linear-gradient(135deg, #FFD700, #FFA500);
-      color: #000000;
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      color: #0a0a0f;
       border-color: transparent;
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+      box-shadow: 0 4px 20px rgba(255, 215, 0, 0.25);
     }
 
-    .empty-fav {
+    .btn-play-now {
+      background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.05)) !important;
+      border-color: rgba(76, 175, 80, 0.2) !important;
+      color: #66bb6a !important;
+    }
+
+    .btn-play-now:hover {
+      background: linear-gradient(135deg, #4CAF50, #45a049) !important;
+      color: white !important;
+      border-color: transparent !important;
+      box-shadow: 0 4px 25px rgba(76, 175, 80, 0.35) !important;
+    }
+
+    .btn-watch-now {
+      background: linear-gradient(135deg, rgba(255, 100, 100, 0.15), rgba(255, 100, 100, 0.05)) !important;
+      border-color: rgba(255, 100, 100, 0.2) !important;
+      color: #ff6b6b !important;
+    }
+
+    .btn-watch-now:hover {
+      background: linear-gradient(135deg, #ff6b6b, #e55a5a) !important;
+      color: white !important;
+      border-color: transparent !important;
+      box-shadow: 0 4px 25px rgba(255, 100, 100, 0.35) !important;
+    }
+
+    .btn-read-now {
+      background: linear-gradient(135deg, rgba(100, 200, 255, 0.15), rgba(100, 200, 255, 0.05)) !important;
+      border-color: rgba(100, 200, 255, 0.2) !important;
+      color: #66d9ff !important;
+    }
+
+    .btn-read-now:hover {
+      background: linear-gradient(135deg, #66d9ff, #4dc8f0) !important;
+      color: #0a0a0f !important;
+      border-color: transparent !important;
+      box-shadow: 0 4px 25px rgba(100, 200, 255, 0.35) !important;
+    }
+
+    .player-wrapper {
+      margin-top: 12px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.5);
+      position: relative;
+      display: none;
+      border: 1px solid rgba(255, 215, 0, 0.05);
+    }
+
+    .player-wrapper.active {
+      display: block;
+      animation: fadeInUp 0.3s ease;
+    }
+
+    .player-wrapper iframe {
+      width: 100%;
+      height: 180px;
+      border: none;
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 6px 12px;
+    }
+
+    .player-controls .now-playing {
+      flex: 1;
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.6);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .player-controls .now-playing strong {
+      color: #FFD700;
+    }
+
+    .btn-close-player {
+      background: rgba(255, 80, 80, 0.15);
+      border: none;
+      color: rgba(255, 255, 255, 0.5);
+      padding: 3px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      transition: 0.2s;
+    }
+
+    .btn-close-player:hover {
+      background: rgba(255, 80, 80, 0.3);
+      color: white;
+    }
+
+    .empty-fav, .empty-journal {
       text-align: center;
       padding: 4rem;
-      background: linear-gradient(135deg, rgba(20, 20, 20, 0.5), rgba(10, 10, 10, 0.5));
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(10px);
       border-radius: 2rem;
       margin: 1rem 0;
-      color: #AAAAAA;
-      border: 1px dashed rgba(255, 215, 0, 0.3);
+      color: rgba(255, 255, 255, 0.4);
+      border: 1px dashed rgba(255, 215, 0, 0.08);
+    }
+
+    .empty-fav .empty-icon, .empty-journal .empty-icon {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 1rem;
     }
 
     .toast-msg {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
-      border-left: 4px solid #FFD700;
-      padding: 0.8rem 1.8rem;
+      background: rgba(20, 20, 30, 0.9);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-left: 3px solid #FFD700;
+      padding: 0.7rem 1.8rem;
       border-radius: 50px;
-      backdrop-filter: blur(20px);
-      z-index: 999;
-      animation: slideInRight 0.3s ease;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      color: white;
+      z-index: 1000;
+      animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      color: rgba(255, 255, 255, 0.9);
       font-weight: 500;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255, 215, 0, 0.1);
     }
 
     @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(60px);}
-      to { opacity: 1; transform: translateX(0);}
+      from { opacity: 0; transform: translateX(60px) scale(0.95); }
+      to { opacity: 1; transform: translateX(0) scale(1); }
     }
 
     .back-btn {
-      background: rgba(30,30,30,0.8);
-      border: 1px solid rgba(255, 215, 0, 0.3);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       padding: 0.6rem 1.8rem;
       border-radius: 40px;
-      color: #FFFFFF;
+      color: rgba(255, 255, 255, 0.7);
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
       margin-bottom: 1.5rem;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(10px);
+      font-size: 0.9rem;
     }
 
     .back-btn:hover {
-      background: linear-gradient(135deg, #FFD700, #FFA500);
-      color: #000000;
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      color: #0a0a0f;
       transform: translateX(-5px);
       border-color: transparent;
+      box-shadow: 0 4px 25px rgba(255, 215, 0, 0.25);
+    }
+
+    .auth-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      z-index: 1200;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .auth-modal.active {
+      display: flex;
+    }
+
+    .auth-modal-content {
+      background: linear-gradient(145deg, rgba(30, 30, 50, 0.95), rgba(15, 15, 30, 0.98));
+      backdrop-filter: blur(30px);
+      border-radius: 2rem;
+      max-width: 420px;
+      width: 100%;
+      padding: 2.5rem;
+      border: 1px solid rgba(255, 215, 0, 0.08);
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+      animation: fadeInUp 0.4s ease;
+      position: relative;
+    }
+
+    .auth-modal-content .close-auth {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .auth-modal-content .close-auth:hover {
+      color: white;
+      transform: rotate(90deg);
+    }
+
+    .auth-modal-content .auth-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .auth-modal-content .auth-subtitle {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .auth-modal-content .auth-emoji {
+      text-align: center;
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .auth-modal-content .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .auth-modal-content .form-group label {
+      display: block;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.5px;
+    }
+
+    .auth-modal-content .form-group input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      color: white;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .auth-modal-content .form-group input:focus {
+      outline: none;
+      border-color: rgba(255, 215, 0, 0.3);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.05);
+    }
+
+    .auth-modal-content .form-group input::placeholder {
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    .auth-modal-content .auth-btn {
+      width: 100%;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      margin-top: 0.5rem;
+    }
+
+    .auth-modal-content .auth-btn-primary {
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      color: #0a0a0f;
+    }
+
+    .auth-modal-content .auth-btn-primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 30px rgba(255, 215, 0, 0.3);
+    }
+
+    .auth-modal-content .auth-switch {
+      text-align: center;
+      margin-top: 1.2rem;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.85rem;
+    }
+
+    .auth-modal-content .auth-switch span {
+      color: #FFD700;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .auth-modal-content .auth-switch span:hover {
+      text-decoration: underline;
+    }
+
+    .auth-modal-content .auth-error {
+      background: rgba(255, 80, 80, 0.1);
+      border: 1px solid rgba(255, 80, 80, 0.2);
+      border-radius: 10px;
+      padding: 0.6rem 1rem;
+      color: #ff6b6b;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .auth-modal-content .auth-error.show {
+      display: block;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      z-index: 1100;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: linear-gradient(145deg, rgba(30, 30, 45, 0.95), rgba(15, 15, 25, 0.98));
+      backdrop-filter: blur(30px);
+      border-radius: 2rem;
+      max-width: 520px;
+      width: 100%;
+      padding: 2rem;
+      border: 1px solid rgba(255, 215, 0, 0.08);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+      animation: fadeInUp 0.3s ease;
+    }
+
+    .modal-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .modal-song {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.05);
+      padding-bottom: 0.8rem;
+    }
+
+    .modal textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 215, 0, 0.08);
+      border-radius: 1rem;
+      padding: 1rem;
+      color: white;
+      font-size: 0.9rem;
+      resize: vertical;
+      margin-bottom: 1.5rem;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+
+    .modal textarea:focus {
+      outline: none;
+      border-color: rgba(255, 215, 0, 0.3);
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: flex-end;
+    }
+
+    .modal-buttons button {
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-size: 0.85rem;
+    }
+
+    .btn-save {
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      color: #0a0a0f;
+    }
+
+    .btn-save:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    .btn-delete {
+      background: rgba(255, 80, 80, 0.15);
+      color: rgba(255, 80, 80, 0.8);
+    }
+
+    .btn-delete:hover {
+      background: rgba(255, 80, 80, 0.25);
+    }
+
+    .btn-cancel {
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .btn-cancel:hover {
+      background: rgba(255, 255, 255, 0.08);
     }
 
     footer {
       text-align: center;
       margin-top: 3rem;
       padding-top: 1.5rem;
-      opacity: 0.6;
-      font-size: 0.8rem;
-      color: #888888;
-      border-top: 1px solid rgba(255, 215, 0, 0.1);
+      opacity: 0.4;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.3);
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      letter-spacing: 0.5px;
     }
 
     @media (max-width: 700px) {
       .container { padding: 1rem; }
-      .hero h2 { font-size: 1.6rem; letter-spacing: 2px; }
-      .hero h2::before, .hero h2::after { display: none; }
-      .hero { padding: 2rem 1rem; }
+      .hero h2 { font-size: 1.8rem; }
+      .hero { padding: 2.5rem 1rem; min-height: 250px; }
       .card-grid { grid-template-columns: 1fr; }
       .track-links a { padding: 6px 12px; font-size: 0.7rem; }
-      .mood-btn { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+      .mood-btn { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
+      .player-wrapper iframe { height: 140px; }
+      .navbar { padding: 0.5rem 1.2rem; border-radius: 60px; }
       .logo-text { font-size: 1.2rem; }
-      .logo-icon { font-size: 1.5rem; }
-      .stat-card { padding: 0.5rem 1rem; }
+      .nav-btn { padding: 0.4rem 1rem; font-size: 0.75rem; }
+      .stat-card { padding: 0.5rem 1.2rem; }
       .stat-number { font-size: 1.2rem; }
+      .hero .music-particles span { display: none; }
+      .user-btn .user-name { max-width: 50px; font-size: 0.75rem; }
+      .auth-modal-content { padding: 1.8rem; }
+      .tab-btn { padding: 0.5rem 1.2rem; font-size: 0.8rem; }
+      .genre-btn { padding: 0.4rem 1rem; font-size: 0.75rem; }
     }
   </style>
 </head>
@@ -543,68 +1238,555 @@
 
 <div class="container" id="appRoot"></div>
 
+<div class="auth-modal" id="authModal">
+  <div class="auth-modal-content">
+    <button class="close-auth" id="closeAuthBtn">✕</button>
+    <span class="auth-emoji" id="authEmoji">✨</span>
+    <div class="auth-title" id="authTitle">Selamat Datang</div>
+    <div class="auth-subtitle" id="authSubtitle">Masuk ke akun Starlume Anda</div>
+    
+    <div class="auth-error" id="authError">Email atau password salah</div>
+    
+    <div class="form-group">
+      <label>📧 Email</label>
+      <input type="email" id="authEmail" placeholder="email@contoh.com" />
+    </div>
+    <div class="form-group">
+      <label>🔒 Password</label>
+      <input type="password" id="authPassword" placeholder="Minimal 6 karakter" />
+    </div>
+    
+    <button class="auth-btn auth-btn-primary" id="authSubmitBtn">Masuk</button>
+    
+    <div class="auth-switch" id="authSwitch">
+      Belum punya akun? <span id="authSwitchLink">Daftar</span>
+    </div>
+  </div>
+</div>
+
 <script>
-  // Mapping gambar dari folder icons (1.png - 60.png, kecuali 20.png)
-  const iconImages = [];
-  for (let i = 1; i <= 60; i++) {
-    if (i !== 20) {
-      iconImages.push(`icons/${i}.png`);
+  // ---------- AUTH SYSTEM ----------
+  let currentUser = JSON.parse(localStorage.getItem('starlume_user')) || null;
+  let isLoginMode = true;
+
+  function getUsers() {
+    return JSON.parse(localStorage.getItem('starlume_users')) || {};
+  }
+
+  function saveUsers(users) {
+    localStorage.setItem('starlume_users', JSON.stringify(users));
+  }
+
+  function saveUserSession(user) {
+    currentUser = user;
+    localStorage.setItem('starlume_user', JSON.stringify(user));
+  }
+
+  function logoutUser() {
+    currentUser = null;
+    localStorage.removeItem('starlume_user');
+    render();
+    showNotif('👋 Anda telah logout');
+  }
+
+  function openAuthModal(mode = 'login') {
+    isLoginMode = mode === 'login';
+    const modal = document.getElementById('authModal');
+    const title = document.getElementById('authTitle');
+    const subtitle = document.getElementById('authSubtitle');
+    const emoji = document.getElementById('authEmoji');
+    const submitBtn = document.getElementById('authSubmitBtn');
+    const switchLink = document.getElementById('authSwitchLink');
+    const errorEl = document.getElementById('authError');
+    
+    errorEl.classList.remove('show');
+    
+    if (isLoginMode) {
+      title.textContent = 'Selamat Datang';
+      subtitle.textContent = 'Masuk ke akun Starlume Anda';
+      emoji.textContent = '✨';
+      submitBtn.textContent = 'Masuk';
+      switchLink.textContent = 'Daftar';
+      document.getElementById('authSwitch').innerHTML = 'Belum punya akun? <span id="authSwitchLink">Daftar</span>';
+      document.getElementById('authSwitchLink').addEventListener('click', () => openAuthModal('register'));
+    } else {
+      title.textContent = 'Buat Akun';
+      subtitle.textContent = 'Bergabung dengan Starlume';
+      emoji.textContent = '🌟';
+      submitBtn.textContent = 'Daftar';
+      switchLink.textContent = 'Masuk';
+      document.getElementById('authSwitch').innerHTML = 'Sudah punya akun? <span id="authSwitchLink">Masuk</span>';
+      document.getElementById('authSwitchLink').addEventListener('click', () => openAuthModal('login'));
+    }
+    
+    document.getElementById('authEmail').value = '';
+    document.getElementById('authPassword').value = '';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeAuthModal() {
+    document.getElementById('authModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function handleAuth() {
+    const email = document.getElementById('authEmail').value.trim();
+    const password = document.getElementById('authPassword').value.trim();
+    const errorEl = document.getElementById('authError');
+    
+    if (!email || !password) {
+      errorEl.textContent = 'Email dan password harus diisi';
+      errorEl.classList.add('show');
+      return;
+    }
+    
+    const users = getUsers();
+    
+    if (isLoginMode) {
+      if (users[email] && users[email].password === password) {
+        saveUserSession({ email: email, name: users[email].name || email.split('@')[0] });
+        closeAuthModal();
+        render();
+        showNotif(`👋 Selamat datang kembali, ${users[email].name || email.split('@')[0]}!`);
+      } else {
+        errorEl.textContent = 'Email atau password salah';
+        errorEl.classList.add('show');
+      }
+    } else {
+      if (users[email]) {
+        errorEl.textContent = 'Email sudah terdaftar';
+        errorEl.classList.add('show');
+        return;
+      }
+      if (password.length < 6) {
+        errorEl.textContent = 'Password minimal 6 karakter';
+        errorEl.classList.add('show');
+        return;
+      }
+      
+      const name = email.split('@')[0];
+      users[email] = { password: password, name: name };
+      saveUsers(users);
+      saveUserSession({ email: email, name: name });
+      closeAuthModal();
+      render();
+      showNotif(`🎉 Selamat bergabung, ${name}!`);
     }
   }
 
+  // ---------- DATA SONG ----------
   function getIconImage(index) {
-    return iconImages[index % iconImages.length];
+    const seed = (index * 7 + 13) % 1000;
+    return `https://picsum.photos/seed/${seed}/400/250`;
   }
 
   const quotesByMood = {
-    senang: ["✨ Kebahagiaan bukan tentang memiliki apa yang kita inginkan, tapi mensyukuri apa yang kita miliki.", "🌞 Dunia ini indah jika kita melihatnya dengan mata yang penuh rasa syukur.", "💫 Hal-hal baik akan datang kepada mereka yang menunggu, namun hal-hal yang lebih baik akan datang kepada mereka yang menjemputnya dengan senyuman.", "🏔️ Tertawalah, maka dunia akan tertawa bersamamu. Bersedihlah, maka kau akan bersedih sendirian.", "🎈 Kegembiraan adalah bentuk keberanian tertinggi yang bisa kita pilih setiap hari.", "🌸 Setiap senyuman yang kamu tebarkan adalah benih kebahagiaan yang akan tumbuh kembali padamu.", "🌟 Kebahagiaan sejati ditemukan ketika kita berhenti membandingkan diri dengan orang lain.", "💃 Tarian terindah adalah ketika hatimu menari karena kebahagiaan yang tulus.", "🌻 Hidup terlalu singkat untuk tidak bahagia, tertawalah selagi kamu masih bisa.", "🎨 Kamu adalah pelukis kebahagiaanmu sendiri, goreskan warna-warna cerah setiap harinya."],
-    sedih: ["💧 Sesuatu yang patah tidak selalu harus diperbaiki; terkadang, itu hanya perlu dibiarkan untuk menjadi bagian dari proses pendewasaan.", "🌧️ Air mata adalah cara hati untuk berbicara ketika bibir tidak sanggup lagi mengucapkan rasa sakit.", "🌙 Hujan tidak pernah memilih tempat untuk jatuh, begitu pula rasa sedih yang kadang datang tanpa permisi.", "🍂 Terkadang kita baru menyadari nilai seseorang setelah mereka benar-benar pergi.", "🕯️ Dalam kegelapan yang paling pekat, belajarlah untuk menjadi cahaya bagi dirimu sendiri.", "🌊 Kesedihan adalah samudra yang harus kamu seberangi untuk sampai ke pelabuhan kedamaian.", "📖 Setiap air mata yang jatuh adalah halaman baru dalam buku kehidupannu.", "🌅 Setelah malam yang panjang, fajar pasti akan tiba. Bersabarlah.", "💔 Patah hati bukan akhir dari segalanya, tapi awal dari perjalanan menemukan dirimu kembali.", "🍃 Terkadang menangis adalah cara terbaik untuk menyirami taman hati yang mulai layu."],
-    galau: ["💭 Terkadang kita terlalu sibuk memikirkan masa depan sampai lupa bahwa kita sedang berdiri di atas ketidakpastian.", "🌀 Memahami perasaan sendiri adalah teka-teki paling sulit yang pernah ada.", "💔 Hati ingin menetap, tapi logika menyuruh untuk angkat kaki. Di situlah letak segala kegalauan dimulai.", "🌫️ Galau adalah kabut yang membuat kita tidak bisa melihat jalan, tapi yakinlah matahari akan menyapunya.", "🎭 Terkadang kita memainkan terlalu banyak peran hingga lupa siapa kita sebenarnya.", "🌙 Malam adalah saksi bisu dari segala kegalauan yang tak terucapkan.", "📝 Menulis adalah pelarian terbaik ketika pikiran terlalu bising untuk didengar.", "🎢 Perasaan ini seperti roller coaster, naik turun tapi suatu saat akan berhenti.", "💫 Kebingungan adalah tanda bahwa kamu sedang tumbuh dan keluar dari zona nyaman.", "🌌 Di tengah kebingungan, diamlah sejenak dan dengarkan suara hatimu."],
-    romantis: ["❤️ Cinta tidak mencari orang yang sempurna, tapi belajar melihat kesempurnaan pada orang yang tidak sempurna.", "📖 Jika aku bisa menuliskan kisah kita, aku tidak akan mengubah satu bab pun, karena setiap detiknya adalah bagian dari favoritku.", "🏠 Rumah bukan hanya sekadar bangunan, rumah adalah kamu.", "💕 Cinta sejati tidak pernah berakhir, ia hanya terus berkembang seiring waktu.", "🌹 Setiap hari bersamamu adalah hari yang layak untuk dirayakan.", "✨ Kamu adalah bintang yang paling terang di langit malamku.", "💑 Bersamamu, aku belajar bahwa cinta bukan tentang memiliki, tapi tentang menghargai.", "🎵 Kamu adalah melodi yang membuat hidupku begitu indah untuk didengar.", "🌅 Setiap senja, aku bersyukur karena masih bisa melihat wajahmu di sampingku.", "💝 Cinta adalah ketika dua jiwa saling mengenali satu sama lain di tengah keramaian dunia."],
-    marah: ["🔥 Amarah adalah api yang membakar pembawanya lebih dulu sebelum menghanguskan orang lain.", "⚠️ Jangan mengambil keputusan saat sedang marah, dan jangan membuat janji saat sedang terlalu bahagia.", "🤐 Diam adalah respons terbaik untuk kemarahan yang tidak perlu dipertanggungjawabkan.", "💨 Kemarahan adalah angin topan yang merusak apa pun yang dilewatinya, termasuk dirimu sendiri.", "🧘 Tarik napas dalam-dalam, hitung sampai sepuluh, dan biarkan amarah itu berlalu.", "🌪️ Orang yang marah mengendalikan lidahnya, tapi orang yang bijak mengendalikan amarahnya sebelum keluar.", "🕊️ Melepaskan amarah adalah tanda kekuatan, bukan kelemahan.", "🌊 Biarkan amarah mengalir seperti air, jangan ditahan karena hanya akan meledak.", "💎 Kemarahan adalah batu bara yang bisa menjadi berlian jika dikelola dengan benar.", "🧠 Orang hebat adalah yang bisa mengalahkan amarahnya sendiri."],
-    fokus: ["🎯 Keberhasilan adalah jumlah dari upaya-upaya kecil yang dilakukan secara konsisten hari demi hari.", "⏰ Janganlah kamu menunggu waktu yang tepat, karena waktu tidak akan pernah tepat. Mulailah dari mana pun kamu berada.", "🌉 Disiplin adalah jembatan antara tujuan dan pencapaian.", "🚀 Bintang tidak akan pernah tercapai jika kamu takut untuk melompat.", "📚 Fokus bukan tentang menghilangkan distraksi, tapi tentang memilih apa yang paling penting.", "💪 Konsistensi lebih penting daripada intensitas.", "🎪 Jangan lihat seberapa cepat kamu bergerak, tapi lihat seberapa jauh kamu telah melangkah.", "🏆 Setiap master pernah menjadi pemula yang tidak pernah menyerah.", "🧠 Pikiran yang fokus adalah pikiran yang paling kuat.", "⚡ Hari ini adalah kesempatan untuk membangun masa depan yang kamu impikan."],
-    relax: ["🌊 Bernapaslah perlahan. Kamu tidak harus menyelesaikan dunia hari ini.", "🍃 Terkadang, langkah paling produktif yang bisa kamu ambil adalah beristirahat sejenak.", "💧 Biarkan semuanya mengalir seperti air; apa yang menjadi milikmu akan tetap tinggal, dan apa yang bukan, akan pergi dengan sendirinya.", "🌅 Ketenangan adalah kunci untuk membuka pintu kebijaksanaan.", "🎐 Jangan terburu-buru, hidup ini bukan perlombaan tapi perjalanan yang dinikmati.", "🌙 Beristirahatlah, karena besok adalah hari baru yang penuh dengan kemungkinan.", "🌸 Kedamaian dimulai dari satu napas yang dalam.", "🍵 Luangkan waktu untuk menikmati momen kecil yang sering terlewatkan.", "🌿 Alam tidak terburu-buru, tapi semua tetap tercapai dengan indah.", "💤 Tidur yang cukup adalah investasi terbaik untuk kesehatanmu."]
+    senang: ["✨ Kebahagiaan bukan tentang memiliki apa yang kita inginkan...", "🌞 Dunia ini indah jika kita melihatnya dengan mata penuh rasa syukur.", "💫 Hal-hal baik akan datang kepada mereka yang menunggu..."],
+    sedih: ["💧 Sesuatu yang patah tidak selalu harus diperbaiki...", "🌧️ Air mata adalah cara hati berbicara...", "🌙 Hujan tak pernah memilih tempat jatuh..."],
+    galau: ["💭 Terkadang kita terlalu sibuk memikirkan masa depan...", "🌀 Memahami perasaan sendiri adalah teka-teki paling sulit...", "💔 Hati ingin menetap, tapi logika menyuruh angkat kaki..."],
+    romantis: ["❤️ Cinta tidak mencari orang yang sempurna...", "📖 Jika aku bisa menuliskan kisah kita...", "🏠 Rumah bukan hanya sekadar bangunan..."],
+    marah: ["🔥 Amarah adalah api yang membakar pembawanya lebih dulu...", "⚠️ Jangan mengambil keputusan saat sedang marah...", "🤐 Diam adalah respons terbaik..."],
+    fokus: ["🎯 Keberhasilan adalah jumlah upaya kecil konsisten...", "⏰ Jangan menunggu waktu tepat...", "🌉 Disiplin adalah jembatan tujuan..."],
+    relax: ["🌊 Bernapaslah perlahan. Kamu tidak harus menyelesaikan dunia hari ini.", "🍃 Terkadang langkah paling produktif adalah beristirahat.", "💧 Biarkan semuanya mengalir seperti air..."]
+  };
+  for (let mood in quotesByMood) {
+    while(quotesByMood[mood].length < 50) quotesByMood[mood] = [...quotesByMood[mood], ...quotesByMood[mood]].slice(0,50);
+  }
+
+  const youtubeIds = {
+    "Happy": "ZbZSe6N_BXs",
+    "Can't Stop The Feeling": "ru0K8uYEZWw",
+    "Good as Hell": "F-veMdfF6BU",
+    "On Top of The World": "bXGL6G0gmJQ",
+    "Levitating": "TUV4YgLDwgw",
+    "Uptown Funk": "OPf0YbXqDm0",
+    "Shake It Off": "nfWlot6h_JM",
+    "Roar": "CevxZvSJLk8",
+    "Don't Stop Me Now": "HgzGwKwLmgM",
+    "Walking On Sunshine": "iPUmE-tne5U",
+    "Someone Like You": "hLQl3WQQoQ0",
+    "Fix You": "k4V3Mo61fJM",
+    "All I Want": "g7YVv_E8C8M",
+    "Let Her Go": "RBumgq5yVrA",
+    "Hello": "YQHsXMglC9A",
+    "When I Was Your Man": "ekzHIouo8Q4",
+    "Stay With Me": "pB-5XG-DbAA",
+    "Say Something": "-2U0Ivkn2Ds",
+    "The Scientist": "RB-RcX5DS5A",
+    "Hurt": "8AHCfZTRGiI",
+    "Perfect": "2Vv-BfVoq4g",
+    "All of Me": "450p7goxZqg",
+    "A Thousand Years": "rtOvBOTyX00",
+    "Thinking Out Loud": "lp-EO5I60KA",
+    "Just The Way You Are": "LjhCEhWiKXk",
+    "Marry Me": "OmqVhTZVcQo",
+    "Everything": "bEa7_h9HfDs",
+    "I'm Yours": "EkHTsc9PU2A",
+    "Lucky": "acvIVA9-FMQ",
+    "The Way You Look Tonight": "iSb3Hg-0gME",
+    "In The End": "eVTXPUF4Oz4",
+    "Break Stuff": "ZpUYjpKg9KY",
+    "Killing In The Name": "fKuqYVr5eFQ",
+    "Numb": "kXYiU_JCYtU",
+    "Crawling": "Gd9OhYroLN0",
+    "Faint": "LYU-8IFcDPw",
+    "Given Up": "0xyxtzD54rM",
+    "One Step Closer": "4qlCC1GOwFw",
+    "Points of Authority": "mMVK2j6tUfI",
+    "Somewhere I Belong": "zX3n2VKCSqg",
+    "Deep Focus": "yPXsV66xMpc",
+    "Synthwave Study": "Ua7u8Bc5XqM",
+    "Brain Power": "39F4aNSN_RU",
+    "Lofi Study Beats": "jfKfPfyJRdk",
+    "Ambient Focus": "Bp_kJwQcDfU",
+    "Classical Piano": "4VR-6AS0-l4",
+    "Mozart Effect": "rsq9hYd0FLo",
+    "Beethoven Symphony": "wSx7Lx3LfI0",
+    "Bach Cello Suite": "1prweT95Mo0",
+    "Chopin Nocturne": "tR6baGQJq-s",
+    "Weightless": "UfcAVejslrU",
+    "Clair de Lune": "CvFH_6DNRCY",
+    "River Flows In You": "7maJOI3QMu0",
+    "Gymnopedie No.1": "S-Xm7s9eGxU",
+    "Air On G String": "EHo3r-g_5TY",
+    "Canon In D": "NlprozGcs90",
+    "Moonlight Sonata": "4Tr0otuiQuU",
+    "Fur Elise": "e2KOKqYbHrA",
+    "Ave Maria": "2bosouX_d8Y",
+    "Terlukis Indah": "mw28nW4wl0Q",
+    "Risalah Hati": "DqaDqsKRyAI",
+    "Pupus": "3zNbDcZ6mEQ",
+    "Separuh Aku": "8qADv9j4YF0",
+    "Rindu": "XjPTVq0tZ9s",
+    "Mengejar Matahari": "r2XJsLfLSJY",
+    "Bawalah Cintaku": "3fzSqjP0e_M",
+    "Aku Yang Tersakiti": "xPDHnC5pAf0",
+    "Hampa": "2jKb6qw8P_s",
+    "Aku Bukan Untukmu": "GSj4HhML3g8"
   };
 
+  function getYoutubeId(title) {
+    for (let key in youtubeIds) {
+      if (title.toLowerCase().includes(key.toLowerCase()) || key.toLowerCase().includes(title.toLowerCase())) {
+        return youtubeIds[key];
+      }
+    }
+    return null;
+  }
+
   function generateSongsForMood(mood, moodName, startIndex) {
-    const songs = [];
     const songTitlesByMood = {
-      senang: ["Happy", "Can't Stop The Feeling", "Good as Hell", "On Top of The World", "Levitating", "Uptown Funk", "Shake It Off", "Roar", "Don't Stop Me Now", "Walking On Sunshine", "Here Comes The Sun", "I Wanna Dance With Somebody", "Dancing Queen", "Celebration", "Good Vibrations", "September", "I Gotta Feeling", "Party Rock Anthem", "Happy Together", "Best Day Of My Life", "Sugar", "Marry You", "Love On Top", "Treasure", "Get Lucky", "Blinding Lights", "Can't Hold Us", "Counting Stars", "Feel This Moment", "Wake Me Up", "Hey Ya", "Beautiful Day", "Live While We're Young", "What Makes You Beautiful", "Dynamite", "Cheap Thrills", "This Is What You Came For", "Sorry", "Despacito", "Shape of You", "Havana", "Senorita", "Dance Monkey", "Don't Start Now", "Physical", "Break My Heart", "Levitating", "Kiss Me More", "Stay", "As It Was"],
-      sedih: ["Someone Like You", "Fix You", "All I Want", "Let Her Go", "Hello", "When I Was Your Man", "Stay With Me", "Say Something", "The Scientist", "Hurt", "Tears In Heaven", "Nothing Compares 2 U", "I Will Always Love You", "My Heart Will Go On", "Everybody Hurts", "Mad World", "Skinny Love", "Jar of Hearts", "Breakeven", "The A Team", "Liability", "Lovely", "when the party's over", "idontwannabeyouanymore", "listen before i go", "I Love You", "Cherry Wine", "Take Me To Church", "Someone New", "Exile", "Cardigan", "August", "All Too Well", "Back To December", "The Night We Met", "Youth", "Lost Boy", "Let You Down", "Happier", "Hold On", "Sorry", "Love Yourself", "Too Good At Goodbyes", "Dusk Till Dawn", "What About Us", "Say You Won't Let Go", "Photograph", "Thinking Out Loud", "Perfect", "Shape of You"],
-      galau: ["Terlukis Indah", "Risalah Hati", "Pupus", "Separuh Aku", "Rindu", "Mengejar Matahari", "Bawalah Cintaku", "Aku Yang Tersakiti", "Hampa", "Aku Bukan Untukmu", "Cukup Tau", "Rasa Ini", "Takkan Terganti", "Kekasih Bayangan", "Cinta Terlarang", "Akad", "Zona Nyaman", "Cinta Luar Biasa", "Jikalau", "Hari Ini Esok Lusa", "Mungkin Nanti", "Menghapus Jejakmu", "Laskar Pelangi", "Semua Tentang Kita", "Tentang Rindu", "Hingga Tua", "Kekasih", "Selimut Tetesan Hujan", "Cinta Dalam Hati", "Sakit Hati", "Pemilik Hati", "Bukan Cinta Biasa", "Jangan Menyerah", "Karena Ku Sanggup", "Tak Pernah Padam", "Andai Ku Tahu", "Seluruh Nafas Ini", "Jujur", "Dia", "Menjadi Dia", "Tak Ada Yang Abadi", "Cinta Putih", "Samudra Biru", "Waktu Yang Salah", "Lebih Indah", "Jatuh Hati", "Kisah Tanpa Dirimu", "Rumah Kita", "Bahagia", "Merindu Lagi"],
-      romantis: ["Perfect", "All of Me", "A Thousand Years", "Thinking Out Loud", "Just The Way You Are", "Marry Me", "Everything", "I'm Yours", "Lucky", "The Way You Look Tonight", "At Last", "Can't Help Falling In Love", "Unchained Melody", "Your Song", "Make You Feel My Love", "I Don't Want To Miss A Thing", "Truly Madly Deeply", "From This Moment On", "Because You Loved Me", "Love Me Like You Do", "Say You Won't Let Go", "Photograph", "How Long Will I Love You", "Yellow", "The Scientist", "Fix You", "Everglow", "Halo", "Because of You", "Beautiful In White", "Everything Has Changed", "Enchanted", "Lover", "Paper Rings", "Call It What You Want", "Daylight", "Invisible String", "Willow", "Cardigan", "August", "Betty", "Cruel Summer", "Cornelia Street", "New Year's Day", "Begin Again", "Mine", "Sparks Fly", "Ours", "Stay Stay Stay", "Love Story"],
-      marah: ["In The End", "Break Stuff", "Killing In The Name", "Numb", "Crawling", "Faint", "Given Up", "One Step Closer", "Points of Authority", "Somewhere I Belong", "Lying From You", "From The Inside", "Nobody's Listening", "Hit The Floor", "Easier To Run", "Figure.09", "Don't Stay", "My December", "Session", "Forgotten", "By Myself", "Papercut", "Runaway", "With You", "Pushing Me Away", "A Place For My Head", "Forgotten", "High Voltage", "Part Of Me", "Carousel", "Qwerty", "And One", "She Couldn't", "Could Have Been", "Slip Out The Back", "Step Up", "It's Goin' Down", "Dedicated", "Standing In The Middle", "Nobody's Listening", "Sold My Soul To Yo Mama", "Across The Line", "What I've Done", "Bleed It Out", "Shadow of The Day", "Leave Out All The Rest", "Hands Held High", "No More Sorrow", "Valentine's Day", "In Pieces"],
-      fokus: ["Deep Focus", "Synthwave Study", "Brain Power", "Lofi Study Beats", "Ambient Focus", "Classical Piano", "Mozart Effect", "Beethoven Symphony", "Bach Cello Suite", "Chopin Nocturne", "Debussy Clair De Lune", "Vivaldi Four Seasons", "Tchaikovsky Waltz", "Electronic Focus", "Chillstep Mix", "Productivity Beats", "Work Music", "Study Session", "Concentration Mix", "Mindfulness Tunes", "Deep Work Flow", "Programming Beats", "Coding Focus", "Reading Playlist", "Writing Inspiration", "Creative Flow", "Design Focus", "Art Studio Vibes", "Architecture Dreams", "Math Genius", "Science Lab", "Research Mode", "Analysis Mode", "Strategic Planning", "Problem Solving", "Critical Thinking", "Learning Mode", "Memory Boost", "Cognition Enhancer", "Brainwave Sync", "Alpha Waves", "Beta Waves", "Theta Meditation", "Delta Sleep", "Gamma Focus", "Neural Beats", "Cognitive Flow", "Smart Thinking", "Genius Mode", "Mastery State"],
-      relax: ["Weightless", "Clair de Lune", "River Flows In You", "Gymnopedie No.1", "Air On G String", "Canon In D", "Nocturne Op.9", "Moonlight Sonata", "Fur Elise", "Ave Maria", "Meditation", "The Swan", "Salut D'Amour", "Liebestraum", "Consolation No.3", "Arabesque No.1", "Reverie", "Girl With Flaxen Hair", "Jesu Joy of Man's Desiring", "Sheep May Safely Graze", "Dreaming", "Träumerei", "Morning Mood", "Solveig's Song", "Peer Gynt Suite", "Holberg Suite", "Pavane", "Gymnopedie No.2", "Gymnopedie No.3", "Gnossienne No.1", "Satie", "Erik Satie", "Yiruma", "Ludovico Einaudi", "Nuvole Bianche", "I Giorni", "Primavera", "Divenire", "Experience", "Fly", "Night", "Walk", "Una Mattina", "Berlin Song", "Andare", "Oltremare", "Le Onde", "The Earth Prelude", "Life", "Time Lapse"]
+      senang: ["Happy", "Can't Stop The Feeling", "Good as Hell", "On Top of The World", "Levitating", "Uptown Funk", "Shake It Off", "Roar", "Don't Stop Me Now", "Walking On Sunshine"],
+      sedih: ["Someone Like You", "Fix You", "All I Want", "Let Her Go", "Hello", "When I Was Your Man", "Stay With Me", "Say Something", "The Scientist", "Hurt"],
+      galau: ["Terlukis Indah", "Risalah Hati", "Pupus", "Separuh Aku", "Rindu", "Mengejar Matahari", "Bawalah Cintaku", "Aku Yang Tersakiti", "Hampa", "Aku Bukan Untukmu"],
+      romantis: ["Perfect", "All of Me", "A Thousand Years", "Thinking Out Loud", "Just The Way You Are", "Marry Me", "Everything", "I'm Yours", "Lucky", "The Way You Look Tonight"],
+      marah: ["In The End", "Break Stuff", "Killing In The Name", "Numb", "Crawling", "Faint", "Given Up", "One Step Closer", "Points of Authority", "Somewhere I Belong"],
+      fokus: ["Deep Focus", "Synthwave Study", "Brain Power", "Lofi Study Beats", "Ambient Focus", "Classical Piano", "Mozart Effect", "Beethoven Symphony", "Bach Cello Suite", "Chopin Nocturne"],
+      relax: ["Weightless", "Clair de Lune", "River Flows In You", "Gymnopedie No.1", "Air On G String", "Canon In D", "Nocturne Op.9", "Moonlight Sonata", "Fur Elise", "Ave Maria"]
     };
-    
     const artistsByMood = {
-      senang: ["Pharrell Williams", "Justin Timberlake", "Lizzo", "Imagine Dragons", "Dua Lipa", "Bruno Mars", "Taylor Swift", "Katy Perry", "Queen", "Katrina & The Waves", "The Beatles", "Whitney Houston", "ABBA", "Kool & The Gang", "The Beach Boys", "Earth Wind & Fire", "Black Eyed Peas", "LMFAO", "The Turtles", "American Authors", "Maroon 5", "Bruno Mars", "Beyonce", "Bruno Mars", "Daft Punk", "The Weeknd", "Macklemore", "OneRepublic", "Pitbull", "Avicii", "OutKast", "U2", "One Direction", "One Direction", "BTS", "Sia", "Calvin Harris", "Justin Bieber", "Luis Fonsi", "Ed Sheeran", "Camila Cabello", "Shawn Mendes", "Tones And I", "Dua Lipa", "Dua Lipa", "Dua Lipa", "Dua Lipa", "Doja Cat", "The Kid LAROI", "Harry Styles"],
-      sedih: ["Adele", "Coldplay", "Kodaline", "Passenger", "Adele", "Bruno Mars", "Sam Smith", "A Great Big World", "Coldplay", "Johnny Cash", "Eric Clapton", "Sinead O'Connor", "Whitney Houston", "Celine Dion", "R.E.M.", "Gary Jules", "Bon Iver", "Christina Perri", "The Script", "Ed Sheeran", "Lorde", "Billie Eilish", "Billie Eilish", "Billie Eilish", "Billie Eilish", "Billie Eilish", "Hozier", "Hozier", "Hozier", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Lord Huron", "Daughter", "Ruth B", "NF", "Marshmello", "Tom Grennan", "Justin Bieber", "Justin Bieber", "Justin Bieber", "Zayn", "Pink", "James Bay", "Ed Sheeran", "Ed Sheeran", "Ed Sheeran", "Ed Sheeran"],
-      galau: ["Rizky Febian", "Dewa 19", "Dewa 19", "Noah", "Raisa", "Keisya Levronka", "Afgan", "Judika", "Rio Febrian", "Rossa", "Vierra", "D'Masiv", "Marcell", "Cakra Khan", "Ungu", "Andmesh", "Fourtwnty", "Maliq & D'Essentials", "Tulus", "Diskoria", "Noah", "Peterpan", "Nidji", "Peterpan", "Virgoun", "Armada", "Kangen Band", "Yovie & Nuno", "ST12", "Kerispatih", "Gita Gutawa", "Afgan", "Melly Goeslaw", "Ari Lasso", "Padi", "Repvblik", "Last Child", "Geisha", "D'Bagindas", "Wali", "ST12", "Kangen Band", "Vierra", "D'Masiv", "Drive", "Yovie & Nuno", "Ungu", "Kerispatih", "Noah", "Rossa"],
-      romantis: ["Ed Sheeran", "John Legend", "Christina Perri", "Ed Sheeran", "Bruno Mars", "Bruno Mars", "Michael Buble", "Jason Mraz", "Jason Mraz", "Frank Sinatra", "Etta James", "Elvis Presley", "Righteous Brothers", "Elton John", "Adele", "Aerosmith", "Savage Garden", "Shania Twain", "Celine Dion", "Ellie Goulding", "James Bay", "Ed Sheeran", "Corinne Bailey Rae", "Coldplay", "Coldplay", "Coldplay", "Coldplay", "Beyonce", "Kelly Clarkson", "Shane Filan", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift", "Taylor Swift"],
-      marah: ["Linkin Park", "Limp Bizkit", "Rage Against The Machine", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park"],
-      fokus: ["Lofi Girl", "Astral Throb", "Marlo", "Study Beats", "Ambient Music", "Classical Piano", "Mozart", "Beethoven", "Bach", "Chopin", "Debussy", "Vivaldi", "Tchaikovsky", "Electronic Music", "Chillstep", "Productivity", "Work Music", "Study Music", "Concentration", "Mindfulness", "Deep Work", "Programming", "Coding", "Reading", "Writing", "Creative", "Design", "Art", "Architecture", "Math", "Science", "Research", "Analysis", "Strategic", "Problem", "Critical", "Learning", "Memory", "Cognition", "Brainwave", "Alpha Waves", "Beta Waves", "Theta", "Delta", "Gamma", "Neural", "Cognitive", "Smart", "Genius", "Mastery"],
-      relax: ["Marconi Union", "Debussy", "Yiruma", "Erik Satie", "Bach", "Pachelbel", "Chopin", "Beethoven", "Beethoven", "Schubert", "Massenet", "Saint-Saens", "Elgar", "Liszt", "Liszt", "Debussy", "Debussy", "Debussy", "Bach", "Bach", "Schumann", "Schumann", "Grieg", "Grieg", "Grieg", "Grieg", "Faure", "Satie", "Satie", "Satie", "Satie", "Satie", "Yiruma", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi", "Einaudi"]
+      senang: ["Pharrell Williams", "Justin Timberlake", "Lizzo", "Imagine Dragons", "Dua Lipa", "Bruno Mars", "Taylor Swift", "Katy Perry", "Queen", "Katrina & The Waves"],
+      sedih: ["Adele", "Coldplay", "Kodaline", "Passenger", "Adele", "Bruno Mars", "Sam Smith", "A Great Big World", "Coldplay", "Johnny Cash"],
+      galau: ["Rizky Febian", "Dewa 19", "Dewa 19", "Noah", "Raisa", "Keisya Levronka", "Afgan", "Judika", "Rio Febrian", "Rossa"],
+      romantis: ["Ed Sheeran", "John Legend", "Christina Perri", "Ed Sheeran", "Bruno Mars", "Bruno Mars", "Michael Buble", "Jason Mraz", "Jason Mraz", "Frank Sinatra"],
+      marah: ["Linkin Park", "Limp Bizkit", "Rage Against The Machine", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park", "Linkin Park"],
+      fokus: ["Lofi Girl", "Astral Throb", "Marlo", "Study Beats", "Ambient Music", "Classical Piano", "Mozart", "Beethoven", "Bach", "Chopin"],
+      relax: ["Marconi Union", "Debussy", "Yiruma", "Erik Satie", "Bach", "Pachelbel", "Chopin", "Beethoven", "Beethoven", "Schubert"]
     };
-    
+    let songs = [];
     for (let i = 0; i < 50; i++) {
       const titleList = songTitlesByMood[mood];
       const artistList = artistsByMood[mood];
       const quoteList = quotesByMood[mood];
-      
+      const title = titleList[i % titleList.length] + (i >= titleList.length ? ` ${Math.floor(i / titleList.length) + 1}` : "");
+      const artist = artistList[i % artistList.length];
+      const youtubeId = getYoutubeId(title);
       songs.push({
         id: `${mood}_${startIndex + i}`,
-        title: titleList[i % titleList.length] + (i >= titleList.length ? ` ${Math.floor(i / titleList.length) + 1}` : ""),
-        artist: artistList[i % artistList.length],
+        title: title,
+        artist: artist,
         mood: moodName,
         img: getIconImage(startIndex + i),
-        youtube: `https://www.youtube.com/results?search_query=${encodeURIComponent(titleList[i % titleList.length] + " " + artistList[i % artistList.length])}`,
-        spotify: `https://open.spotify.com/search/${encodeURIComponent(titleList[i % titleList.length] + " " + artistList[i % artistList.length])}`,
-        quote: quoteList[i % quoteList.length]
+        youtube: `https://www.youtube.com/results?search_query=${encodeURIComponent(title + " " + artist)}`,
+        spotify: `https://open.spotify.com/search/${encodeURIComponent(title + " " + artist)}`,
+        quote: quoteList[i % quoteList.length],
+        youtubeId: youtubeId || null,
+        type: 'music'
       });
     }
     return songs;
+  }
+
+  // ---------- DATA MOVIE (350 FILM) ----------
+  function generateMovies() {
+    // 150 Film Barat tambahan
+    const westernExtra = [
+      "The Godfather Part II", "The Dark Knight Rises", "Django Unchained", "The Prestige", "Memento",
+      "Reservoir Dogs", "The Usual Suspects", "Se7en", "The Sixth Sense", "The Departed",
+      "No Country for Old Men", "There Will Be Blood", "The Wrestler", "Black Swan", "The Fighter",
+      "Silver Linings Playbook", "American Hustle", "The Master", "Her", "Boyhood",
+      "Birdman", "The Revenant", "La La Land", "Moonlight", "Manchester by the Sea",
+      "Three Billboards", "The Shape of Water", "Get Out", "Lady Bird", "Call Me by Your Name",
+      "A Star Is Born", "The Favourite", "Green Book", "Roma", "BlacKkKlansman",
+      "Joker", "1917", "Once Upon a Time in Hollywood", "The Irishman", "Marriage Story",
+      "The Trial of the Chicago 7", "Mank", "Promising Young Woman", "Sound of Metal", "Minari",
+      "Nomadland", "CODA", "Belfast", "King Richard", "Licorice Pizza",
+      "West Side Story", "Dune", "The Power of the Dog", "Don't Look Up", "Drive My Car",
+      "Everything Everywhere All at Once", "The Banshees of Inisherin", "Elvis", "Tár", "Top Gun Maverick",
+      "Avatar The Way of Water", "Black Panther Wakanda Forever", "The Batman", "Nope", "Bullet Train",
+      "The Whale", "Women Talking", "Living", "The Menu", "Glass Onion",
+      "Babylon", "Amsterdam", "The Fabelmans", "She Said", "Till",
+      "Black Adam", "The Lost City", "The Northman", "The Unbearable Weight of Massive Talent", "Ambulance",
+      "Morbius", "The Bad Guys", "The Outfit", "Father Stu", "The Contractor",
+      "The Unforgivable", "Red Notice", "Don't Look Up", "The Adam Project", "The Gray Man"
+    ];
+
+    // 100 Film Korea tambahan
+    const koreanExtra = [
+      "The Handmaiden", "Burning", "Mother", "The Wailing", "I Saw the Devil",
+      "The Chaser", "The Man from Nowhere", "A Bittersweet Life", "The Good The Bad The Weird",
+      "Spring Summer Fall Winter and Spring", "3-Iron", "Time", "The Housemaid", "Poetry",
+      "Oasis", "Secret Sunshine", "Peppermint Candy", "The Classic", "My Sassy Girl",
+      "Windstruck", "Il Mare", "Christmas in August", "One Fine Spring Day", "April Snow",
+      "A Moment to Remember", "My Love My Bride", "The Beauty Inside", "On Your Wedding Day", "Tune in for Love",
+      "Along with the Gods", "The Outlaws", "The Gangster The Cop The Devil", "Veteran", "The Pirates",
+      "The Admiral Roaring Currents", "The Attorney", "The King", "The Berlin File", "The New World",
+      "A Company Man", "The Divine Move", "Fists of Legend", "The Con Artists", "Master",
+      "The Villainess", "The Battleship Island", "The Age of Shadows", "The Spy Gone North", "The Drug King",
+      "The Accidental Detective", "The Chase", "The Silenced", "The Piper", "The Target",
+      "The Tunnel", "The Terror Live", "The Host", "The Flu", "The Tower",
+      "The Face Reader", "The Thieves", "The Berlin File", "The Client", "The Witness",
+      "The Outlaws", "The Roundup", "The Merciless", "The Yellow Sea", "The Man Standing Next",
+      "The Battle of Jangsari", "The Battle of Yeonpyeong", "The Admiral", "The Prince", "The Swordsman"
+    ];
+
+    // 100 Film China tambahan
+    const chineseExtra = [
+      "The Wandering Earth 2", "The Three-Body Problem", "Crazy Alien", "The Monkey King", "The Monkey King 2",
+      "The Monkey King 3", "The Great Wall", "The Last Emperor", "Farewell My Concubine",
+      "Raise the Red Lantern", "In the Mood for Love", "Chungking Express", "Happy Together", "Days of Being Wild",
+      "The Wayward Cloud", "Millennium Mambo", "A City of Sadness", "The Assassin", "A Touch of Sin",
+      "Black Coal Thin Ice", "The Wild Goose Lake", "Ash Is Purest White", "Long Day's Journey into Night", "An Elephant Sitting Still",
+      "The Shadow", "The Clan", "The Bullet Vanishes", "The White Storm", "Shock Wave",
+      "Operation Red Sea", "Wolf Warrior", "Wolf Warrior 2", "The Foreigner", "The Meg",
+      "Rampage", "Skyscraper", "Rampage", "The Mermaid", "Journey to the West",
+      "Detective Chinatown", "Detective Chinatown 2", "Detective Chinatown 3", "The Wandering Earth", "Crazy Alien",
+      "The Monkey King", "The Monkey King 2", "The Monkey King 3", "The Great Wall", "The Forbidden Kingdom",
+      "The Last Emperor", "Farewell My Concubine", "Raise the Red Lantern", "In the Mood for Love", "Chungking Express",
+      "Happy Together", "Days of Being Wild", "The Wayward Cloud", "Millennium Mambo", "A City of Sadness",
+      "The Assassin", "A Touch of Sin", "Black Coal Thin Ice", "The Wild Goose Lake", "Ash Is Purest White",
+      "Long Day's Journey into Night", "An Elephant Sitting Still", "The Shadow", "The Clan", "The Bullet Vanishes"
+    ];
+
+    const genres = ["Horor", "Aksi", "Romantis", "Komedi"];
+    const allMovies = [];
+
+    function getGenre(title, type) {
+      const horrorKeywords = ['Train to Busan', 'The Wailing', 'I Saw the Devil', 'The Host', 'The Conjuring', 'The Ring', 'The Grudge', 'It', 'The Shining', 'The Exorcist', 'The Silenced', 'The Piper', 'The Target'];
+      const actionKeywords = ['Train to Busan', 'Oldboy', 'The Man from Nowhere', 'A Bittersweet Life', 'The Good The Bad The Weird', 'Along with the Gods', 'The Outlaws', 'Veteran', 'The Pirates', 'The Admiral', 'The Attorney', 'The King', 'The Berlin File', 'The New World', 'A Company Man', 'The Divine Move', 'Fists of Legend', 'The Con Artists', 'Master', 'Police Story', 'Rumble in the Bronx', 'Who Am I', 'The Forbidden Kingdom', 'Kung Fu Hustle', 'Shaolin Soccer', 'Detective Chinatown', 'The Wandering Earth', 'The Monkey King', 'The Great Wall', 'The Shadow', 'The Bullet Vanishes', 'Shock Wave', 'Operation Red Sea', 'Wolf Warrior', 'The Foreigner', 'The Meg', 'Rampage', 'Skyscraper'];
+      const romanticKeywords = ['The Classic', 'My Sassy Girl', 'Windstruck', 'Il Mare', 'Christmas in August', 'One Fine Spring Day', 'April Snow', 'A Moment to Remember', 'My Love My Bride', 'The Beauty Inside', 'On Your Wedding Day', 'Tune in for Love', 'In the Mood for Love', 'Chungking Express', 'Happy Together', 'Days of Being Wild', 'Millennium Mambo', 'Farewell My Concubine', 'Raise the Red Lantern', 'The Last Emperor'];
+      
+      for (let kw of horrorKeywords) {
+        if (title.includes(kw)) return 'Horor';
+      }
+      for (let kw of actionKeywords) {
+        if (title.includes(kw)) return 'Aksi';
+      }
+      for (let kw of romanticKeywords) {
+        if (title.includes(kw)) return 'Romantis';
+      }
+      
+      if (type === 'korea') return ['Aksi', 'Horor', 'Romantis', 'Komedi'][Math.floor(Math.random() * 4)];
+      if (type === 'china') return ['Aksi', 'Komedi', 'Romantis', 'Aksi'][Math.floor(Math.random() * 4)];
+      return genres[Math.floor(Math.random() * 4)];
+    }
+
+    // Western movies (200)
+    const westernAll = [
+      "The Shawshank Redemption", "The Godfather", "The Dark Knight", "Pulp Fiction", "Schindler's List",
+      "12 Angry Men", "Forrest Gump", "Fight Club", "Inception", "The Matrix",
+      "Goodfellas", "The Lord of the Rings", "Star Wars", "The Empire Strikes Back", "Interstellar",
+      "The Silence of the Lambs", "Saving Private Ryan", "Gladiator", "The Green Mile", "The Departed",
+      "The Lion King", "Toy Story", "Finding Nemo", "Up", "Spirited Away",
+      "Avatar", "Titanic", "Jurassic Park", "E.T.", "Jaws",
+      "Indiana Jones", "Back to the Future", "Ghostbusters", "The Goonies", "The Princess Bride",
+      "Die Hard", "Lethal Weapon", "Beverly Hills Cop", "Rush Hour", "Bad Boys",
+      "The Terminator", "Predator", "Aliens", "RoboCop", "Total Recall",
+      "The Fifth Element", "Men in Black", "Independence Day", "Armageddon", "The Day After Tomorrow",
+      "Harry Potter", "The Hunger Games", "Twilight", "The Fault in Our Stars", "Crazy Rich Asians"
+    ].concat(westernExtra);
+
+    westernAll.forEach((title, i) => {
+      const genre = ['Drama', 'Action', 'Comedy', 'Thriller', 'Sci-Fi', 'Romance', 'Adventure', 'Fantasy', 'Horror', 'Documentary'][i % 10];
+      allMovies.push({
+        id: `movie_w_${i}`,
+        title: title,
+        genre: genre,
+        origin: 'Barat',
+        year: 1990 + (i % 33),
+        director: ['Steven Spielberg', 'Christopher Nolan', 'Quentin Tarantino', 'Martin Scorsese', 'Ridley Scott'][i % 5],
+        rating: (4 + Math.random() * 1.5).toFixed(1),
+        img: getIconImage(i + 500),
+        imdb: `https://www.imdb.com/find?q=${encodeURIComponent(title)}`,
+        youtube: `https://www.youtube.com/results?search_query=${encodeURIComponent(title + " trailer")}`,
+        type: 'movie',
+        description: `${title} adalah film ${genre} dari Hollywood.`
+      });
+    });
+
+    // Korean movies (100)
+    const koreanAll = [
+      "Parasite", "Train to Busan", "Oldboy", "Memories of Murder", "The Host",
+      "Burning", "The Handmaiden", "A Taxi Driver", "Mother", "The Wailing",
+      "I Saw the Devil", "The Chaser", "The Man from Nowhere", "A Bittersweet Life", "The Good The Bad The Weird",
+      "Spring Summer Fall Winter and Spring", "3-Iron", "Time", "The Housemaid", "Poetry",
+      "Oasis", "Secret Sunshine", "Peppermint Candy", "The Classic", "My Sassy Girl"
+    ].concat(koreanExtra);
+
+    koreanAll.forEach((title, i) => {
+      const genre = getGenre(title, 'korea');
+      allMovies.push({
+        id: `movie_k_${i}`,
+        title: title,
+        genre: genre,
+        origin: 'Korea',
+        year: 2000 + (i % 23),
+        director: ['Bong Joon-ho', 'Park Chan-wook', 'Kim Ki-duk', 'Lee Chang-dong', 'Hong Sang-soo'][i % 5],
+        rating: (4 + Math.random() * 1.5).toFixed(1),
+        img: getIconImage(i + 600),
+        imdb: `https://www.imdb.com/find?q=${encodeURIComponent(title)}`,
+        youtube: `https://www.youtube.com/results?search_query=${encodeURIComponent(title + " trailer")}`,
+        type: 'movie',
+        description: `${title} adalah film ${genre} dari Korea Selatan.`
+      });
+    });
+
+    // Chinese movies (100)
+    const chineseAll = [
+      "Crouching Tiger Hidden Dragon", "Hero", "House of Flying Daggers", "Curse of the Golden Flower", "The Grandmaster",
+      "Ip Man", "Ip Man 2", "Ip Man 3", "The Legend of the Drunken Master", "Police Story",
+      "Rumble in the Bronx", "Who Am I", "The Forbidden Kingdom", "Kung Fu Hustle", "Shaolin Soccer",
+      "Journey to the West", "The Mermaid", "Detective Chinatown", "Detective Chinatown 2", "Detective Chinatown 3"
+    ].concat(chineseExtra);
+
+    chineseAll.forEach((title, i) => {
+      const genre = getGenre(title, 'china');
+      allMovies.push({
+        id: `movie_c_${i}`,
+        title: title,
+        genre: genre,
+        origin: 'China',
+        year: 1990 + (i % 33),
+        director: ['Zhang Yimou', 'Wong Kar-wai', 'Ang Lee', 'Chen Kaige', 'Jia Zhangke'][i % 5],
+        rating: (4 + Math.random() * 1.5).toFixed(1),
+        img: getIconImage(i + 700),
+        imdb: `https://www.imdb.com/find?q=${encodeURIComponent(title)}`,
+        youtube: `https://www.youtube.com/results?search_query=${encodeURIComponent(title + " trailer")}`,
+        type: 'movie',
+        description: `${title} adalah film ${genre} dari China.`
+      });
+    });
+
+    return allMovies;
+  }
+
+  // ---------- DATA NOVEL (50) ----------
+  function generateNovels() {
+    const novelTitles = [
+      "Laskar Pelangi", "Sang Pemimpi", "Edensor", "Maryamah Karpov", "Padang Bulan",
+      "Cinta di Dalam Gelas", "Perahu Kertas", "Dilan: Dia adalah Dilanku", "Dilan: Dia adalah Dilanku 2", "Milea: Suara dari Dilan",
+      "Hujan", "Bumi Manusia", "Anak Semua Bangsa", "Jejak Langkah", "Rumah Kaca",
+      "Saman", "Larung", "Kau, Aku dan Sepucuk Angpau Merah", "Pulang", "Pergi",
+      "Amba", "Cantik Itu Luka", "Supernova", "Perempuan Berkalung Sorban", "Negeri 5 Menara",
+      "Ranah 3 Warna", "Rantau 1 Muara", "Bumi", "Bulan", "Matahari",
+      "Bintang", "Cinta Brontosaurus", "Radikus Makankakus", "Kambing Jantan", "Cinta di Ujung Sajadah",
+      "Ketika Cinta Bertasbih", "Ayat-Ayat Cinta", "Ketika Cinta Bertasbih 2", "Api Tauhid", "Garis Waktu",
+      "Filosofi Kopi", "Sebuah Seni untuk Bersikap Bodo Amat", "The Alchemist", "Atomic Habits", "Sapiens",
+      "Ikigai", "Thinking Fast and Slow", "The Power of Habit", "Deep Work", "The Subtle Art of Not Giving a F*ck"
+    ];
+
+    const authors = [
+      "Andrea Hirata", "Andrea Hirata", "Andrea Hirata", "Andrea Hirata", "Andrea Hirata",
+      "Dewi Lestari", "Dewi Lestari", "Pidi Baiq", "Pidi Baiq", "Pidi Baiq",
+      "Tere Liye", "Pramoedya Ananta Toer", "Pramoedya Ananta Toer", "Pramoedya Ananta Toer", "Pramoedya Ananta Toer",
+      "Ayu Utami", "Ayu Utami", "Agus Noor", "Tere Liye", "Tere Liye",
+      "Laksmi Pamuntjak", "Eka Kurniawan", "Dewi Lestari", "Abidah El Khalieqy", "Ahmad Fuadi",
+      "Ahmad Fuadi", "Ahmad Fuadi", "Tere Liye", "Tere Liye", "Tere Liye",
+      "Tere Liye", "Raditya Dika", "Raditya Dika", "Raditya Dika", "Asma Nadia",
+      "Habiburrahman El Shirazy", "Habiburrahman El Shirazy", "Habiburrahman El Shirazy", "Fiersa Besari", "Fiersa Besari",
+      "Joko Anwar", "Mark Manson", "Paulo Coelho", "James Clear", "Yuval Noah Harari",
+      "Hector Garcia", "Daniel Kahneman", "Charles Duhigg", "Cal Newport", "Mark Manson"
+    ];
+
+    const genres = ["Fiksi", "Non-Fiksi", "Romantis", "Inspiratif", "Petualangan", "Filosofi", "Self-Help", "Sejarah"];
+
+    let novels = [];
+    novelTitles.forEach((title, i) => {
+      const genre = genres[i % genres.length];
+      novels.push({
+        id: `novel_${i}`,
+        title: title,
+        author: authors[i % authors.length],
+        genre: genre,
+        year: 2000 + (i % 23),
+        img: getIconImage(i + 800),
+        goodreads: `https://www.goodreads.com/search?q=${encodeURIComponent(title)}`,
+        google: `https://www.google.com/search?q=${encodeURIComponent(title + " " + authors[i % authors.length])}`,
+        type: 'novel',
+        description: `Novel ${genre} karya ${authors[i % authors.length]} yang menginspirasi.`
+      });
+    });
+    return novels;
+  }
+
+  // ---------- DATA ANIME (50) ----------
+  function generateAnime() {
+    const animeTitles = [
+      "Attack on Titan", "Demon Slayer", "Jujutsu Kaisen", "Chainsaw Man", "One Punch Man",
+      "Spy x Family", "My Hero Academia", "Death Note", "Fullmetal Alchemist", "Hunter x Hunter",
+      "Naruto", "One Piece", "Dragon Ball", "Bleach", "Detective Conan",
+      "Tokyo Ghoul", "Berserk", "Vagabond", "Monster", "20th Century Boys",
+      "Pluto", "Slam Dunk", "Kuroko's Basketball", "Haikyuu", "Captain Tsubasa",
+      "Gantz", "Inuyasha", "Rurouni Kenshin", "Yu Yu Hakusho", "Fairy Tail",
+      "The Seven Deadly Sins", "Black Clover", "Dr. Stone", "The Promised Neverland", "Vinland Saga",
+      "Kingdom", "Golden Kamuy", "Dorohedoro", "Mob Psycho 100", "Kaguya-sama",
+      "Komi Can't Communicate", "Horimiya", "Nisekoi", "Ao Ashi", "Blue Lock",
+      "Oshi no Ko", "Dandadan", "Sakamoto Days", "Solo Leveling", "Tower of God"
+    ];
+
+    const authors = [
+      "Hajime Isayama", "Koyoharu Gotouge", "Gege Akutami", "Tatsuki Fujimoto", "One",
+      "Tatsuya Endo", "Kohei Horikoshi", "Tsugumi Ohba", "Hiromu Arakawa", "Yoshihiro Togashi",
+      "Masashi Kishimoto", "Eiichiro Oda", "Akira Toriyama", "Tite Kubo", "Gosho Aoyama",
+      "Sui Ishida", "Kentaro Miura", "Takehiko Inoue", "Naoki Urasawa", "Naoki Urasawa",
+      "Naoki Urasawa", "Takehiko Inoue", "Tadatoshi Fujimaki", "Haruichi Furudate", "Yoichi Takahashi",
+      "Hiroya Oku", "Rumiko Takahashi", "Nobuhiro Watsuki", "Yoshihiro Togashi", "Hiro Mashima",
+      "Nakaba Suzuki", "Yuki Tabata", "Riichiro Inagaki", "Kaiu Shirai", "Makoto Yukimura",
+      "Yasuhisa Hara", "Satoru Noda", "Q Hayashida", "One", "Aka Akasaka",
+      "Tomohito Oda", "Daisuke Hagiwara", "Naoshi Komi", "Yugo Kobayashi", "Muneyuki Kaneshiro",
+      "Aka Akasaka", "Yukinobu Tatsu", "Yuto Suzuki", "Chugong", "SIU"
+    ];
+
+    const genres = ["Action", "Adventure", "Comedy", "Fantasy", "Romance", "Sci-Fi", "Sports"];
+
+    let animes = [];
+    animeTitles.forEach((title, i) => {
+      const genre = genres[i % genres.length];
+      animes.push({
+        id: `anime_${i}`,
+        title: title,
+        author: authors[i % authors.length],
+        genre: genre,
+        year: 1990 + (i % 33),
+        img: getIconImage(i + 900),
+        myanimelist: `https://myanimelist.net/search/all?q=${encodeURIComponent(title)}`,
+        google: `https://www.google.com/search?q=${encodeURIComponent(title + " anime")}`,
+        type: 'anime',
+        description: `Anime ${genre} legendaris dari Jepang karya ${authors[i % authors.length]}.`
+      });
+    });
+    return animes;
   }
 
   const songsDatabase = {
@@ -617,16 +1799,25 @@
     relax: generateSongsForMood("relax", "Relax", 300)
   };
 
-  let allSongs = [];
-  for(let moodKey in songsDatabase) {
-    allSongs = allSongs.concat(songsDatabase[moodKey]);
-  }
-
+  let allSongs = Object.values(songsDatabase).flat();
+  let allMovies = generateMovies();
+  let allNovels = generateNovels();
+  let allAnime = generateAnime();
   let currentPage = "home";
   let selectedMood = null;
   let favorites = JSON.parse(localStorage.getItem("starlume_fav")) || [];
+  let movieFavorites = JSON.parse(localStorage.getItem("starlume_movie_fav")) || [];
+  let novelFavorites = JSON.parse(localStorage.getItem("starlume_novel_fav")) || [];
+  let animeFavorites = JSON.parse(localStorage.getItem("starlume_anime_fav")) || [];
+  let songJournal = JSON.parse(localStorage.getItem("starlume_journal")) || {};
+  let activeTab = 'music';
+  let selectedGenre = 'Semua';
 
   function saveFav() { localStorage.setItem("starlume_fav", JSON.stringify(favorites)); }
+  function saveMovieFav() { localStorage.setItem("starlume_movie_fav", JSON.stringify(movieFavorites)); }
+  function saveNovelFav() { localStorage.setItem("starlume_novel_fav", JSON.stringify(novelFavorites)); }
+  function saveAnimeFav() { localStorage.setItem("starlume_anime_fav", JSON.stringify(animeFavorites)); }
+  function saveJournal() { localStorage.setItem("starlume_journal", JSON.stringify(songJournal)); }
 
   function showNotif(message) {
     let oldToast = document.querySelector(".toast-msg");
@@ -639,50 +1830,191 @@
   }
 
   function toggleFavorite(songId) {
-    const index = favorites.indexOf(songId);
-    if(index === -1) {
-      favorites.push(songId);
-      showNotif("✨ Ditambahkan ke favorit! ✨");
-    } else {
-      favorites.splice(index,1);
-      showNotif("⭐ Dihapus dari favorit");
+    if (!currentUser) {
+      showNotif('🔒 Login dulu untuk menambahkan favorit!');
+      openAuthModal('login');
+      return;
     }
+    const index = favorites.indexOf(songId);
+    if(index === -1) { favorites.push(songId); showNotif("✨ Ditambahkan ke favorit!"); }
+    else { favorites.splice(index,1); showNotif("⭐ Dihapus dari favorit"); }
     saveFav();
     render();
   }
 
-  function isFavorite(songId) { return favorites.includes(songId); }
+  function toggleMovieFavorite(movieId) {
+    if (!currentUser) {
+      showNotif('🔒 Login dulu untuk menambahkan favorit!');
+      openAuthModal('login');
+      return;
+    }
+    const index = movieFavorites.indexOf(movieId);
+    if(index === -1) { movieFavorites.push(movieId); showNotif("🍿 Ditambahkan ke favorit film!"); }
+    else { movieFavorites.splice(index,1); showNotif("🎬 Dihapus dari favorit film"); }
+    saveMovieFav();
+    render();
+  }
 
-  function getMoodDisplayName(moodKey) {
-    const names = { senang:"Senang", sedih:"Sedih", galau:"Galau", romantis:"Romantis", marah:"Marah", fokus:"Fokus", relax:"Relax" };
-    return names[moodKey] || moodKey;
+  function toggleNovelFavorite(novelId) {
+    if (!currentUser) {
+      showNotif('🔒 Login dulu untuk menambahkan favorit!');
+      openAuthModal('login');
+      return;
+    }
+    const index = novelFavorites.indexOf(novelId);
+    if(index === -1) { novelFavorites.push(novelId); showNotif("📚 Ditambahkan ke favorit novel!"); }
+    else { novelFavorites.splice(index,1); showNotif("📖 Dihapus dari favorit novel"); }
+    saveNovelFav();
+    render();
+  }
+
+  function toggleAnimeFavorite(animeId) {
+    if (!currentUser) {
+      showNotif('🔒 Login dulu untuk menambahkan favorit!');
+      openAuthModal('login');
+      return;
+    }
+    const index = animeFavorites.indexOf(animeId);
+    if(index === -1) { animeFavorites.push(animeId); showNotif("🎌 Ditambahkan ke favorit anime!"); }
+    else { animeFavorites.splice(index,1); showNotif("🗾 Dihapus dari favorit anime"); }
+    saveAnimeFav();
+    render();
+  }
+
+  function isFavorite(songId) { return favorites.includes(songId); }
+  function isMovieFavorite(movieId) { return movieFavorites.includes(movieId); }
+  function isNovelFavorite(novelId) { return novelFavorites.includes(novelId); }
+  function isAnimeFavorite(animeId) { return animeFavorites.includes(animeId); }
+  function hasJournal(songId) { return !!songJournal[songId]; }
+
+  function togglePlayer(songId) {
+    const song = allSongs.find(s => s.id === songId);
+    if(!song || !song.youtubeId) {
+      showNotif('🎵 Video tidak tersedia untuk lagu ini');
+      return;
+    }
+
+    document.querySelectorAll('.player-wrapper.active').forEach(el => {
+      if(el.dataset.songId !== songId) {
+        el.classList.remove('active');
+        const iframe = el.querySelector('iframe');
+        if(iframe) {
+          iframe.src = iframe.src;
+        }
+      }
+    });
+
+    const player = document.querySelector(`.player-wrapper[data-song-id="${songId}"]`);
+    if(player) {
+      const isActive = player.classList.contains('active');
+      const iframe = player.querySelector('iframe');
+      
+      if(isActive) {
+        player.classList.remove('active');
+        if(iframe) {
+          iframe.src = `https://www.youtube.com/embed/${song.youtubeId}?enablejsapi=1&rel=0&modestbranding=1`;
+        }
+        showNotif('⏹️ Player ditutup');
+      } else {
+        player.classList.add('active');
+        if(iframe) {
+          iframe.src = `https://www.youtube.com/embed/${song.youtubeId}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1`;
+        }
+        showNotif(`▶️ Memutar: ${song.title}`);
+      }
+    }
+  }
+
+  function openJournalModal(songId) {
+    if (!currentUser) {
+      showNotif('🔒 Login dulu untuk menulis jurnal!');
+      openAuthModal('login');
+      return;
+    }
+    const song = allSongs.find(s => s.id === songId);
+    if(!song) return;
+    const modal = document.createElement("div");
+    modal.className = "modal";
+    modal.id = "journalModal";
+    modal.innerHTML = `
+      <div class="modal-content">
+        <h3>📖 Song Journal</h3>
+        <div class="modal-song">${song.title} — ${song.artist}</div>
+        <textarea id="journalText" rows="5" placeholder="Tulis kenangan, perasaan, atau pesan pribadi untuk lagu ini..."></textarea>
+        <div class="modal-buttons">
+          <button class="btn-delete" id="deleteJournalBtn">🗑 Hapus</button>
+          <button class="btn-cancel" id="cancelJournalBtn">Batal</button>
+          <button class="btn-save" id="saveJournalBtn">💾 Simpan</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    const textarea = modal.querySelector("#journalText");
+    textarea.value = songJournal[songId] || "";
+    modal.style.display = "flex";
+    
+    const closeModal = () => modal.remove();
+    modal.querySelector("#cancelJournalBtn").onclick = closeModal;
+    modal.querySelector("#saveJournalBtn").onclick = () => {
+      const newNote = textarea.value.trim();
+      if(newNote === "") {
+        if(songJournal[songId]) delete songJournal[songId];
+        showNotif("📓 Catatan dihapus.");
+      } else {
+        songJournal[songId] = newNote;
+        showNotif("📓 Catatan tersimpan! ✨");
+      }
+      saveJournal();
+      closeModal();
+      render();
+    };
+    modal.querySelector("#deleteJournalBtn").onclick = () => {
+      if(songJournal[songId]) delete songJournal[songId];
+      saveJournal();
+      showNotif("🗑 Catatan jurnal dihapus.");
+      closeModal();
+      render();
+    };
+    modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
   }
 
   function renderRecommendations() {
     if (!selectedMood) return '';
     const songs = songsDatabase[selectedMood] || [];
-    
-    if (songs.length === 0) return '<div class="empty-fav">Tidak ada lagu untuk mood ini</div>';
-    
+    if (songs.length === 0) return '<div class="empty-fav"><span class="empty-icon">🎵</span>Tidak ada lagu untuk mood ini</div>';
     let html = `<div class="results-container"><div class="card-grid">`;
-    
     songs.forEach(song => {
+      const hasNote = hasJournal(song.id);
+      const isFav = isFavorite(song.id);
+      const hasYoutube = song.youtubeId;
       html += `
         <div class="music-card">
-          <img class="card-img" src="${song.img}" alt="${song.title}" loading="lazy" onerror="this.src='https://picsum.photos/id/100/400/250'">
+          <img class="card-img" src="${song.img}" alt="${song.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎵</div>'">
           <div class="card-body">
             <div class="card-title">
-              🎵 ${song.title}
-              <span class="fav-icon ${isFavorite(song.id) ? 'active' : ''}" data-id="${song.id}">${isFavorite(song.id) ? '★' : '☆'}</span>
+              <span><span class="title-icon">🎵</span> ${song.title}</span>
+              <div class="action-icons">
+                ${hasYoutube ? `<span class="play-icon" data-id="${song.id}" data-play="true">▶️</span>` : ''}
+                <span class="journal-icon ${hasNote ? 'has-note' : ''}" data-id="${song.id}" data-journal="true">📖</span>
+                <span class="fav-icon ${isFav ? 'active' : ''}" data-id="${song.id}">${isFav ? '★' : '☆'}</span>
+              </div>
             </div>
             <div class="artist-name">${song.artist}</div>
-            <div class="music-quote">
-              “${song.quote}”
-            </div>
+            <div class="music-quote">“${song.quote}”</div>
             <div class="track-links">
               <a href="${song.youtube}" target="_blank">▶️ YouTube</a>
               <a href="${song.spotify}" target="_blank">🎧 Spotify</a>
+              ${hasYoutube ? `<a href="#" class="btn-play-now" data-id="${song.id}" data-play-now="true">🔊 Putar</a>` : ''}
             </div>
+            ${hasYoutube ? `
+              <div class="player-wrapper" data-song-id="${song.id}" id="player_${song.id}">
+                <iframe src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <div class="player-controls">
+                  <span class="now-playing">🎵 <strong>${song.title}</strong> — ${song.artist}</span>
+                  <button class="btn-close-player" data-id="${song.id}" data-close-player="true">✕</button>
+                </div>
+              </div>
+            ` : ''}
           </div>
         </div>
       `;
@@ -691,9 +2023,165 @@
     return html;
   }
 
+  function renderMovies() {
+    let filteredMovies = allMovies;
+    
+    if (selectedGenre !== 'Semua') {
+      filteredMovies = filteredMovies.filter(m => m.genre === selectedGenre);
+    }
+
+    if (filteredMovies.length === 0) {
+      return `<div class="empty-fav"><span class="empty-icon">🎬</span>Tidak ada film untuk genre ${selectedGenre}</div>`;
+    }
+
+    let html = `<div class="results-container"><div class="card-grid">`;
+    filteredMovies.forEach(movie => {
+      const isFav = isMovieFavorite(movie.id);
+      html += `
+        <div class="music-card">
+          <img class="card-img" src="${movie.img}" alt="${movie.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎬</div>'">
+          <div class="card-body">
+            <div class="card-title">
+              <span><span class="title-icon">🎬</span> ${movie.title}</span>
+              <div class="action-icons">
+                <span class="watch-icon" data-id="${movie.id}" data-watch="true">▶️</span>
+                <span class="fav-icon ${isFav ? 'active' : ''}" data-id="${movie.id}" data-movie="true">${isFav ? '★' : '☆'}</span>
+              </div>
+            </div>
+            <div class="artist-name">${movie.origin} · ${movie.year} · ${movie.genre} · ⭐ ${movie.rating}</div>
+            <div style="font-size:0.75rem; color:rgba(255,255,255,0.4); margin:8px 0;">Sutradara: ${movie.director}</div>
+            <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); margin:8px 0; line-height:1.5;">${movie.description}</div>
+            <div class="track-links">
+              <a href="${movie.imdb}" target="_blank">🎬 IMDb</a>
+              <a href="${movie.youtube}" target="_blank">▶️ Trailer</a>
+              <a href="#" class="btn-watch-now" data-id="${movie.id}" data-watch-now="true">🍿 Tonton</a>
+            </div>
+            ${isFav ? `<div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${movie.id}" data-movie="true">★ Hapus dari favorit</span></div>` : ''}
+          </div>
+        </div>
+      `;
+    });
+    html += `</div></div>`;
+    return html;
+  }
+
+  function renderNovels() {
+    let filteredNovels = allNovels;
+    
+    if (selectedGenre !== 'Semua') {
+      filteredNovels = filteredNovels.filter(n => n.genre === selectedGenre);
+    }
+
+    if (filteredNovels.length === 0) {
+      return `<div class="empty-fav"><span class="empty-icon">📚</span>Tidak ada novel untuk genre ${selectedGenre}</div>`;
+    }
+
+    let html = `<div class="results-container"><div class="card-grid">`;
+    filteredNovels.forEach(novel => {
+      const isFav = isNovelFavorite(novel.id);
+      html += `
+        <div class="music-card">
+          <img class="card-img" src="${novel.img}" alt="${novel.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>📚</div>'">
+          <div class="card-body">
+            <div class="card-title">
+              <span><span class="title-icon">📚</span> ${novel.title}</span>
+              <div class="action-icons">
+                <span class="read-icon" data-id="${novel.id}" data-read="true">📖</span>
+                <span class="fav-icon ${isFav ? 'active' : ''}" data-id="${novel.id}" data-novel="true">${isFav ? '★' : '☆'}</span>
+              </div>
+            </div>
+            <div class="artist-name">${novel.author} · ${novel.year} · ${novel.genre}</div>
+            <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); margin:8px 0; line-height:1.5;">${novel.description}</div>
+            <div class="track-links">
+              <a href="${novel.goodreads}" target="_blank">📚 Goodreads</a>
+              <a href="${novel.google}" target="_blank">🔍 Cari</a>
+              <a href="#" class="btn-read-now" data-id="${novel.id}" data-read-now="true">📖 Baca</a>
+            </div>
+            ${isFav ? `<div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${novel.id}" data-novel="true">★ Hapus dari favorit</span></div>` : ''}
+          </div>
+        </div>
+      `;
+    });
+    html += `</div></div>`;
+    return html;
+  }
+
+  function renderAnime() {
+    let filteredAnime = allAnime;
+    
+    if (selectedGenre !== 'Semua') {
+      filteredAnime = filteredAnime.filter(a => a.genre === selectedGenre);
+    }
+
+    if (filteredAnime.length === 0) {
+      return `<div class="empty-fav"><span class="empty-icon">🎌</span>Tidak ada anime untuk genre ${selectedGenre}</div>`;
+    }
+
+    let html = `<div class="results-container"><div class="card-grid">`;
+    filteredAnime.forEach(anime => {
+      const isFav = isAnimeFavorite(anime.id);
+      html += `
+        <div class="music-card">
+          <img class="card-img" src="${anime.img}" alt="${anime.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎌</div>'">
+          <div class="card-body">
+            <div class="card-title">
+              <span><span class="title-icon">🎌</span> ${anime.title}</span>
+              <div class="action-icons">
+                <span class="read-icon" data-id="${anime.id}" data-read="true">📺</span>
+                <span class="fav-icon ${isFav ? 'active' : ''}" data-id="${anime.id}" data-anime="true">${isFav ? '★' : '☆'}</span>
+              </div>
+            </div>
+            <div class="artist-name">${anime.author} · ${anime.year} · ${anime.genre}</div>
+            <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); margin:8px 0; line-height:1.5;">${anime.description}</div>
+            <div class="track-links">
+              <a href="${anime.myanimelist}" target="_blank">🎌 MyAnimeList</a>
+              <a href="${anime.google}" target="_blank">🔍 Cari</a>
+              <a href="#" class="btn-read-now" data-id="${anime.id}" data-read-now="true">📺 Tonton</a>
+            </div>
+            ${isFav ? `<div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${anime.id}" data-anime="true">★ Hapus dari favorit</span></div>` : ''}
+          </div>
+        </div>
+      `;
+    });
+    html += `</div></div>`;
+    return html;
+  }
+
+  function renderJournalEntries() {
+    const entries = Object.entries(songJournal);
+    if(entries.length === 0) return `<div class="empty-journal"><span class="empty-icon">📭</span>Belum ada catatan jurnal. Klik ikon 📖 di lagu mana pun untuk mulai menulis kenanganmu.</div>`;
+    let html = `<div class="card-grid">`;
+    for(let [songId, note] of entries) {
+      const song = allSongs.find(s => s.id === songId);
+      if(!song) continue;
+      html += `
+        <div class="music-card">
+          <img class="card-img" src="${song.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>📔</div>'">
+          <div class="card-body">
+            <div class="card-title"><span><span class="title-icon">📔</span> ${song.title}</span></div>
+            <div class="artist-name">${song.artist}</div>
+            <div style="background:rgba(255,215,0,0.04); padding:0.8rem; border-radius:1rem; margin:10px 0; border-left:2px solid rgba(255,215,0,0.2);">
+              <span style="color:rgba(255,215,0,0.6); font-size:0.75rem; font-weight:600;">✍️ Catatan:</span><br>
+              <span style="color:rgba(255,255,255,0.7); font-size:0.85rem; line-height:1.6;">${note.replace(/\n/g, '<br>')}</span>
+            </div>
+            <div class="track-links">
+              <a href="${song.youtube}" target="_blank">▶️ YouTube</a>
+              <a href="${song.spotify}" target="_blank">🎧 Spotify</a>
+            </div>
+            <div style="margin-top:12px; display:flex; gap:10px;">
+              <button class="edit-journal-btn" data-id="${song.id}" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.04); border-radius:30px; padding:6px 16px; color:rgba(255,255,255,0.6); cursor:pointer; font-size:0.8rem; transition:0.2s;">✏️ Edit</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    html += `</div>`;
+    return html;
+  }
+
   function render() {
     const app = document.getElementById("appRoot");
-    const totalMoods = Object.keys(songsDatabase).length;
+    const userName = currentUser ? currentUser.name || currentUser.email.split('@')[0] : null;
     
     if (currentPage === "home") {
       let html = `
@@ -701,155 +2189,522 @@
           <div class="logo">
             <span class="logo-icon">✨</span>
             <span class="logo-text">STARLUME</span>
-            <span class="logo-badge">PREMIUM</span>
+            <span class="logo-badge">Premium</span>
           </div>
           <div class="nav-links">
             <button class="nav-btn active" data-page="home">🏠 Beranda</button>
-            <button class="nav-btn" data-page="favorites">⭐ Favorit (${favorites.length})</button>
+            <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length + animeFavorites.length}</span></button>
+            <button class="nav-btn" data-page="journal">📓 Journal <span class="badge-count">${Object.keys(songJournal).length}</span></button>
+            ${currentUser ? `
+              <button class="user-btn" id="userMenuBtn">
+                <span class="user-avatar">${userName.charAt(0).toUpperCase()}</span>
+                <span class="user-name">${userName}</span>
+                <span style="font-size:0.6rem;">▼</span>
+              </button>
+              <div id="userDropdown" style="display:none; position:absolute; top:60px; right:20px; background:rgba(20,20,30,0.95); backdrop-filter:blur(20px); border-radius:16px; padding:0.5rem; border:1px solid rgba(255,215,0,0.1); min-width:160px; z-index:100;">
+                <div style="padding:0.5rem 1rem; color:rgba(255,255,255,0.4); font-size:0.8rem; border-bottom:1px solid rgba(255,255,255,0.05);">${currentUser.email}</div>
+                <button id="logoutBtn" style="width:100%; background:none; border:none; color:rgba(255,80,80,0.7); padding:0.6rem 1rem; text-align:left; cursor:pointer; font-size:0.85rem; border-radius:10px; transition:0.2s;">🚪 Logout</button>
+              </div>
+            ` : `
+              <button class="login-btn" id="loginBtn">🔑 Login</button>
+            `}
           </div>
         </div>
-        
         <div class="hero">
+          <div class="star-overlay"></div>
+          <div class="music-particles">
+            <span>♪</span><span>♫</span><span>♪</span><span>♬</span><span>♪</span>
+            <span>♫</span><span>♪</span><span>♬</span><span>♫</span><span>♪</span>
+          </div>
+          <div class="wave-line"></div>
+          <span class="hero-emoji">🎶</span>
           <h2>Pilih Mood, Rasakan Getaran</h2>
-          <p>${allSongs.length}+ lagu premium dengan quotes inspiratif yang menyentuh hati</p>
+          <p>${allSongs.length}+ lagu · ${allMovies.length} film · ${allNovels.length} novel · ${allAnime.length} anime</p>
         </div>
-        
         <div class="stats-bar">
-          <div class="stat-card">
-            <span class="stat-number">${allSongs.length}</span>
-            <span class="stat-label">Total Lagu</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">7</span>
-            <span class="stat-label">Mood</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">${favorites.length}</span>
-            <span class="stat-label">Favorit</span>
-          </div>
+          <div class="stat-card"><span class="stat-icon">🎵</span><span class="stat-number">${allSongs.length}</span><span class="stat-label">Lagu</span></div>
+          <div class="stat-card"><span class="stat-icon">🎬</span><span class="stat-number">${allMovies.length}</span><span class="stat-label">Film</span></div>
+          <div class="stat-card"><span class="stat-icon">📚</span><span class="stat-number">${allNovels.length}</span><span class="stat-label">Novel</span></div>
+          <div class="stat-card"><span class="stat-icon">🎌</span><span class="stat-number">${allAnime.length}</span><span class="stat-label">Anime</span></div>
+          <div class="stat-card"><span class="stat-icon">⭐</span><span class="stat-number">${favorites.length + movieFavorites.length + novelFavorites.length + animeFavorites.length}</span><span class="stat-label">Favorit</span></div>
         </div>
-        
-        <div class="mood-section">
-          <div class="section-title">🎭 Bagaimana perasaanmu sekarang?</div>
-          <div class="mood-grid">
-            <button class="mood-btn ${selectedMood === 'senang' ? 'active' : ''}" data-mood="senang">😄 Senang</button>
-            <button class="mood-btn ${selectedMood === 'sedih' ? 'active' : ''}" data-mood="sedih">😢 Sedih</button>
-            <button class="mood-btn ${selectedMood === 'galau' ? 'active' : ''}" data-mood="galau">🌧️ Galau</button>
-            <button class="mood-btn ${selectedMood === 'romantis' ? 'active' : ''}" data-mood="romantis">❤️ Romantis</button>
-            <button class="mood-btn ${selectedMood === 'marah' ? 'active' : ''}" data-mood="marah">😠 Marah</button>
-            <button class="mood-btn ${selectedMood === 'fokus' ? 'active' : ''}" data-mood="fokus">🎯 Fokus</button>
-            <button class="mood-btn ${selectedMood === 'relax' ? 'active' : ''}" data-mood="relax">🍃 Relax</button>
-          </div>
+        <div class="tab-container">
+          <button class="tab-btn ${activeTab === 'music' ? 'active' : ''}" data-tab="music">🎵 Musik</button>
+          <button class="tab-btn ${activeTab === 'movies' ? 'active' : ''}" data-tab="movies">🎬 Film</button>
+          <button class="tab-btn ${activeTab === 'novels' ? 'active' : ''}" data-tab="novels">📚 Novel</button>
+          <button class="tab-btn ${activeTab === 'anime' ? 'active' : ''}" data-tab="anime">🎌 Anime</button>
         </div>
-        ${selectedMood ? renderRecommendations() : '<div style="text-align:center; padding:2.5rem; background: rgba(255,215,0,0.03); border-radius: 2rem; border: 1px dashed rgba(255,215,0,0.2);"><span style="font-size: 3rem;">✨</span><p style="margin-top: 1rem; color: #AAAAAA;">Klik salah satu mood di atas untuk memulai perjalanan musikmu</p></div>'}
-        <footer>© 2025 Starlume — ${allSongs.length}+ lagu | Klik ★ untuk favorit | Nikmati setiap nada</footer>
+        ${activeTab === 'music' ? `
+          <div class="mood-section">
+            <div class="section-title">🎭 Bagaimana perasaanmu sekarang?</div>
+            <div class="mood-grid">
+              ${["senang","sedih","galau","romantis","marah","fokus","relax"].map(m => `<button class="mood-btn ${selectedMood === m ? 'active' : ''}" data-mood="${m}"><span class="mood-emoji">${m==='senang'?'😄':m==='sedih'?'😢':m==='galau'?'🌧️':m==='romantis'?'❤️':m==='marah'?'😠':m==='fokus'?'🎯':'🍃'}</span> ${getMoodDisplayName(m)}</button>`).join('')}
+            </div>
+          </div>
+          ${selectedMood ? renderRecommendations() : '<div style="text-align:center; padding:3rem; background:rgba(255,215,0,0.02); border-radius:2rem; border:1px solid rgba(255,215,0,0.03);"><span style="font-size:3rem;">✨</span><p style="margin-top:1rem; color:rgba(255,255,255,0.4);">Klik salah satu mood di atas untuk memulai</p></div>'}
+        ` : `
+          <div style="text-align:center; margin-bottom:1.5rem;">
+            <p style="color:rgba(255,255,255,0.5);">${activeTab === 'movies' ? `🎬 ${allMovies.length} Rekomendasi Film dari 3 Negara` : activeTab === 'novels' ? `📚 ${allNovels.length} Rekomendasi Novel Pilihan` : `🎌 ${allAnime.length} Rekomendasi Anime Legendaris`}</p>
+          </div>
+          ${activeTab !== 'music' ? `
+            <div class="genre-filter">
+              <button class="genre-btn ${selectedGenre === 'Semua' ? 'active' : ''}" data-genre="Semua">🎯 Semua</button>
+              ${activeTab === 'movies' ? `
+                <button class="genre-btn ${selectedGenre === 'Horor' ? 'active' : ''}" data-genre="Horor">👻 Horor</button>
+                <button class="genre-btn ${selectedGenre === 'Aksi' ? 'active' : ''}" data-genre="Aksi">💥 Aksi</button>
+                <button class="genre-btn ${selectedGenre === 'Romantis' ? 'active' : ''}" data-genre="Romantis">❤️ Romantis</button>
+                <button class="genre-btn ${selectedGenre === 'Komedi' ? 'active' : ''}" data-genre="Komedi">😂 Komedi</button>
+              ` : activeTab === 'novels' ? `
+                <button class="genre-btn ${selectedGenre === 'Fiksi' ? 'active' : ''}" data-genre="Fiksi">📖 Fiksi</button>
+                <button class="genre-btn ${selectedGenre === 'Non-Fiksi' ? 'active' : ''}" data-genre="Non-Fiksi">📊 Non-Fiksi</button>
+                <button class="genre-btn ${selectedGenre === 'Romantis' ? 'active' : ''}" data-genre="Romantis">❤️ Romantis</button>
+                <button class="genre-btn ${selectedGenre === 'Inspiratif' ? 'active' : ''}" data-genre="Inspiratif">💡 Inspiratif</button>
+                <button class="genre-btn ${selectedGenre === 'Self-Help' ? 'active' : ''}" data-genre="Self-Help">🧠 Self-Help</button>
+              ` : `
+                <button class="genre-btn ${selectedGenre === 'Action' ? 'active' : ''}" data-genre="Action">💥 Action</button>
+                <button class="genre-btn ${selectedGenre === 'Adventure' ? 'active' : ''}" data-genre="Adventure">🗺️ Adventure</button>
+                <button class="genre-btn ${selectedGenre === 'Comedy' ? 'active' : ''}" data-genre="Comedy">😂 Comedy</button>
+                <button class="genre-btn ${selectedGenre === 'Fantasy' ? 'active' : ''}" data-genre="Fantasy">🐉 Fantasy</button>
+                <button class="genre-btn ${selectedGenre === 'Romance' ? 'active' : ''}" data-genre="Romance">❤️ Romance</button>
+                <button class="genre-btn ${selectedGenre === 'Sci-Fi' ? 'active' : ''}" data-genre="Sci-Fi">🚀 Sci-Fi</button>
+                <button class="genre-btn ${selectedGenre === 'Sports' ? 'active' : ''}" data-genre="Sports">⚽ Sports</button>
+              `}
+            </div>
+          ` : ''}
+          ${activeTab === 'movies' ? renderMovies() : activeTab === 'novels' ? renderNovels() : renderAnime()}
+        `}
+        <footer>© 2025 Starlume — Musik, Film, Novel & Anime dalam satu tempat 📖</footer>
       `;
       app.innerHTML = html;
       attachHomeEvents();
     }
     else if (currentPage === "favorites") {
       const favSongs = allSongs.filter(s => favorites.includes(s.id));
+      const favMovies = allMovies.filter(m => movieFavorites.includes(m.id));
+      const favNovels = allNovels.filter(n => novelFavorites.includes(n.id));
+      const favAnime = allAnime.filter(a => animeFavorites.includes(a.id));
+      const totalFav = favSongs.length + favMovies.length + favNovels.length + favAnime.length;
+      
       let html = `
         <div class="navbar">
-          <div class="logo">
-            <span class="logo-icon">✨</span>
-            <span class="logo-text">STARLUME</span>
-            <span class="logo-badge">PREMIUM</span>
-          </div>
+          <div class="logo"><span class="logo-icon">✨</span><span class="logo-text">STARLUME</span><span class="logo-badge">Premium</span></div>
           <div class="nav-links">
             <button class="nav-btn" data-page="home">🏠 Beranda</button>
-            <button class="nav-btn active" data-page="favorites">⭐ Favorit (${favSongs.length})</button>
+            <button class="nav-btn active" data-page="favorites">⭐ Favorit <span class="badge-count">${totalFav}</span></button>
+            <button class="nav-btn" data-page="journal">📓 Journal <span class="badge-count">${Object.keys(songJournal).length}</span></button>
+            ${currentUser ? `
+              <button class="user-btn" id="userMenuBtn">
+                <span class="user-avatar">${userName.charAt(0).toUpperCase()}</span>
+                <span class="user-name">${userName}</span>
+                <span style="font-size:0.6rem;">▼</span>
+              </button>
+              <div id="userDropdown" style="display:none; position:absolute; top:60px; right:20px; background:rgba(20,20,30,0.95); backdrop-filter:blur(20px); border-radius:16px; padding:0.5rem; border:1px solid rgba(255,215,0,0.1); min-width:160px; z-index:100;">
+                <div style="padding:0.5rem 1rem; color:rgba(255,255,255,0.4); font-size:0.8rem; border-bottom:1px solid rgba(255,255,255,0.05);">${currentUser.email}</div>
+                <button id="logoutBtn" style="width:100%; background:none; border:none; color:rgba(255,80,80,0.7); padding:0.6rem 1rem; text-align:left; cursor:pointer; font-size:0.85rem; border-radius:10px; transition:0.2s;">🚪 Logout</button>
+              </div>
+            ` : `
+              <button class="login-btn" id="loginBtn">🔑 Login</button>
+            `}
           </div>
         </div>
-        <div class="hero" style="padding: 2rem;">
-          <h2 style="font-size: 2rem;">⭐ Koleksi Favoritmu ⭐</h2>
-          <p>${favSongs.length} dari ${allSongs.length} lagu tersimpan di hati</p>
+        <div class="hero" style="padding:2.5rem; min-height:200px;">
+          <div class="star-overlay"></div>
+          <div class="music-particles"><span>♪</span><span>♫</span><span>♪</span><span>♬</span><span>♪</span></div>
+          <div class="wave-line"></div>
+          <span class="hero-emoji">⭐</span>
+          <h2 style="font-size:2.2rem;">Koleksi Favoritmu</h2>
+          <p>${favSongs.length} lagu · ${favMovies.length} film · ${favNovels.length} novel · ${favAnime.length} anime</p>
         </div>
         <button class="back-btn" id="backHomeBtn">← Kembali ke Beranda</button>
       `;
-      if(favSongs.length === 0) {
-        html += `<div class="empty-fav">✨ Belum ada favorit. Pilih lagu dari ${allSongs.length}+ koleksi dan klik bintang ✨</div>`;
+      
+      if(totalFav === 0) {
+        html += `<div class="empty-fav"><span class="empty-icon">✨</span>Belum ada favorit. Pilih lagu, film, novel atau anime dan klik bintang</div>`;
       } else {
-        html += `<div class="card-grid">`;
-        favSongs.forEach(s => {
-          html += `
-            <div class="music-card">
-              <img class="card-img" src="${s.img}" alt="${s.title}" onerror="this.src='https://picsum.photos/id/100/400/250'">
-              <div class="card-body">
-                <div class="card-title">🎵 ${s.title}</div>
-                <div class="artist-name">${s.artist}</div>
-                <div class="music-quote">“${s.quote}”</div>
-                <div class="track-links">
-                  <a href="${s.youtube}" target="_blank">▶️ YouTube</a>
-                  <a href="${s.spotify}" target="_blank">🎧 Spotify</a>
+        if(favSongs.length > 0) {
+          html += `<h3 style="margin:1.5rem 0 1rem; color:rgba(255,215,0,0.8);">🎵 Lagu Favorit (${favSongs.length})</h3><div class="card-grid">`;
+          favSongs.forEach(s=>{
+            const hasNote = hasJournal(s.id);
+            const hasYoutube = s.youtubeId;
+            html+=`
+              <div class="music-card">
+                <img class="card-img" src="${s.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎵</div>'">
+                <div class="card-body">
+                  <div class="card-title"><span><span class="title-icon">🎵</span> ${s.title}</span><div class="action-icons">${hasYoutube ? `<span class="play-icon" data-id="${s.id}" data-play="true">▶️</span>` : ''}<span class="journal-icon ${hasNote ? 'has-note' : ''}" data-id="${s.id}" data-journal="true">📖</span><span class="fav-icon active" data-id="${s.id}">★</span></div></div>
+                  <div class="artist-name">${s.artist}</div>
+                  <div class="music-quote">“${s.quote}”</div>
+                  <div class="track-links"><a href="${s.youtube}" target="_blank">▶️ YouTube</a><a href="${s.spotify}" target="_blank">🎧 Spotify</a>${hasYoutube ? `<a href="#" class="btn-play-now" data-id="${s.id}" data-play-now="true">🔊 Putar</a>` : ''}</div>
+                  ${hasYoutube ? `
+                    <div class="player-wrapper" data-song-id="${s.id}" id="player_${s.id}">
+                      <iframe src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                      <div class="player-controls">
+                        <span class="now-playing">🎵 <strong>${s.title}</strong> — ${s.artist}</span>
+                        <button class="btn-close-player" data-id="${s.id}" data-close-player="true">✕</button>
+                      </div>
+                    </div>
+                  ` : ''}
+                  <div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${s.id}">★ Hapus dari favorit</span></div>
                 </div>
-                <div style="margin-top: 12px;"><span class="fav-icon active" data-id="${s.id}">★ Hapus dari favorit</span></div>
               </div>
-            </div>
-          `;
-        });
-        html += `</div>`;
+            `;
+          });
+          html+=`</div>`;
+        }
+        
+        if(favMovies.length > 0) {
+          html += `<h3 style="margin:2rem 0 1rem; color:rgba(255,215,0,0.8);">🎬 Film Favorit (${favMovies.length})</h3><div class="card-grid">`;
+          favMovies.forEach(m=>{
+            html+=`
+              <div class="music-card">
+                <img class="card-img" src="${m.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎬</div>'">
+                <div class="card-body">
+                  <div class="card-title"><span><span class="title-icon">🎬</span> ${m.title}</span><div class="action-icons"><span class="fav-icon active" data-id="${m.id}" data-movie="true">★</span></div></div>
+                  <div class="artist-name">${m.origin} · ${m.year} · ${m.genre} · ⭐ ${m.rating}</div>
+                  <div style="font-size:0.75rem; color:rgba(255,255,255,0.4); margin:8px 0;">Sutradara: ${m.director}</div>
+                  <div class="track-links"><a href="${m.imdb}" target="_blank">🎬 IMDb</a><a href="${m.youtube}" target="_blank">▶️ Trailer</a></div>
+                  <div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${m.id}" data-movie="true">★ Hapus dari favorit</span></div>
+                </div>
+              </div>
+            `;
+          });
+          html+=`</div>`;
+        }
+        
+        if(favNovels.length > 0) {
+          html += `<h3 style="margin:2rem 0 1rem; color:rgba(255,215,0,0.8);">📚 Novel Favorit (${favNovels.length})</h3><div class="card-grid">`;
+          favNovels.forEach(n=>{
+            html+=`
+              <div class="music-card">
+                <img class="card-img" src="${n.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>📚</div>'">
+                <div class="card-body">
+                  <div class="card-title"><span><span class="title-icon">📚</span> ${n.title}</span><div class="action-icons"><span class="fav-icon active" data-id="${n.id}" data-novel="true">★</span></div></div>
+                  <div class="artist-name">${n.author} · ${n.year} · ${n.genre}</div>
+                  <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); margin:8px 0;">${n.description}</div>
+                  <div class="track-links"><a href="${n.goodreads}" target="_blank">📚 Goodreads</a><a href="${n.google}" target="_blank">🔍 Cari</a></div>
+                  <div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${n.id}" data-novel="true">★ Hapus dari favorit</span></div>
+                </div>
+              </div>
+            `;
+          });
+          html+=`</div>`;
+        }
+        
+        if(favAnime.length > 0) {
+          html += `<h3 style="margin:2rem 0 1rem; color:rgba(255,215,0,0.8);">🎌 Anime Favorit (${favAnime.length})</h3><div class="card-grid">`;
+          favAnime.forEach(a=>{
+            html+=`
+              <div class="music-card">
+                <img class="card-img" src="${a.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎌</div>'">
+                <div class="card-body">
+                  <div class="card-title"><span><span class="title-icon">🎌</span> ${a.title}</span><div class="action-icons"><span class="fav-icon active" data-id="${a.id}" data-anime="true">★</span></div></div>
+                  <div class="artist-name">${a.author} · ${a.year} · ${a.genre}</div>
+                  <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); margin:8px 0;">${a.description}</div>
+                  <div class="track-links"><a href="${a.myanimelist}" target="_blank">🎌 MyAnimeList</a><a href="${a.google}" target="_blank">🔍 Cari</a></div>
+                  <div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${a.id}" data-anime="true">★ Hapus dari favorit</span></div>
+                </div>
+              </div>
+            `;
+          });
+          html+=`</div>`;
+        }
       }
       app.innerHTML = html;
       attachFavEvents();
     }
+    else if (currentPage === "journal") {
+      let html = `
+        <div class="navbar">
+          <div class="logo"><span class="logo-icon">✨</span><span class="logo-text">STARLUME</span><span class="logo-badge">Premium</span></div>
+          <div class="nav-links">
+            <button class="nav-btn" data-page="home">🏠 Beranda</button>
+            <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length + animeFavorites.length}</span></button>
+            <button class="nav-btn active" data-page="journal">📓 Journal <span class="badge-count">${Object.keys(songJournal).length}</span></button>
+            ${currentUser ? `
+              <button class="user-btn" id="userMenuBtn">
+                <span class="user-avatar">${userName.charAt(0).toUpperCase()}</span>
+                <span class="user-name">${userName}</span>
+                <span style="font-size:0.6rem;">▼</span>
+              </button>
+              <div id="userDropdown" style="display:none; position:absolute; top:60px; right:20px; background:rgba(20,20,30,0.95); backdrop-filter:blur(20px); border-radius:16px; padding:0.5rem; border:1px solid rgba(255,215,0,0.1); min-width:160px; z-index:100;">
+                <div style="padding:0.5rem 1rem; color:rgba(255,255,255,0.4); font-size:0.8rem; border-bottom:1px solid rgba(255,255,255,0.05);">${currentUser.email}</div>
+                <button id="logoutBtn" style="width:100%; background:none; border:none; color:rgba(255,80,80,0.7); padding:0.6rem 1rem; text-align:left; cursor:pointer; font-size:0.85rem; border-radius:10px; transition:0.2s;">🚪 Logout</button>
+              </div>
+            ` : `
+              <button class="login-btn" id="loginBtn">🔑 Login</button>
+            `}
+          </div>
+        </div>
+        <div class="hero" style="padding:2.5rem; min-height:200px;">
+          <div class="star-overlay"></div>
+          <div class="music-particles"><span>♪</span><span>♫</span><span>♪</span><span>♬</span><span>♪</span></div>
+          <div class="wave-line"></div>
+          <span class="hero-emoji">📖</span>
+          <h2 style="font-size:2.2rem;">Song Journal</h2>
+          <p>Setiap lagu punya cerita — tulis kenanganmu</p>
+        </div>
+        <button class="back-btn" id="backHomeFromJournalBtn">← Kembali ke Beranda</button>
+        ${renderJournalEntries()}
+        <footer>📔 Catatan pribadi tersimpan di browser Anda.</footer>
+      `;
+      app.innerHTML = html;
+      attachJournalEvents();
+    }
+    
+    attachUserEvents();
+  }
+
+  function attachUserEvents() {
+    const userBtn = document.getElementById('userMenuBtn');
+    const dropdown = document.getElementById('userDropdown');
+    const loginBtn = document.getElementById('loginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    
+    if (userBtn && dropdown) {
+      userBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      });
+      document.addEventListener('click', () => {
+        if (dropdown) dropdown.style.display = 'none';
+      });
+    }
+    
+    if (loginBtn) {
+      loginBtn.addEventListener('click', () => openAuthModal('login'));
+    }
+    
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', logoutUser);
+    }
+  }
+
+  function getMoodDisplayName(moodKey) {
+    const names = { senang:"Senang", sedih:"Sedih", galau:"Galau", romantis:"Romantis", marah:"Marah", fokus:"Fokus", relax:"Relax" };
+    return names[moodKey];
   }
 
   function attachHomeEvents() {
-    document.querySelectorAll(".mood-btn").forEach(btn => {
+    // Tab buttons
+    document.querySelectorAll(".tab-btn").forEach(btn => {
       btn.addEventListener("click", (e) => {
-        const moodVal = btn.getAttribute("data-mood");
-        selectedMood = moodVal;
-        const moodName = getMoodDisplayName(moodVal);
-        showNotif(`🎵 Mood "${moodName}" terpilih! 50 lagu siap menemani harimu. 🎵`);
+        const tab = btn.getAttribute("data-tab");
+        activeTab = tab;
+        selectedGenre = 'Semua';
         render();
       });
     });
 
-    document.querySelectorAll(".fav-icon").forEach(el => {
-      el.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const id = el.getAttribute("data-id");
-        if(id) toggleFavorite(id);
+    // Genre filter buttons
+    document.querySelectorAll(".genre-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const genre = btn.getAttribute("data-genre");
+        selectedGenre = genre;
+        render();
       });
     });
 
-    document.querySelectorAll(".nav-btn").forEach(btn => {
+    document.querySelectorAll(".mood-btn").forEach(btn => {
       btn.addEventListener("click", (e) => {
-        const page = btn.getAttribute("data-page");
-        if(page === "home") { currentPage = "home"; render(); }
-        if(page === "favorites") { currentPage = "favorites"; render(); }
+        selectedMood = btn.getAttribute("data-mood");
+        showNotif(`🎵 Mood "${getMoodDisplayName(selectedMood)}" terpilih!`);
+        render();
       });
     });
+    attachGlobalEvents();
   }
 
   function attachFavEvents() {
-    document.querySelectorAll(".nav-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const page = btn.getAttribute("data-page");
-        if(page === "home") { currentPage = "home"; render(); }
-        if(page === "favorites") { currentPage = "favorites"; render(); }
-      });
-    });
-
-    document.querySelectorAll(".fav-icon").forEach(el => {
-      el.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const id = el.getAttribute("data-id");
-        if(id) toggleFavorite(id);
-      });
-    });
-
+    attachGlobalEvents();
     const backHome = document.getElementById("backHomeBtn");
     if(backHome) backHome.addEventListener("click", () => { currentPage = "home"; render(); });
   }
 
+  function attachJournalEvents() {
+    document.querySelectorAll(".edit-journal-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const id = btn.getAttribute("data-id");
+        if(id) openJournalModal(id);
+      });
+    });
+    const backHome = document.getElementById("backHomeFromJournalBtn");
+    if(backHome) backHome.addEventListener("click", () => { currentPage = "home"; render(); });
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const page = btn.getAttribute("data-page");
+        if(page === "home") { currentPage = "home"; render(); }
+        if(page === "favorites") { currentPage = "favorites"; render(); }
+        if(page === "journal") { currentPage = "journal"; render(); }
+      });
+    });
+  }
+
+  function attachGlobalEvents() {
+    document.querySelectorAll(".play-icon[data-play='true']").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        if(id) togglePlayer(id);
+      });
+    });
+
+    document.querySelectorAll(".btn-play-now[data-play-now='true']").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        if(id) {
+          const player = document.querySelector(`.player-wrapper[data-song-id="${id}"]`);
+          if(player) {
+            player.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          togglePlayer(id);
+        }
+      });
+    });
+
+    document.querySelectorAll(".btn-close-player[data-close-player='true']").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        const player = document.querySelector(`.player-wrapper[data-song-id="${id}"]`);
+        if(player) {
+          player.classList.remove('active');
+          const iframe = player.querySelector('iframe');
+          if(iframe) iframe.src = '';
+        }
+      });
+    });
+
+    // Favorite untuk lagu
+    document.querySelectorAll(".fav-icon:not([data-movie='true']):not([data-novel='true']):not([data-anime='true'])").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        if(id) toggleFavorite(id);
+      });
+    });
+
+    // Favorite untuk film
+    document.querySelectorAll(".fav-icon[data-movie='true']").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        if(id) toggleMovieFavorite(id);
+      });
+    });
+
+    // Favorite untuk novel
+    document.querySelectorAll(".fav-icon[data-novel='true']").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        if(id) toggleNovelFavorite(id);
+      });
+    });
+
+    // Favorite untuk anime
+    document.querySelectorAll(".fav-icon[data-anime='true']").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        if(id) toggleAnimeFavorite(id);
+      });
+    });
+
+    document.querySelectorAll(".journal-icon").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        if(id) openJournalModal(id);
+      });
+    });
+
+    // Watch movie
+    document.querySelectorAll(".watch-icon[data-watch='true']").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        const movie = allMovies.find(m => m.id === id);
+        if(movie) {
+          window.open(movie.youtube, '_blank');
+          showNotif(`🎬 Membuka trailer: ${movie.title}`);
+        }
+      });
+    });
+
+    document.querySelectorAll(".btn-watch-now[data-watch-now='true']").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        const movie = allMovies.find(m => m.id === id);
+        if(movie) {
+          window.open(movie.youtube, '_blank');
+          showNotif(`🎬 Membuka trailer: ${movie.title}`);
+        }
+      });
+    });
+
+    // Read novel
+    document.querySelectorAll(".read-icon[data-read='true']").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        const novel = allNovels.find(n => n.id === id);
+        if(novel) {
+          window.open(novel.google, '_blank');
+          showNotif(`📚 Membuka: ${novel.title}`);
+        }
+      });
+    });
+
+    document.querySelectorAll(".btn-read-now[data-read-now='true']").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const id = el.getAttribute("data-id");
+        let item = allNovels.find(n => n.id === id);
+        if(item) {
+          window.open(item.google, '_blank');
+          showNotif(`📚 Membuka: ${item.title}`);
+        } else {
+          item = allAnime.find(a => a.id === id);
+          if(item) {
+            window.open(item.google, '_blank');
+            showNotif(`🎌 Membuka: ${item.title}`);
+          }
+        }
+      });
+    });
+
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const page = btn.getAttribute("data-page");
+        if(page === "home") { currentPage = "home"; render(); }
+        if(page === "favorites") { currentPage = "favorites"; render(); }
+        if(page === "journal") { currentPage = "journal"; render(); }
+      });
+    });
+  }
+
+  document.getElementById('closeAuthBtn').addEventListener('click', closeAuthModal);
+  document.getElementById('authModal').addEventListener('click', (e) => {
+    if(e.target === e.currentTarget) closeAuthModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeAuthModal();
+  });
+  document.getElementById('authSubmitBtn').addEventListener('click', handleAuth);
+  document.getElementById('authPassword').addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') handleAuth();
+  });
+  document.getElementById('authEmail').addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') handleAuth();
+  });
+
   render();
-  
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./service-worker.js')
-      .then(() => console.log('SW registered!'))
-      .catch(err => console.error('SW gagal:', err));
+    navigator.serviceWorker.register('./service-worker.js').catch(err => console.error('SW gagal:', err));
   }
 </script>
 </body>

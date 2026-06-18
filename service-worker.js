@@ -1,19 +1,20 @@
-const CACHE_NAME = "pwa-template-v2";
+const CACHE_NAME = "pwa-youtube-v1";
 const BASE_URL = self.registration.scope;
 
 const urlsToCache = [
   `${BASE_URL}`,
   `${BASE_URL}index.html`,
   `${BASE_URL}offline.html`,
-  `${BASE_URL}assets/style.css`,
   `${BASE_URL}manifest.json`,
-  `${BASE_URL}icons/icon-192x192.png`,
-  `${BASE_URL}icons/icon-512x512.png`,
+  `${BASE_URL}assets/style.css`,        // ← CSS di dalam folder assets
+  `${BASE_URL}icons/icon-192x192.png`,  // ← Icon di dalam folder icons
+  `${BASE_URL}icons/icon-512x512.png`,  // ← Icon di dalam folder icons
+  'https://apis.google.com/js/api.js',
 ];
 
-// Install Service Worker & simpan file ke cache
+// Install Service Worker
 self.addEventListener("install", event => {
-  self.skipWaiting(); // langsung aktif tanpa reload manual
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(urlsToCache))
@@ -34,21 +35,20 @@ self.addEventListener("activate", event => {
           }
         })
       );
-      await self.clients.claim(); // langsung klaim kontrol ke halaman
+      await self.clients.claim();
     })()
   );
 });
 
-// Fetch event: cache-first untuk file lokal, network-first untuk API
+// Fetch event
 self.addEventListener("fetch", event => {
   const request = event.request;
   const url = new URL(request.url);
 
-  // Abaikan permintaan Chrome Extension, analytics, dll.
   if (url.protocol.startsWith("chrome-extension")) return;
   if (request.method !== "GET") return;
 
-  // File lokal (statis)
+  // File statis lokal
   if (url.origin === self.location.origin) {
     event.respondWith(
       caches.match(request).then(response => {
@@ -59,16 +59,43 @@ self.addEventListener("fetch", event => {
       })
     );
   } 
-  // Resource eksternal (API, CDN, dsb.)
+  // Resource eksternal
   else {
-    event.respondWith(
-      fetch(request)
-        .then(networkResponse => {
-          const clone = networkResponse.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
-          return networkResponse;
-        })
-        .catch(() => caches.match(request))
-    );
+    // YouTube API: Network First + cache
+    if (url.href.includes('youtube.googleapis.com/youtube/v3/')) {
+      event.respondWith(
+        fetch(request)
+          .then(networkResponse => {
+            if (networkResponse.status === 200) {
+              const clone = networkResponse.clone();
+              caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
+            }
+            return networkResponse;
+          })
+          .catch(() => {
+            return caches.match(request).then(cached => {
+              if (cached) return cached;
+              return new Response('{"error": "Offline - YouTube API tidak tersedia"}', {
+                status: 503,
+                headers: { 'Content-Type': 'application/json' }
+              });
+            });
+          })
+      );
+    } 
+    // Resource eksternal lain (gambar, CDN, dll)
+    else {
+      event.respondWith(
+        fetch(request)
+          .then(networkResponse => {
+            if (networkResponse.status === 200) {
+              const clone = networkResponse.clone();
+              caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
+            }
+            return networkResponse;
+          })
+          .catch(() => caches.match(request))
+      );
+    }
   }
 });
