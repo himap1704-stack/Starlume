@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#0a0a0a" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icons/IkonStarlume.png" />
-  <title>Starlume · Premium Music, Movie, Novel & Anime Experience</title>
+  <title>Starlume · Music, Movie, Novel & Anime Experience</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     * {
@@ -43,11 +43,9 @@
     ::-webkit-scrollbar {
       width: 6px;
     }
-
     ::-webkit-scrollbar-track {
       background: #14141e;
     }
-
     ::-webkit-scrollbar-thumb {
       background: linear-gradient(180deg, #FFD700, #F5A623);
       border-radius: 10px;
@@ -66,7 +64,7 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.8rem;
       margin-bottom: 2.5rem;
       background: rgba(20, 20, 30, 0.6);
       backdrop-filter: blur(30px) saturate(1.2);
@@ -105,23 +103,12 @@
       text-shadow: 0 0 40px rgba(255, 215, 0, 0.1);
     }
 
-    .logo-badge {
-      font-size: 0.6rem;
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.05));
-      padding: 3px 12px;
-      border-radius: 20px;
-      color: #FFD700;
-      border: 1px solid rgba(255, 215, 0, 0.15);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
     .nav-links {
       display: flex;
       gap: 0.6rem;
       flex-wrap: wrap;
       align-items: center;
+      position: relative;
     }
 
     .nav-btn {
@@ -228,7 +215,7 @@
       margin-bottom: 2.5rem;
       text-align: center;
       overflow: hidden;
-      min-height: 320px;
+      min-height: 280px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -283,66 +270,13 @@
       100% { opacity: 0.8; }
     }
 
-    .hero .music-particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .hero .music-particles span {
-      position: absolute;
-      font-size: 1.2rem;
-      opacity: 0.15;
-      animation: floatParticle 15s linear infinite;
-      color: #FFD700;
-    }
-
-    .hero .music-particles span:nth-child(1) { left: 5%; animation-delay: 0s; font-size: 1.5rem; }
-    .hero .music-particles span:nth-child(2) { left: 15%; animation-delay: 2s; font-size: 1rem; }
-    .hero .music-particles span:nth-child(3) { left: 25%; animation-delay: 4s; font-size: 2rem; }
-    .hero .music-particles span:nth-child(4) { left: 35%; animation-delay: 1s; font-size: 1.2rem; }
-    .hero .music-particles span:nth-child(5) { left: 45%; animation-delay: 3s; font-size: 1.8rem; }
-    .hero .music-particles span:nth-child(6) { left: 55%; animation-delay: 5s; font-size: 1rem; }
-    .hero .music-particles span:nth-child(7) { left: 65%; animation-delay: 2s; font-size: 1.6rem; }
-    .hero .music-particles span:nth-child(8) { left: 75%; animation-delay: 4s; font-size: 1.2rem; }
-    .hero .music-particles span:nth-child(9) { left: 85%; animation-delay: 1s; font-size: 1.4rem; }
-    .hero .music-particles span:nth-child(10) { left: 92%; animation-delay: 3s; font-size: 1rem; }
-
-    @keyframes floatParticle {
-      0% { transform: translateY(100%) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.15; }
-      90% { opacity: 0.15; }
-      100% { transform: translateY(-100%) rotate(720deg); opacity: 0; }
-    }
-
-    .hero .wave-line {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.2), rgba(255,215,0,0.5), rgba(255,215,0,0.2), transparent);
-      z-index: 1;
-      animation: wavePulse 3s ease-in-out infinite;
-    }
-
-    @keyframes wavePulse {
-      0%, 100% { transform: scaleX(0.8); opacity: 0.3; }
-      50% { transform: scaleX(1); opacity: 0.8; }
-    }
-
     .hero h2, .hero p, .hero .hero-emoji {
       position: relative;
       z-index: 1;
     }
 
     .hero h2 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       margin-bottom: 0.8rem;
       background: linear-gradient(135deg, #FFD700, #F5A623, #FFD700, #FFFFFF);
       background-size: 300% 300%;
@@ -388,7 +322,7 @@
     .stats-bar {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1rem;
       margin-bottom: 2.5rem;
       flex-wrap: wrap;
     }
@@ -397,12 +331,12 @@
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      padding: 0.7rem 1.8rem;
+      padding: 0.6rem 1.5rem;
       border-radius: 60px;
       border: 1px solid rgba(255, 255, 255, 0.04);
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       transition: all 0.3s ease;
     }
 
@@ -413,7 +347,7 @@
     }
 
     .stat-number {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 800;
       background: linear-gradient(135deg, #FFD700, #F5A623);
       -webkit-background-clip: text;
@@ -422,19 +356,24 @@
     }
 
     .stat-label {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: rgba(255, 255, 255, 0.5);
       font-weight: 500;
     }
 
     .stat-icon {
-      font-size: 1.2rem;
+      font-size: 1rem;
+    }
+
+    /* Mood Grid - Improved */
+    .mood-section {
+      margin-bottom: 2.5rem;
     }
 
     .section-title {
       text-align: center;
       margin-bottom: 2rem;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 800;
       background: linear-gradient(135deg, #FFFFFF, #FFD700);
       -webkit-background-clip: text;
@@ -444,30 +383,34 @@
     }
 
     .mood-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.8rem;
-      margin-bottom: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem;
     }
 
     .mood-btn {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.04);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      padding: 0.8rem 1.8rem;
-      border-radius: 60px;
+      padding: 1.2rem 1rem;
+      border-radius: 1.2rem;
       font-size: 0.95rem;
       font-weight: 600;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      display: inline-flex;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      color: rgba(255, 255, 255, 0.7);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      color: rgba(255, 255, 255, 0.6);
       position: relative;
       overflow: hidden;
+      min-height: 100px;
+      text-align: center;
     }
 
     .mood-btn::before {
@@ -478,7 +421,7 @@
       width: 0;
       height: 0;
       border-radius: 50%;
-      background: rgba(255, 215, 0, 0.15);
+      background: rgba(255, 215, 0, 0.1);
       transform: translate(-50%, -50%);
       transition: width 0.6s, height 0.6s;
     }
@@ -488,22 +431,35 @@
       height: 400px;
     }
 
-    .mood-btn:hover, .mood-btn.active {
+    .mood-btn:hover {
+      transform: translateY(-5px) scale(1.02);
+      border-color: rgba(255, 215, 0, 0.15);
+      background: rgba(255, 215, 0, 0.05);
+    }
+
+    .mood-btn.active {
       background: linear-gradient(135deg, #FFD700, #F5A623);
       color: #0a0a0f;
-      transform: translateY(-3px) scale(1.02);
+      transform: translateY(-5px) scale(1.05);
       border-color: transparent;
-      box-shadow: 0 8px 35px rgba(255, 215, 0, 0.3);
+      box-shadow: 0 8px 40px rgba(255, 215, 0, 0.3);
     }
 
     .mood-btn .mood-emoji {
-      font-size: 1.2rem;
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+
+    .mood-btn .mood-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
     }
 
     .tab-container {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.8rem;
       margin-bottom: 2rem;
       flex-wrap: wrap;
     }
@@ -511,13 +467,13 @@
     .tab-btn {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 0.7rem 2rem;
+      padding: 0.6rem 1.8rem;
       border-radius: 40px;
       color: rgba(255, 255, 255, 0.5);
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
     .tab-btn.active {
@@ -681,42 +637,6 @@
       animation: starPop 0.4s ease;
     }
 
-    .play-icon {
-      color: rgba(76, 175, 80, 0.8);
-    }
-
-    .play-icon:hover {
-      color: #66bb6a;
-      text-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
-    }
-
-    .watch-icon {
-      color: rgba(255, 100, 100, 0.8);
-    }
-
-    .watch-icon:hover {
-      color: #ff6b6b;
-      text-shadow: 0 0 20px rgba(255, 100, 100, 0.3);
-    }
-
-    .read-icon {
-      color: rgba(100, 200, 255, 0.8);
-    }
-
-    .read-icon:hover {
-      color: #66d9ff;
-      text-shadow: 0 0 20px rgba(100, 200, 255, 0.3);
-    }
-
-    .journal-icon {
-      color: rgba(187, 187, 255, 0.6);
-    }
-
-    .journal-icon.has-note {
-      color: #FFD700;
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-    }
-
     @keyframes starPop {
       0% { transform: scale(1); }
       30% { transform: scale(1.4); }
@@ -780,30 +700,85 @@
       box-shadow: 0 4px 25px rgba(76, 175, 80, 0.35) !important;
     }
 
-    .btn-watch-now {
+    .btn-download-file {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05)) !important;
+      border-color: rgba(255, 215, 0, 0.2) !important;
+      color: #FFD700 !important;
+      padding: 6px 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: 0.2s;
+    }
+
+    .btn-download-file:hover {
+      background: linear-gradient(135deg, #FFD700, #F5A623) !important;
+      color: #0a0a0f !important;
+      border-color: transparent !important;
+      box-shadow: 0 4px 25px rgba(255, 215, 0, 0.35) !important;
+    }
+
+    .btn-buy-access {
       background: linear-gradient(135deg, rgba(255, 100, 100, 0.15), rgba(255, 100, 100, 0.05)) !important;
       border-color: rgba(255, 100, 100, 0.2) !important;
       color: #ff6b6b !important;
+      padding: 6px 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: 0.2s;
     }
 
-    .btn-watch-now:hover {
+    .btn-buy-access:hover {
       background: linear-gradient(135deg, #ff6b6b, #e55a5a) !important;
       color: white !important;
       border-color: transparent !important;
       box-shadow: 0 4px 25px rgba(255, 100, 100, 0.35) !important;
     }
 
-    .btn-read-now {
-      background: linear-gradient(135deg, rgba(100, 200, 255, 0.15), rgba(100, 200, 255, 0.05)) !important;
-      border-color: rgba(100, 200, 255, 0.2) !important;
-      color: #66d9ff !important;
+    .btn-unlocked {
+      background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.05)) !important;
+      border-color: rgba(76, 175, 80, 0.2) !important;
+      color: #66bb6a !important;
+      cursor: default !important;
     }
 
-    .btn-read-now:hover {
-      background: linear-gradient(135deg, #66d9ff, #4dc8f0) !important;
-      color: #0a0a0f !important;
-      border-color: transparent !important;
-      box-shadow: 0 4px 25px rgba(100, 200, 255, 0.35) !important;
+    .locked-badge {
+      display: inline-block;
+      background: rgba(255, 80, 80, 0.15);
+      color: #ff6b6b;
+      font-size: 0.6rem;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+      margin-left: 8px;
+      border: 1px solid rgba(255, 80, 80, 0.15);
+    }
+
+    .price-badge {
+      display: inline-block;
+      background: rgba(255, 215, 0, 0.1);
+      color: #FFD700;
+      font-size: 0.7rem;
+      padding: 2px 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      margin-left: 8px;
+      border: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    .uploaded-badge {
+      display: inline-block;
+      background: rgba(255, 215, 0, 0.1);
+      color: #FFD700;
+      font-size: 0.6rem;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+      margin-left: 8px;
+      border: 1px solid rgba(255, 215, 0, 0.1);
     }
 
     .player-wrapper {
@@ -927,6 +902,361 @@
       box-shadow: 0 4px 25px rgba(255, 215, 0, 0.25);
     }
 
+    /* Upload Dashboard Styles */
+    .upload-dashboard {
+      margin-top: 1rem;
+    }
+
+    .upload-stats {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .upload-stat-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      padding: 1.2rem 1.8rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      flex: 1;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .upload-stat-card .stat-number {
+      font-size: 1.8rem;
+    }
+
+    .upload-stat-card .stat-label {
+      font-size: 0.75rem;
+    }
+
+    .upload-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .upload-item-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: all 0.3s ease;
+    }
+
+    .upload-item-card:hover {
+      border-color: rgba(255, 215, 0, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .upload-item-card .card-body {
+      padding: 1.2rem 1.5rem;
+    }
+
+    .upload-item-card .card-title {
+      font-size: 1rem;
+    }
+
+    .upload-item-card .upload-meta {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin: 6px 0;
+    }
+
+    .upload-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .upload-actions button {
+      padding: 6px 16px;
+      border: none;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      flex: 1;
+      min-width: 80px;
+    }
+
+    .btn-delete-upload {
+      background: rgba(255, 80, 80, 0.15);
+      color: rgba(255, 80, 80, 0.8);
+    }
+
+    .btn-delete-upload:hover {
+      background: rgba(255, 80, 80, 0.25);
+      transform: scale(1.02);
+    }
+
+    .btn-toggle-price {
+      background: rgba(255, 215, 0, 0.1);
+      color: #FFD700;
+    }
+
+    .btn-toggle-price:hover {
+      background: rgba(255, 215, 0, 0.2);
+      transform: scale(1.02);
+    }
+
+    .btn-toggle-price.active {
+      background: rgba(76, 175, 80, 0.15);
+      color: #66bb6a;
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-bar input {
+      flex: 1;
+      min-width: 200px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 40px;
+      padding: 0.7rem 1.5rem;
+      color: white;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar input:focus {
+      outline: none;
+      border-color: rgba(255, 215, 0, 0.3);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .search-bar input::placeholder {
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    .search-bar select {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 40px;
+      padding: 0.7rem 1.5rem;
+      color: white;
+      font-size: 0.9rem;
+      cursor: pointer;
+      min-width: 130px;
+    }
+
+    .search-bar select:focus {
+      outline: none;
+      border-color: rgba(255, 215, 0, 0.3);
+    }
+
+    .search-bar select option {
+      background: #1a1a2e;
+      color: white;
+    }
+
+    .upload-form-container {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(10px);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 215, 0, 0.06);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .upload-form-container .form-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .upload-form-container .form-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .upload-form-container .form-row > * {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .upload-form-container label {
+      display: block;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.5px;
+    }
+
+    .upload-form-container input, .upload-form-container select, .upload-form-container textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      color: white;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .upload-form-container input:focus, .upload-form-container select:focus, .upload-form-container textarea:focus {
+      outline: none;
+      border-color: rgba(255, 215, 0, 0.3);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .upload-form-container input::placeholder, .upload-form-container textarea::placeholder {
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    .upload-form-container select option {
+      background: #1a1a2e;
+      color: white;
+    }
+
+    .upload-form-container .file-upload-area {
+      border: 2px dashed rgba(255, 215, 0, 0.15);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: rgba(255, 215, 0, 0.02);
+      position: relative;
+    }
+
+    .upload-form-container .file-upload-area:hover {
+      border-color: rgba(255, 215, 0, 0.3);
+      background: rgba(255, 215, 0, 0.04);
+    }
+
+    .upload-form-container .file-upload-area .file-icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .upload-form-container .file-upload-area .file-text {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.85rem;
+    }
+
+    .upload-form-container .file-upload-area input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .upload-form-container .file-preview {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 215, 0, 0.05);
+      border-radius: 8px;
+      margin-top: 0.5rem;
+      border: 1px solid rgba(255, 215, 0, 0.05);
+    }
+
+    .upload-form-container .file-preview .file-name {
+      flex: 1;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .upload-form-container .file-preview .file-size {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.75rem;
+    }
+
+    .upload-form-container .file-preview .file-remove {
+      cursor: pointer;
+      color: rgba(255, 80, 80, 0.5);
+      transition: 0.2s;
+      background: none;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .upload-form-container .file-preview .file-remove:hover {
+      color: #ff6b6b;
+    }
+
+    .upload-form-container .btn-upload {
+      padding: 0.8rem 2.5rem;
+      border: none;
+      border-radius: 40px;
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      color: #0a0a0f;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .upload-form-container .btn-upload:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    .price-toggle-group {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .price-toggle-group label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 500;
+    }
+
+    .price-toggle-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #FFD700;
+      cursor: pointer;
+    }
+
+    .price-input {
+      display: none;
+    }
+
+    .price-input.show {
+      display: block;
+    }
+
+    /* Auth Modal */
     .auth-modal {
       display: none;
       position: fixed;
@@ -1131,7 +1461,7 @@
       color: transparent;
     }
 
-    .modal-song {
+    .modal-content .modal-song {
       font-size: 0.85rem;
       color: rgba(255, 255, 255, 0.5);
       margin-bottom: 1.2rem;
@@ -1139,7 +1469,7 @@
       padding-bottom: 0.8rem;
     }
 
-    .modal textarea {
+    .modal-content textarea {
       width: 100%;
       background: rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(255, 215, 0, 0.08);
@@ -1153,7 +1483,7 @@
       transition: border-color 0.3s ease;
     }
 
-    .modal textarea:focus {
+    .modal-content textarea:focus {
       outline: none;
       border-color: rgba(255, 215, 0, 0.3);
     }
@@ -1202,6 +1532,31 @@
       background: rgba(255, 255, 255, 0.08);
     }
 
+    .btn-pay {
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      color: white;
+    }
+
+    .btn-pay:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 25px rgba(76, 175, 80, 0.3);
+    }
+
+    .payment-modal .price-display {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #FFD700;
+      margin: 1rem 0;
+    }
+
+    .payment-modal .payment-detail {
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
     footer {
       text-align: center;
       margin-top: 3rem;
@@ -1216,21 +1571,41 @@
     @media (max-width: 700px) {
       .container { padding: 1rem; }
       .hero h2 { font-size: 1.8rem; }
-      .hero { padding: 2.5rem 1rem; min-height: 250px; }
+      .hero { padding: 2.5rem 1rem; min-height: 220px; }
       .card-grid { grid-template-columns: 1fr; }
       .track-links a { padding: 6px 12px; font-size: 0.7rem; }
-      .mood-btn { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
-      .player-wrapper iframe { height: 140px; }
       .navbar { padding: 0.5rem 1.2rem; border-radius: 60px; }
       .logo-text { font-size: 1.2rem; }
       .nav-btn { padding: 0.4rem 1rem; font-size: 0.75rem; }
-      .stat-card { padding: 0.5rem 1.2rem; }
-      .stat-number { font-size: 1.2rem; }
-      .hero .music-particles span { display: none; }
+      .stat-card { padding: 0.5rem 1rem; }
+      .stat-number { font-size: 1.1rem; }
       .user-btn .user-name { max-width: 50px; font-size: 0.75rem; }
       .auth-modal-content { padding: 1.8rem; }
       .tab-btn { padding: 0.5rem 1.2rem; font-size: 0.8rem; }
-      .genre-btn { padding: 0.4rem 1rem; font-size: 0.75rem; }
+      .upload-dashboard .upload-grid { grid-template-columns: 1fr; }
+      .upload-form-container { padding: 1.2rem; }
+      .upload-form-container .form-row { flex-direction: column; }
+      .upload-form-container .form-row > * { min-width: auto; }
+      .search-bar { flex-direction: column; }
+      .search-bar input { width: 100%; }
+      .search-bar select { width: 100%; }
+      .upload-stats { flex-direction: column; }
+      .upload-stat-card { min-width: auto; }
+      .mood-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+        padding: 0.5rem;
+      }
+      .mood-btn {
+        min-height: 80px;
+        padding: 1rem 0.8rem;
+      }
+      .mood-btn .mood-emoji {
+        font-size: 1.8rem;
+      }
+      .mood-btn .mood-label {
+        font-size: 0.75rem;
+      }
     }
   </style>
 </head>
@@ -1260,6 +1635,20 @@
     
     <div class="auth-switch" id="authSwitch">
       Belum punya akun? <span id="authSwitchLink">Daftar</span>
+    </div>
+  </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal" id="paymentModal">
+  <div class="modal-content payment-modal">
+    <h3>💳 Beli Akses</h3>
+    <div class="modal-song" id="paymentItemInfo">Membuka akses untuk: -</div>
+    <div class="price-display" id="paymentPriceDisplay">Rp 10.000</div>
+    <div class="payment-detail">Setelah pembayaran, file akan terbuka dan dapat diunduh</div>
+    <div class="modal-buttons">
+      <button class="btn-cancel" id="paymentCancelBtn">Batal</button>
+      <button class="btn-pay" id="paymentConfirmBtn">✅ Bayar Sekarang</button>
     </div>
   </div>
 </div>
@@ -1518,9 +1907,18 @@
     return songs;
   }
 
-  // ---------- DATA MOVIE (350 FILM) ----------
+  const songsDatabase = {
+    senang: generateSongsForMood("senang", "Senang", 0),
+    sedih: generateSongsForMood("sedih", "Sedih", 50),
+    galau: generateSongsForMood("galau", "Galau", 100),
+    romantis: generateSongsForMood("romantis", "Romantis", 150),
+    marah: generateSongsForMood("marah", "Marah", 200),
+    fokus: generateSongsForMood("fokus", "Fokus", 250),
+    relax: generateSongsForMood("relax", "Relax", 300)
+  };
+
+  // ---------- DATA MOVIE ----------
   function generateMovies() {
-    // 150 Film Barat tambahan
     const westernExtra = [
       "The Godfather Part II", "The Dark Knight Rises", "Django Unchained", "The Prestige", "Memento",
       "Reservoir Dogs", "The Usual Suspects", "Se7en", "The Sixth Sense", "The Departed",
@@ -1542,7 +1940,6 @@
       "The Unforgivable", "Red Notice", "Don't Look Up", "The Adam Project", "The Gray Man"
     ];
 
-    // 100 Film Korea tambahan
     const koreanExtra = [
       "The Handmaiden", "Burning", "Mother", "The Wailing", "I Saw the Devil",
       "The Chaser", "The Man from Nowhere", "A Bittersweet Life", "The Good The Bad The Weird",
@@ -1561,7 +1958,6 @@
       "The Battle of Jangsari", "The Battle of Yeonpyeong", "The Admiral", "The Prince", "The Swordsman"
     ];
 
-    // 100 Film China tambahan
     const chineseExtra = [
       "The Wandering Earth 2", "The Three-Body Problem", "Crazy Alien", "The Monkey King", "The Monkey King 2",
       "The Monkey King 3", "The Great Wall", "The Last Emperor", "Farewell My Concubine",
@@ -1602,7 +1998,6 @@
       return genres[Math.floor(Math.random() * 4)];
     }
 
-    // Western movies (200)
     const westernAll = [
       "The Shawshank Redemption", "The Godfather", "The Dark Knight", "Pulp Fiction", "Schindler's List",
       "12 Angry Men", "Forrest Gump", "Fight Club", "Inception", "The Matrix",
@@ -1631,11 +2026,11 @@
         imdb: `https://www.imdb.com/find?q=${encodeURIComponent(title)}`,
         youtube: `https://www.youtube.com/results?search_query=${encodeURIComponent(title + " trailer")}`,
         type: 'movie',
-        description: `${title} adalah film ${genre} dari Hollywood.`
+        description: `${title} adalah film ${genre} dari Hollywood.`,
+        isUploaded: false
       });
     });
 
-    // Korean movies (100)
     const koreanAll = [
       "Parasite", "Train to Busan", "Oldboy", "Memories of Murder", "The Host",
       "Burning", "The Handmaiden", "A Taxi Driver", "Mother", "The Wailing",
@@ -1658,11 +2053,11 @@
         imdb: `https://www.imdb.com/find?q=${encodeURIComponent(title)}`,
         youtube: `https://www.youtube.com/results?search_query=${encodeURIComponent(title + " trailer")}`,
         type: 'movie',
-        description: `${title} adalah film ${genre} dari Korea Selatan.`
+        description: `${title} adalah film ${genre} dari Korea Selatan.`,
+        isUploaded: false
       });
     });
 
-    // Chinese movies (100)
     const chineseAll = [
       "Crouching Tiger Hidden Dragon", "Hero", "House of Flying Daggers", "Curse of the Golden Flower", "The Grandmaster",
       "Ip Man", "Ip Man 2", "Ip Man 3", "The Legend of the Drunken Master", "Police Story",
@@ -1684,14 +2079,15 @@
         imdb: `https://www.imdb.com/find?q=${encodeURIComponent(title)}`,
         youtube: `https://www.youtube.com/results?search_query=${encodeURIComponent(title + " trailer")}`,
         type: 'movie',
-        description: `${title} adalah film ${genre} dari China.`
+        description: `${title} adalah film ${genre} dari China.`,
+        isUploaded: false
       });
     });
 
     return allMovies;
   }
 
-  // ---------- DATA NOVEL (50) ----------
+  // ---------- DATA NOVEL ----------
   function generateNovels() {
     const novelTitles = [
       "Laskar Pelangi", "Sang Pemimpi", "Edensor", "Maryamah Karpov", "Padang Bulan",
@@ -1734,13 +2130,14 @@
         goodreads: `https://www.goodreads.com/search?q=${encodeURIComponent(title)}`,
         google: `https://www.google.com/search?q=${encodeURIComponent(title + " " + authors[i % authors.length])}`,
         type: 'novel',
-        description: `Novel ${genre} karya ${authors[i % authors.length]} yang menginspirasi.`
+        description: `Novel ${genre} karya ${authors[i % authors.length]} yang menginspirasi.`,
+        isUploaded: false
       });
     });
     return novels;
   }
 
-  // ---------- DATA ANIME (50) ----------
+  // ---------- DATA ANIME ----------
   function generateAnime() {
     const animeTitles = [
       "Attack on Titan", "Demon Slayer", "Jujutsu Kaisen", "Chainsaw Man", "One Punch Man",
@@ -1783,26 +2180,109 @@
         myanimelist: `https://myanimelist.net/search/all?q=${encodeURIComponent(title)}`,
         google: `https://www.google.com/search?q=${encodeURIComponent(title + " anime")}`,
         type: 'anime',
-        description: `Anime ${genre} legendaris dari Jepang karya ${authors[i % authors.length]}.`
+        description: `Anime ${genre} legendaris dari Jepang karya ${authors[i % authors.length]}.`,
+        isUploaded: false
       });
     });
     return animes;
   }
 
-  const songsDatabase = {
-    senang: generateSongsForMood("senang", "Senang", 0),
-    sedih: generateSongsForMood("sedih", "Sedih", 50),
-    galau: generateSongsForMood("galau", "Galau", 100),
-    romantis: generateSongsForMood("romantis", "Romantis", 150),
-    marah: generateSongsForMood("marah", "Marah", 200),
-    fokus: generateSongsForMood("fokus", "Fokus", 250),
-    relax: generateSongsForMood("relax", "Relax", 300)
-  };
+  // ---------- UPLOADED DATA WITH PRICE ----------
+  function getUploadedData() {
+    return JSON.parse(localStorage.getItem('starlume_uploads')) || {
+      songs: [],
+      movies: [],
+      novels: [],
+      anime: []
+    };
+  }
 
-  let allSongs = Object.values(songsDatabase).flat();
-  let allMovies = generateMovies();
-  let allNovels = generateNovels();
-  let allAnime = generateAnime();
+  function saveUploadedData(data) {
+    localStorage.setItem('starlume_uploads', JSON.stringify(data));
+  }
+
+  // ---------- PURCHASED ACCESS ----------
+  function getPurchasedItems() {
+    return JSON.parse(localStorage.getItem('starlume_purchased')) || [];
+  }
+
+  function savePurchasedItems(items) {
+    localStorage.setItem('starlume_purchased', JSON.stringify(items));
+  }
+
+  function isItemPurchased(itemId) {
+    const purchased = getPurchasedItems();
+    return purchased.includes(itemId);
+  }
+
+  function purchaseItem(itemId) {
+    const purchased = getPurchasedItems();
+    if (!purchased.includes(itemId)) {
+      purchased.push(itemId);
+      savePurchasedItems(purchased);
+    }
+  }
+
+  // ---------- GABUNGKAN DATA ----------
+  function getAllSongs() {
+    const uploaded = getUploadedData();
+    const defaultSongs = Object.values(songsDatabase).flat();
+    const uploadedSongs = uploaded.songs.map(s => ({
+      ...s,
+      isUploaded: true,
+      img: s.img || getIconImage(Date.now() + Math.random() * 1000)
+    }));
+    return [...defaultSongs, ...uploadedSongs];
+  }
+
+  function getAllMovies() {
+    const uploaded = getUploadedData();
+    const defaultMovies = generateMovies();
+    const uploadedMovies = uploaded.movies.map(m => ({
+      ...m,
+      isUploaded: true,
+      img: m.img || getIconImage(Date.now() + Math.random() * 1000),
+      type: 'movie'
+    }));
+    return [...defaultMovies, ...uploadedMovies];
+  }
+
+  function getAllNovels() {
+    const uploaded = getUploadedData();
+    const defaultNovels = generateNovels();
+    const uploadedNovels = uploaded.novels.map(n => ({
+      ...n,
+      isUploaded: true,
+      img: n.img || getIconImage(Date.now() + Math.random() * 1000),
+      type: 'novel'
+    }));
+    return [...defaultNovels, ...uploadedNovels];
+  }
+
+  function getAllAnime() {
+    const uploaded = getUploadedData();
+    const defaultAnime = generateAnime();
+    const uploadedAnime = uploaded.anime.map(a => ({
+      ...a,
+      isUploaded: true,
+      img: a.img || getIconImage(Date.now() + Math.random() * 1000),
+      type: 'anime'
+    }));
+    return [...defaultAnime, ...uploadedAnime];
+  }
+
+  let allSongs = getAllSongs();
+  let allMovies = getAllMovies();
+  let allNovels = getAllNovels();
+  let allAnime = getAllAnime();
+
+  function refreshAllData() {
+    allSongs = getAllSongs();
+    allMovies = getAllMovies();
+    allNovels = getAllNovels();
+    allAnime = getAllAnime();
+  }
+
   let currentPage = "home";
   let selectedMood = null;
   let favorites = JSON.parse(localStorage.getItem("starlume_fav")) || [];
@@ -1812,6 +2292,8 @@
   let songJournal = JSON.parse(localStorage.getItem("starlume_journal")) || {};
   let activeTab = 'music';
   let selectedGenre = 'Semua';
+  let uploadSearchQuery = '';
+  let uploadFilterType = 'Semua';
 
   function saveFav() { localStorage.setItem("starlume_fav", JSON.stringify(favorites)); }
   function saveMovieFav() { localStorage.setItem("starlume_movie_fav", JSON.stringify(movieFavorites)); }
@@ -1829,6 +2311,7 @@
     setTimeout(() => toast.remove(), 2800);
   }
 
+  // ---------- FAVORITE FUNCTIONS ----------
   function toggleFavorite(songId) {
     if (!currentUser) {
       showNotif('🔒 Login dulu untuk menambahkan favorit!');
@@ -1887,6 +2370,7 @@
   function isAnimeFavorite(animeId) { return animeFavorites.includes(animeId); }
   function hasJournal(songId) { return !!songJournal[songId]; }
 
+  // ---------- PLAYER ----------
   function togglePlayer(songId) {
     const song = allSongs.find(s => s.id === songId);
     if(!song || !song.youtubeId) {
@@ -1925,6 +2409,7 @@
     }
   }
 
+  // ---------- JOURNAL ----------
   function openJournalModal(songId) {
     if (!currentUser) {
       showNotif('🔒 Login dulu untuk menulis jurnal!');
@@ -1978,21 +2463,292 @@
     modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
   }
 
+  // ---------- PAYMENT MODAL ----------
+  let pendingPaymentItem = null;
+
+  function openPaymentModal(item) {
+    if (!currentUser) {
+      showNotif('🔒 Login dulu untuk membeli akses!');
+      openAuthModal('login');
+      return;
+    }
+    pendingPaymentItem = item;
+    const modal = document.getElementById('paymentModal');
+    document.getElementById('paymentItemInfo').textContent = `Membuka akses untuk: ${item.title}`;
+    document.getElementById('paymentPriceDisplay').textContent = `Rp ${item.price.toLocaleString()}`;
+    modal.style.display = 'flex';
+  }
+
+  function closePaymentModal() {
+    document.getElementById('paymentModal').style.display = 'none';
+    pendingPaymentItem = null;
+  }
+
+  function confirmPayment() {
+    if (pendingPaymentItem) {
+      purchaseItem(pendingPaymentItem.id);
+      showNotif(`✅ Akses berhasil dibuka untuk: ${pendingPaymentItem.title}`);
+      closePaymentModal();
+      render();
+    }
+  }
+
+  // ---------- DOWNLOAD HANDLER ----------
+  function downloadFile(fileData, fileName) {
+    try {
+      if (fileData.startsWith('data:')) {
+        const response = fetch(fileData);
+        response.then(res => res.blob()).then(blob => {
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = fileName;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+          showNotif(`📥 Mengunduh: ${fileName}`);
+        }).catch(() => {
+          showNotif('❌ Gagal mengunduh file');
+        });
+      } else {
+        window.open(fileData, '_blank');
+        showNotif(`📥 Membuka: ${fileName}`);
+      }
+    } catch (e) {
+      showNotif('❌ Gagal mengunduh file');
+      console.error(e);
+    }
+  }
+
+  // ---------- UPLOAD HANDLER ----------
+  let uploadFileData = null;
+  let uploadFileName = '';
+
+  function handleFileUpload(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        resolve({
+          name: file.name,
+          size: file.size,
+          type: file.type,
+          data: e.target.result
+        });
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function processUpload(category, formData) {
+    if (!currentUser) {
+      showNotif('🔒 Login dulu untuk mengupload!');
+      openAuthModal('login');
+      return;
+    }
+
+    const title = formData.get('title')?.trim();
+    if (!title) {
+      showNotif('⚠️ Judul harus diisi!');
+      return;
+    }
+
+    const uploaded = getUploadedData();
+    const file = uploadFileData;
+    const fileType = uploadFileName.split('.').pop().toLowerCase();
+    const hasPrice = formData.get('hasPrice') === 'on';
+    const price = parseInt(formData.get('price')) || 0;
+    
+    let fileUrl = '';
+    let fileIcon = '📄';
+    if (file) {
+      fileUrl = file.data;
+      if (fileType.match(/mp4|webm|ogg|mov/)) fileIcon = '🎬';
+      else if (fileType.match(/mp3|wav|flac|aac|ogg/)) fileIcon = '🎵';
+      else if (fileType.match(/pdf|epub|mobi/)) fileIcon = '📚';
+      else if (fileType.match(/jpg|jpeg|png|gif|webp/)) fileIcon = '🖼️';
+    }
+
+    const newItem = {
+      id: `upload_${category}_${Date.now()}`,
+      title: title,
+      uploadedBy: currentUser.email,
+      uploadedAt: new Date().toISOString(),
+      fileUrl: fileUrl,
+      fileName: uploadFileName,
+      fileType: fileType,
+      fileIcon: fileIcon,
+      hasPrice: hasPrice,
+      price: hasPrice ? price : 0,
+      isLocked: hasPrice,
+      img: file && fileType.match(/jpg|jpeg|png|gif|webp/) ? file.data : getIconImage(Date.now() + Math.random() * 1000)
+    };
+
+    if (category === 'music') {
+      const mood = formData.get('mood') || 'relax';
+      const artist = formData.get('artist') || 'Uploader';
+      newItem.artist = artist;
+      newItem.mood = mood;
+      newItem.quote = formData.get('quote') || '✨ Karya yang diupload oleh pengguna';
+      newItem.youtube = formData.get('youtube') || `https://www.youtube.com/results?search_query=${encodeURIComponent(title)}`;
+      newItem.spotify = formData.get('spotify') || `https://open.spotify.com/search/${encodeURIComponent(title)}`;
+      newItem.youtubeId = getYoutubeId(title) || null;
+      newItem.type = 'music';
+      uploaded.songs.push(newItem);
+      showNotif('🎵 Lagu berhasil diupload!');
+    } else if (category === 'movies') {
+      const genre = formData.get('genre') || 'Aksi';
+      const origin = formData.get('origin') || 'Upload';
+      const year = parseInt(formData.get('year')) || new Date().getFullYear();
+      const director = formData.get('director') || 'Uploader';
+      newItem.genre = genre;
+      newItem.origin = origin;
+      newItem.year = year;
+      newItem.director = director;
+      newItem.rating = formData.get('rating') || '4.0';
+      newItem.imdb = formData.get('imdb') || `https://www.imdb.com/find?q=${encodeURIComponent(title)}`;
+      newItem.youtube = formData.get('trailer') || `https://www.youtube.com/results?search_query=${encodeURIComponent(title + " trailer")}`;
+      newItem.description = formData.get('description') || `Film ${genre} yang diupload oleh pengguna.`;
+      newItem.type = 'movie';
+      uploaded.movies.push(newItem);
+      showNotif('🎬 Film berhasil diupload!');
+    } else if (category === 'novels') {
+      const genre = formData.get('genre') || 'Fiksi';
+      const author = formData.get('author') || 'Uploader';
+      const year = parseInt(formData.get('year')) || new Date().getFullYear();
+      newItem.author = author;
+      newItem.genre = genre;
+      newItem.year = year;
+      newItem.goodreads = formData.get('goodreads') || `https://www.goodreads.com/search?q=${encodeURIComponent(title)}`;
+      newItem.google = formData.get('google') || `https://www.google.com/search?q=${encodeURIComponent(title)}`;
+      newItem.description = formData.get('description') || `Novel ${genre} yang diupload oleh pengguna.`;
+      newItem.type = 'novel';
+      uploaded.novels.push(newItem);
+      showNotif('📚 Novel berhasil diupload!');
+    } else if (category === 'anime') {
+      const genre = formData.get('genre') || 'Action';
+      const author = formData.get('author') || 'Uploader';
+      const year = parseInt(formData.get('year')) || new Date().getFullYear();
+      newItem.author = author;
+      newItem.genre = genre;
+      newItem.year = year;
+      newItem.myanimelist = formData.get('myanimelist') || `https://myanimelist.net/search/all?q=${encodeURIComponent(title)}`;
+      newItem.google = formData.get('google') || `https://www.google.com/search?q=${encodeURIComponent(title + " anime")}`;
+      newItem.description = formData.get('description') || `Anime ${genre} yang diupload oleh pengguna.`;
+      newItem.type = 'anime';
+      uploaded.anime.push(newItem);
+      showNotif('🎌 Anime berhasil diupload!');
+    }
+
+    saveUploadedData(uploaded);
+    refreshAllData();
+    uploadFileData = null;
+    uploadFileName = '';
+    render();
+  }
+
+  // ---------- DELETE UPLOAD ----------
+  function deleteUpload(itemId, category) {
+    if (!currentUser) {
+      showNotif('🔒 Login dulu untuk menghapus!');
+      return;
+    }
+    const uploaded = getUploadedData();
+    let found = false;
+    
+    if (category === 'music') {
+      const index = uploaded.songs.findIndex(s => s.id === itemId);
+      if (index > -1) {
+        uploaded.songs.splice(index, 1);
+        found = true;
+      }
+    } else if (category === 'movie') {
+      const index = uploaded.movies.findIndex(m => m.id === itemId);
+      if (index > -1) {
+        uploaded.movies.splice(index, 1);
+        found = true;
+      }
+    } else if (category === 'novel') {
+      const index = uploaded.novels.findIndex(n => n.id === itemId);
+      if (index > -1) {
+        uploaded.novels.splice(index, 1);
+        found = true;
+      }
+    } else if (category === 'anime') {
+      const index = uploaded.anime.findIndex(a => a.id === itemId);
+      if (index > -1) {
+        uploaded.anime.splice(index, 1);
+        found = true;
+      }
+    }
+    
+    if (found) {
+      saveUploadedData(uploaded);
+      refreshAllData();
+      showNotif('🗑 Item berhasil dihapus!');
+      render();
+    } else {
+      showNotif('❌ Item tidak ditemukan');
+    }
+  }
+
+  // ---------- TOGGLE PRICE ----------
+  function togglePrice(itemId, category) {
+    if (!currentUser) {
+      showNotif('🔒 Login dulu untuk mengubah!');
+      return;
+    }
+    const uploaded = getUploadedData();
+    let items = [];
+    
+    if (category === 'music') items = uploaded.songs;
+    else if (category === 'movie') items = uploaded.movies;
+    else if (category === 'novel') items = uploaded.novels;
+    else if (category === 'anime') items = uploaded.anime;
+    
+    const item = items.find(i => i.id === itemId);
+    if (item) {
+      item.hasPrice = !item.hasPrice;
+      if (!item.hasPrice) {
+        item.price = 0;
+        item.isLocked = false;
+      } else {
+        item.price = item.price || 10000;
+        item.isLocked = true;
+      }
+      saveUploadedData(uploaded);
+      refreshAllData();
+      showNotif(item.hasPrice ? '🔒 Item dikunci dengan harga' : '🔓 Item dibuka gratis');
+      render();
+    }
+  }
+
+  // ---------- RENDER FUNCTIONS ----------
+  function getMoodDisplayName(moodKey) {
+    const names = { senang:"Senang", sedih:"Sedih", galau:"Galau", romantis:"Romantis", marah:"Marah", fokus:"Fokus", relax:"Relax" };
+    return names[moodKey] || moodKey;
+  }
+
   function renderRecommendations() {
     if (!selectedMood) return '';
-    const songs = songsDatabase[selectedMood] || [];
+    const moodDisplay = getMoodDisplayName(selectedMood);
+    const songs = allSongs.filter(s => s.mood && s.mood.toLowerCase() === moodDisplay.toLowerCase());
     if (songs.length === 0) return '<div class="empty-fav"><span class="empty-icon">🎵</span>Tidak ada lagu untuk mood ini</div>';
     let html = `<div class="results-container"><div class="card-grid">`;
     songs.forEach(song => {
       const hasNote = hasJournal(song.id);
       const isFav = isFavorite(song.id);
       const hasYoutube = song.youtubeId;
+      const isUploaded = song.isUploaded;
+      const isLocked = song.isLocked && !isItemPurchased(song.id);
+      
       html += `
         <div class="music-card">
           <img class="card-img" src="${song.img}" alt="${song.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎵</div>'">
           <div class="card-body">
             <div class="card-title">
-              <span><span class="title-icon">🎵</span> ${song.title}</span>
+              <span><span class="title-icon">🎵</span> ${song.title} ${isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''} ${song.hasPrice && !isLocked ? '<span class="price-badge">💰</span>' : ''}</span>
               <div class="action-icons">
                 ${hasYoutube ? `<span class="play-icon" data-id="${song.id}" data-play="true">▶️</span>` : ''}
                 <span class="journal-icon ${hasNote ? 'has-note' : ''}" data-id="${song.id}" data-journal="true">📖</span>
@@ -2006,6 +2762,15 @@
               <a href="${song.spotify}" target="_blank">🎧 Spotify</a>
               ${hasYoutube ? `<a href="#" class="btn-play-now" data-id="${song.id}" data-play-now="true">🔊 Putar</a>` : ''}
             </div>
+            ${song.fileUrl ? `
+              <div style="margin-top:8px;">
+                ${isLocked ? `
+                  <button class="btn-buy-access" data-id="${song.id}" data-category="music" data-buy="true">🔓 Beli Akses Rp ${song.price.toLocaleString()}</button>
+                ` : `
+                  <button class="btn-download-file" data-file="${song.fileUrl}" data-name="${song.fileName || song.title + '.file'}">📥 Download</button>
+                `}
+              </div>
+            ` : ''}
             ${hasYoutube ? `
               <div class="player-wrapper" data-song-id="${song.id}" id="player_${song.id}">
                 <iframe src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -2037,12 +2802,15 @@
     let html = `<div class="results-container"><div class="card-grid">`;
     filteredMovies.forEach(movie => {
       const isFav = isMovieFavorite(movie.id);
+      const isUploaded = movie.isUploaded;
+      const isLocked = movie.isLocked && !isItemPurchased(movie.id);
+      
       html += `
         <div class="music-card">
           <img class="card-img" src="${movie.img}" alt="${movie.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎬</div>'">
           <div class="card-body">
             <div class="card-title">
-              <span><span class="title-icon">🎬</span> ${movie.title}</span>
+              <span><span class="title-icon">🎬</span> ${movie.title} ${isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''} ${movie.hasPrice && !isLocked ? '<span class="price-badge">💰</span>' : ''}</span>
               <div class="action-icons">
                 <span class="watch-icon" data-id="${movie.id}" data-watch="true">▶️</span>
                 <span class="fav-icon ${isFav ? 'active' : ''}" data-id="${movie.id}" data-movie="true">${isFav ? '★' : '☆'}</span>
@@ -2056,6 +2824,15 @@
               <a href="${movie.youtube}" target="_blank">▶️ Trailer</a>
               <a href="#" class="btn-watch-now" data-id="${movie.id}" data-watch-now="true">🍿 Tonton</a>
             </div>
+            ${movie.fileUrl ? `
+              <div style="margin-top:8px;">
+                ${isLocked ? `
+                  <button class="btn-buy-access" data-id="${movie.id}" data-category="movie" data-buy="true">🔓 Beli Akses Rp ${movie.price.toLocaleString()}</button>
+                ` : `
+                  <button class="btn-download-file" data-file="${movie.fileUrl}" data-name="${movie.fileName || movie.title + '.file'}">📥 Download</button>
+                `}
+              </div>
+            ` : ''}
             ${isFav ? `<div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${movie.id}" data-movie="true">★ Hapus dari favorit</span></div>` : ''}
           </div>
         </div>
@@ -2079,12 +2856,15 @@
     let html = `<div class="results-container"><div class="card-grid">`;
     filteredNovels.forEach(novel => {
       const isFav = isNovelFavorite(novel.id);
+      const isUploaded = novel.isUploaded;
+      const isLocked = novel.isLocked && !isItemPurchased(novel.id);
+      
       html += `
         <div class="music-card">
           <img class="card-img" src="${novel.img}" alt="${novel.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>📚</div>'">
           <div class="card-body">
             <div class="card-title">
-              <span><span class="title-icon">📚</span> ${novel.title}</span>
+              <span><span class="title-icon">📚</span> ${novel.title} ${isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''} ${novel.hasPrice && !isLocked ? '<span class="price-badge">💰</span>' : ''}</span>
               <div class="action-icons">
                 <span class="read-icon" data-id="${novel.id}" data-read="true">📖</span>
                 <span class="fav-icon ${isFav ? 'active' : ''}" data-id="${novel.id}" data-novel="true">${isFav ? '★' : '☆'}</span>
@@ -2097,6 +2877,15 @@
               <a href="${novel.google}" target="_blank">🔍 Cari</a>
               <a href="#" class="btn-read-now" data-id="${novel.id}" data-read-now="true">📖 Baca</a>
             </div>
+            ${novel.fileUrl ? `
+              <div style="margin-top:8px;">
+                ${isLocked ? `
+                  <button class="btn-buy-access" data-id="${novel.id}" data-category="novel" data-buy="true">🔓 Beli Akses Rp ${novel.price.toLocaleString()}</button>
+                ` : `
+                  <button class="btn-download-file" data-file="${novel.fileUrl}" data-name="${novel.fileName || novel.title + '.file'}">📥 Download</button>
+                `}
+              </div>
+            ` : ''}
             ${isFav ? `<div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${novel.id}" data-novel="true">★ Hapus dari favorit</span></div>` : ''}
           </div>
         </div>
@@ -2120,12 +2909,15 @@
     let html = `<div class="results-container"><div class="card-grid">`;
     filteredAnime.forEach(anime => {
       const isFav = isAnimeFavorite(anime.id);
+      const isUploaded = anime.isUploaded;
+      const isLocked = anime.isLocked && !isItemPurchased(anime.id);
+      
       html += `
         <div class="music-card">
           <img class="card-img" src="${anime.img}" alt="${anime.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎌</div>'">
           <div class="card-body">
             <div class="card-title">
-              <span><span class="title-icon">🎌</span> ${anime.title}</span>
+              <span><span class="title-icon">🎌</span> ${anime.title} ${isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''} ${anime.hasPrice && !isLocked ? '<span class="price-badge">💰</span>' : ''}</span>
               <div class="action-icons">
                 <span class="read-icon" data-id="${anime.id}" data-read="true">📺</span>
                 <span class="fav-icon ${isFav ? 'active' : ''}" data-id="${anime.id}" data-anime="true">${isFav ? '★' : '☆'}</span>
@@ -2138,6 +2930,15 @@
               <a href="${anime.google}" target="_blank">🔍 Cari</a>
               <a href="#" class="btn-read-now" data-id="${anime.id}" data-read-now="true">📺 Tonton</a>
             </div>
+            ${anime.fileUrl ? `
+              <div style="margin-top:8px;">
+                ${isLocked ? `
+                  <button class="btn-buy-access" data-id="${anime.id}" data-category="anime" data-buy="true">🔓 Beli Akses Rp ${anime.price.toLocaleString()}</button>
+                ` : `
+                  <button class="btn-download-file" data-file="${anime.fileUrl}" data-name="${anime.fileName || anime.title + '.file'}">📥 Download</button>
+                `}
+              </div>
+            ` : ''}
             ${isFav ? `<div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${anime.id}" data-anime="true">★ Hapus dari favorit</span></div>` : ''}
           </div>
         </div>
@@ -2158,7 +2959,7 @@
         <div class="music-card">
           <img class="card-img" src="${song.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>📔</div>'">
           <div class="card-body">
-            <div class="card-title"><span><span class="title-icon">📔</span> ${song.title}</span></div>
+            <div class="card-title"><span><span class="title-icon">📔</span> ${song.title} ${song.isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''}</span></div>
             <div class="artist-name">${song.artist}</div>
             <div style="background:rgba(255,215,0,0.04); padding:0.8rem; border-radius:1rem; margin:10px 0; border-left:2px solid rgba(255,215,0,0.2);">
               <span style="color:rgba(255,215,0,0.6); font-size:0.75rem; font-weight:600;">✍️ Catatan:</span><br>
@@ -2179,7 +2980,179 @@
     return html;
   }
 
+  // ---------- RENDER UPLOAD DASHBOARD ----------
+  function renderUploadDashboard() {
+    const uploaded = getUploadedData();
+    const allUploads = [...uploaded.songs, ...uploaded.movies, ...uploaded.novels, ...uploaded.anime];
+    const userUploads = allUploads.filter(item => item.uploadedBy === currentUser?.email);
+    
+    let filteredUploads = userUploads;
+    if (uploadSearchQuery.trim()) {
+      const query = uploadSearchQuery.toLowerCase().trim();
+      filteredUploads = filteredUploads.filter(item => 
+        item.title.toLowerCase().includes(query)
+      );
+    }
+    if (uploadFilterType !== 'Semua') {
+      filteredUploads = filteredUploads.filter(item => item.type === uploadFilterType);
+    }
+
+    const totalUploads = userUploads.length;
+    const musicCount = userUploads.filter(i => i.type === 'music').length;
+    const movieCount = userUploads.filter(i => i.type === 'movie').length;
+    const novelCount = userUploads.filter(i => i.type === 'novel').length;
+    const animeCount = userUploads.filter(i => i.type === 'anime').length;
+    const lockedCount = userUploads.filter(i => i.isLocked).length;
+    const totalEarnings = userUploads.filter(i => i.hasPrice).reduce((sum, i) => sum + (i.price || 0), 0);
+
+    let html = `
+      <div class="upload-dashboard">
+        <div class="upload-stats">
+          <div class="upload-stat-card">
+            <div class="stat-number">${totalUploads}</div>
+            <div class="stat-label">Total Upload</div>
+          </div>
+          <div class="upload-stat-card">
+            <div class="stat-number">${musicCount}</div>
+            <div class="stat-label">🎵 Musik</div>
+          </div>
+          <div class="upload-stat-card">
+            <div class="stat-number">${movieCount}</div>
+            <div class="stat-label">🎬 Film</div>
+          </div>
+          <div class="upload-stat-card">
+            <div class="stat-number">${novelCount}</div>
+            <div class="stat-label">📚 Novel</div>
+          </div>
+          <div class="upload-stat-card">
+            <div class="stat-number">${animeCount}</div>
+            <div class="stat-label">🎌 Anime</div>
+          </div>
+          <div class="upload-stat-card">
+            <div class="stat-number">${lockedCount}</div>
+            <div class="stat-label">🔒 Terkunci</div>
+          </div>
+          <div class="upload-stat-card">
+            <div class="stat-number">Rp ${totalEarnings.toLocaleString()}</div>
+            <div class="stat-label">💰 Potensi Pendapatan</div>
+          </div>
+        </div>
+
+        <!-- Upload Form -->
+        <div class="upload-form-container">
+          <div class="form-title">📤 Upload Konten Baru</div>
+          <form id="uploadForm" onsubmit="return false;">
+            <div class="form-row">
+              <div>
+                <label>📌 Kategori *</label>
+                <select id="uploadCategory" required>
+                  <option value="music">🎵 Musik</option>
+                  <option value="movies">🎬 Film</option>
+                  <option value="novels">📚 Novel</option>
+                  <option value="anime">🎌 Anime</option>
+                </select>
+              </div>
+              <div>
+                <label>📌 Judul *</label>
+                <input type="text" id="uploadTitle" placeholder="Masukkan judul..." required />
+              </div>
+            </div>
+            <div id="dynamicFields">
+              <!-- Dynamic fields will be inserted here -->
+            </div>
+            <div class="form-row">
+              <div>
+                <label>🔒 Kunci File?</label>
+                <div class="price-toggle-group">
+                  <label>
+                    <input type="checkbox" id="uploadHasPrice" />
+                    Ya, kunci dengan harga
+                  </label>
+                </div>
+              </div>
+              <div class="price-input" id="priceInput">
+                <label>💰 Harga (Rp)</label>
+                <input type="number" id="uploadPrice" placeholder="10000" min="1000" step="1000" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="file-upload-area" id="fileDropArea">
+                <span class="file-icon">📁</span>
+                <span class="file-text">Klik atau drag & drop file di sini</span>
+                <input type="file" id="fileInput" accept="*/*" />
+              </div>
+            </div>
+            <div id="filePreview" style="display:none;" class="file-preview">
+              <span class="file-icon" id="previewIcon">📄</span>
+              <span class="file-name" id="previewName">file.pdf</span>
+              <span class="file-size" id="previewSize">0 KB</span>
+              <button class="file-remove" id="fileRemove" type="button">✕</button>
+            </div>
+            <button class="btn-upload" id="uploadBtn" type="button">🚀 Upload</button>
+          </form>
+        </div>
+
+        <!-- Search & Filter -->
+        <div class="search-bar">
+          <input type="text" id="uploadSearch" placeholder="🔍 Cari uploadanmu..." value="${uploadSearchQuery}" />
+          <select id="uploadFilter">
+            <option value="Semua" ${uploadFilterType === 'Semua' ? 'selected' : ''}>📂 Semua</option>
+            <option value="music" ${uploadFilterType === 'music' ? 'selected' : ''}>🎵 Musik</option>
+            <option value="movie" ${uploadFilterType === 'movie' ? 'selected' : ''}>🎬 Film</option>
+            <option value="novel" ${uploadFilterType === 'novel' ? 'selected' : ''}>📚 Novel</option>
+            <option value="anime" ${uploadFilterType === 'anime' ? 'selected' : ''}>🎌 Anime</option>
+          </select>
+        </div>
+
+        <!-- Upload List -->
+        <h3 style="margin:1.5rem 0 1rem; color:rgba(255,215,0,0.8);">📂 Daftar Uploadan (${filteredUploads.length})</h3>
+    `;
+
+    if (filteredUploads.length === 0) {
+      html += `<div class="empty-fav"><span class="empty-icon">📭</span>${userUploads.length === 0 ? 'Belum ada uploadan. Mulai upload sekarang!' : 'Tidak ada hasil untuk pencarian ini'}</div>`;
+    } else {
+      html += `<div class="upload-grid">`;
+      filteredUploads.forEach(item => {
+        const isLocked = item.isLocked;
+        const priceDisplay = item.hasPrice ? `Rp ${item.price.toLocaleString()}` : 'Gratis';
+        const typeIcon = item.type === 'music' ? '🎵' : item.type === 'movie' ? '🎬' : item.type === 'novel' ? '📚' : '🎌';
+        const typeLabel = item.type === 'music' ? 'Musik' : item.type === 'movie' ? 'Film' : item.type === 'novel' ? 'Novel' : 'Anime';
+        
+        html += `
+          <div class="upload-item-card">
+            <img class="card-img" src="${item.img}" alt="${item.title}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>${typeIcon}</div>'">
+            <div class="card-body">
+              <div class="card-title">
+                <span>${typeIcon} ${item.title}</span>
+                <span style="font-size:0.7rem; color:rgba(255,255,255,0.3);">${isLocked ? '🔒' : '🔓'}</span>
+              </div>
+              <div class="upload-meta">
+                ${typeLabel} · ${item.fileName ? item.fileName.split('.').pop().toUpperCase() : 'No file'} · ${new Date(item.uploadedAt).toLocaleDateString('id-ID')}
+              </div>
+              <div class="upload-meta" style="color:${isLocked ? '#ff6b6b' : '#66bb6a'};">
+                ${isLocked ? `🔒 Terkunci · ${priceDisplay}` : `🔓 Terbuka · ${priceDisplay}`}
+              </div>
+              <div class="upload-actions">
+                <button class="btn-delete-upload" data-id="${item.id}" data-category="${item.type}">🗑 Hapus</button>
+                <button class="btn-toggle-price ${isLocked ? 'active' : ''}" data-id="${item.id}" data-category="${item.type}">
+                  ${isLocked ? '🔓 Buka' : '🔒 Kunci'}
+                </button>
+                ${item.fileUrl ? `<button class="btn-download-file" data-file="${item.fileUrl}" data-name="${item.fileName || item.title + '.file'}">📥 Download</button>` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      html += `</div>`;
+    }
+
+    html += `</div>`;
+    return html;
+  }
+
+  // ---------- MAIN RENDER ----------
   function render() {
+    refreshAllData();
     const app = document.getElementById("appRoot");
     const userName = currentUser ? currentUser.name || currentUser.email.split('@')[0] : null;
     
@@ -2189,10 +3162,10 @@
           <div class="logo">
             <span class="logo-icon">✨</span>
             <span class="logo-text">STARLUME</span>
-            <span class="logo-badge">Premium</span>
           </div>
           <div class="nav-links">
             <button class="nav-btn active" data-page="home">🏠 Beranda</button>
+            <button class="nav-btn" data-page="upload">📤 Upload</button>
             <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length + animeFavorites.length}</span></button>
             <button class="nav-btn" data-page="journal">📓 Journal <span class="badge-count">${Object.keys(songJournal).length}</span></button>
             ${currentUser ? `
@@ -2238,7 +3211,12 @@
           <div class="mood-section">
             <div class="section-title">🎭 Bagaimana perasaanmu sekarang?</div>
             <div class="mood-grid">
-              ${["senang","sedih","galau","romantis","marah","fokus","relax"].map(m => `<button class="mood-btn ${selectedMood === m ? 'active' : ''}" data-mood="${m}"><span class="mood-emoji">${m==='senang'?'😄':m==='sedih'?'😢':m==='galau'?'🌧️':m==='romantis'?'❤️':m==='marah'?'😠':m==='fokus'?'🎯':'🍃'}</span> ${getMoodDisplayName(m)}</button>`).join('')}
+              ${["senang","sedih","galau","romantis","marah","fokus","relax"].map(m => `
+                <button class="mood-btn ${selectedMood === m ? 'active' : ''}" data-mood="${m}">
+                  <span class="mood-emoji">${m==='senang'?'😄':m==='sedih'?'😢':m==='galau'?'🌧️':m==='romantis'?'❤️':m==='marah'?'😠':m==='fokus'?'🎯':'🍃'}</span>
+                  <span class="mood-label">${getMoodDisplayName(m)}</span>
+                </button>
+              `).join('')}
             </div>
           </div>
           ${selectedMood ? renderRecommendations() : '<div style="text-align:center; padding:3rem; background:rgba(255,215,0,0.02); border-radius:2rem; border:1px solid rgba(255,215,0,0.03);"><span style="font-size:3rem;">✨</span><p style="margin-top:1rem; color:rgba(255,255,255,0.4);">Klik salah satu mood di atas untuk memulai</p></div>'}
@@ -2278,6 +3256,74 @@
       app.innerHTML = html;
       attachHomeEvents();
     }
+    else if (currentPage === "upload") {
+      if (!currentUser) {
+        app.innerHTML = `
+          <div class="navbar">
+            <div class="logo"><span class="logo-icon">✨</span><span class="logo-text">STARLUME</span></div>
+            <div class="nav-links">
+              <button class="nav-btn" data-page="home">🏠 Beranda</button>
+              <button class="nav-btn" data-page="upload">📤 Upload</button>
+              <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length + animeFavorites.length}</span></button>
+              <button class="nav-btn" data-page="journal">📓 Journal <span class="badge-count">${Object.keys(songJournal).length}</span></button>
+              <button class="login-btn" id="loginBtn">🔑 Login</button>
+            </div>
+          </div>
+          <div class="hero" style="padding:3rem; min-height:200px;">
+            <div class="star-overlay"></div>
+            <span class="hero-emoji">🔒</span>
+            <h2 style="font-size:2rem;">Login untuk Upload</h2>
+            <p>Silakan login terlebih dahulu untuk mengupload dan mengelola konten</p>
+          </div>
+          <button class="back-btn" id="backHomeBtn">← Kembali ke Beranda</button>
+          <footer>© 2025 Starlume</footer>
+        `;
+        document.getElementById('loginBtn')?.addEventListener('click', () => openAuthModal('login'));
+        document.getElementById('backHomeBtn')?.addEventListener('click', () => { currentPage = "home"; render(); });
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const page = btn.getAttribute('data-page');
+            if (page === 'home') { currentPage = 'home'; render(); }
+            if (page === 'favorites') { currentPage = 'favorites'; render(); }
+            if (page === 'journal') { currentPage = 'journal'; render(); }
+          });
+        });
+        return;
+      }
+
+      let html = `
+        <div class="navbar">
+          <div class="logo"><span class="logo-icon">✨</span><span class="logo-text">STARLUME</span></div>
+          <div class="nav-links">
+            <button class="nav-btn" data-page="home">🏠 Beranda</button>
+            <button class="nav-btn active" data-page="upload">📤 Upload</button>
+            <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length + animeFavorites.length}</span></button>
+            <button class="nav-btn" data-page="journal">📓 Journal <span class="badge-count">${Object.keys(songJournal).length}</span></button>
+            <button class="user-btn" id="userMenuBtn">
+              <span class="user-avatar">${userName.charAt(0).toUpperCase()}</span>
+              <span class="user-name">${userName}</span>
+              <span style="font-size:0.6rem;">▼</span>
+            </button>
+            <div id="userDropdown" style="display:none; position:absolute; top:60px; right:20px; background:rgba(20,20,30,0.95); backdrop-filter:blur(20px); border-radius:16px; padding:0.5rem; border:1px solid rgba(255,215,0,0.1); min-width:160px; z-index:100;">
+              <div style="padding:0.5rem 1rem; color:rgba(255,255,255,0.4); font-size:0.8rem; border-bottom:1px solid rgba(255,255,255,0.05);">${currentUser.email}</div>
+              <button id="logoutBtn" style="width:100%; background:none; border:none; color:rgba(255,80,80,0.7); padding:0.6rem 1rem; text-align:left; cursor:pointer; font-size:0.85rem; border-radius:10px; transition:0.2s;">🚪 Logout</button>
+            </div>
+          </div>
+        </div>
+        <div class="hero" style="padding:2.5rem; min-height:180px;">
+          <div class="star-overlay"></div>
+          <div class="wave-line"></div>
+          <span class="hero-emoji">📤</span>
+          <h2 style="font-size:2.2rem;">Dashboard Upload</h2>
+          <p>Kelola dan upload kontenmu dengan mudah</p>
+        </div>
+        <button class="back-btn" id="backHomeFromUploadBtn">← Kembali ke Beranda</button>
+        ${renderUploadDashboard()}
+        <footer>© 2025 Starlume — Kelola kontenmu dengan mudah</footer>
+      `;
+      app.innerHTML = html;
+      attachUploadDashboardEvents();
+    }
     else if (currentPage === "favorites") {
       const favSongs = allSongs.filter(s => favorites.includes(s.id));
       const favMovies = allMovies.filter(m => movieFavorites.includes(m.id));
@@ -2287,9 +3333,10 @@
       
       let html = `
         <div class="navbar">
-          <div class="logo"><span class="logo-icon">✨</span><span class="logo-text">STARLUME</span><span class="logo-badge">Premium</span></div>
+          <div class="logo"><span class="logo-icon">✨</span><span class="logo-text">STARLUME</span></div>
           <div class="nav-links">
             <button class="nav-btn" data-page="home">🏠 Beranda</button>
+            <button class="nav-btn" data-page="upload">📤 Upload</button>
             <button class="nav-btn active" data-page="favorites">⭐ Favorit <span class="badge-count">${totalFav}</span></button>
             <button class="nav-btn" data-page="journal">📓 Journal <span class="badge-count">${Object.keys(songJournal).length}</span></button>
             ${currentUser ? `
@@ -2326,14 +3373,24 @@
           favSongs.forEach(s=>{
             const hasNote = hasJournal(s.id);
             const hasYoutube = s.youtubeId;
+            const isLocked = s.isLocked && !isItemPurchased(s.id);
             html+=`
               <div class="music-card">
                 <img class="card-img" src="${s.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎵</div>'">
                 <div class="card-body">
-                  <div class="card-title"><span><span class="title-icon">🎵</span> ${s.title}</span><div class="action-icons">${hasYoutube ? `<span class="play-icon" data-id="${s.id}" data-play="true">▶️</span>` : ''}<span class="journal-icon ${hasNote ? 'has-note' : ''}" data-id="${s.id}" data-journal="true">📖</span><span class="fav-icon active" data-id="${s.id}">★</span></div></div>
+                  <div class="card-title"><span><span class="title-icon">🎵</span> ${s.title} ${s.isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''}</span><div class="action-icons">${hasYoutube ? `<span class="play-icon" data-id="${s.id}" data-play="true">▶️</span>` : ''}<span class="journal-icon ${hasNote ? 'has-note' : ''}" data-id="${s.id}" data-journal="true">📖</span><span class="fav-icon active" data-id="${s.id}">★</span></div></div>
                   <div class="artist-name">${s.artist}</div>
                   <div class="music-quote">“${s.quote}”</div>
                   <div class="track-links"><a href="${s.youtube}" target="_blank">▶️ YouTube</a><a href="${s.spotify}" target="_blank">🎧 Spotify</a>${hasYoutube ? `<a href="#" class="btn-play-now" data-id="${s.id}" data-play-now="true">🔊 Putar</a>` : ''}</div>
+                  ${s.fileUrl ? `
+                    <div style="margin-top:8px;">
+                      ${isLocked ? `
+                        <button class="btn-buy-access" data-id="${s.id}" data-category="music" data-buy="true">🔓 Beli Akses Rp ${s.price.toLocaleString()}</button>
+                      ` : `
+                        <button class="btn-download-file" data-file="${s.fileUrl}" data-name="${s.fileName || s.title + '.file'}">📥 Download</button>
+                      `}
+                    </div>
+                  ` : ''}
                   ${hasYoutube ? `
                     <div class="player-wrapper" data-song-id="${s.id}" id="player_${s.id}">
                       <iframe src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -2354,14 +3411,24 @@
         if(favMovies.length > 0) {
           html += `<h3 style="margin:2rem 0 1rem; color:rgba(255,215,0,0.8);">🎬 Film Favorit (${favMovies.length})</h3><div class="card-grid">`;
           favMovies.forEach(m=>{
+            const isLocked = m.isLocked && !isItemPurchased(m.id);
             html+=`
               <div class="music-card">
                 <img class="card-img" src="${m.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎬</div>'">
                 <div class="card-body">
-                  <div class="card-title"><span><span class="title-icon">🎬</span> ${m.title}</span><div class="action-icons"><span class="fav-icon active" data-id="${m.id}" data-movie="true">★</span></div></div>
+                  <div class="card-title"><span><span class="title-icon">🎬</span> ${m.title} ${m.isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''}</span><div class="action-icons"><span class="fav-icon active" data-id="${m.id}" data-movie="true">★</span></div></div>
                   <div class="artist-name">${m.origin} · ${m.year} · ${m.genre} · ⭐ ${m.rating}</div>
                   <div style="font-size:0.75rem; color:rgba(255,255,255,0.4); margin:8px 0;">Sutradara: ${m.director}</div>
                   <div class="track-links"><a href="${m.imdb}" target="_blank">🎬 IMDb</a><a href="${m.youtube}" target="_blank">▶️ Trailer</a></div>
+                  ${m.fileUrl ? `
+                    <div style="margin-top:8px;">
+                      ${isLocked ? `
+                        <button class="btn-buy-access" data-id="${m.id}" data-category="movie" data-buy="true">🔓 Beli Akses Rp ${m.price.toLocaleString()}</button>
+                      ` : `
+                        <button class="btn-download-file" data-file="${m.fileUrl}" data-name="${m.fileName || m.title + '.file'}">📥 Download</button>
+                      `}
+                    </div>
+                  ` : ''}
                   <div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${m.id}" data-movie="true">★ Hapus dari favorit</span></div>
                 </div>
               </div>
@@ -2373,14 +3440,24 @@
         if(favNovels.length > 0) {
           html += `<h3 style="margin:2rem 0 1rem; color:rgba(255,215,0,0.8);">📚 Novel Favorit (${favNovels.length})</h3><div class="card-grid">`;
           favNovels.forEach(n=>{
+            const isLocked = n.isLocked && !isItemPurchased(n.id);
             html+=`
               <div class="music-card">
                 <img class="card-img" src="${n.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>📚</div>'">
                 <div class="card-body">
-                  <div class="card-title"><span><span class="title-icon">📚</span> ${n.title}</span><div class="action-icons"><span class="fav-icon active" data-id="${n.id}" data-novel="true">★</span></div></div>
+                  <div class="card-title"><span><span class="title-icon">📚</span> ${n.title} ${n.isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''}</span><div class="action-icons"><span class="fav-icon active" data-id="${n.id}" data-novel="true">★</span></div></div>
                   <div class="artist-name">${n.author} · ${n.year} · ${n.genre}</div>
                   <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); margin:8px 0;">${n.description}</div>
                   <div class="track-links"><a href="${n.goodreads}" target="_blank">📚 Goodreads</a><a href="${n.google}" target="_blank">🔍 Cari</a></div>
+                  ${n.fileUrl ? `
+                    <div style="margin-top:8px;">
+                      ${isLocked ? `
+                        <button class="btn-buy-access" data-id="${n.id}" data-category="novel" data-buy="true">🔓 Beli Akses Rp ${n.price.toLocaleString()}</button>
+                      ` : `
+                        <button class="btn-download-file" data-file="${n.fileUrl}" data-name="${n.fileName || n.title + '.file'}">📥 Download</button>
+                      `}
+                    </div>
+                  ` : ''}
                   <div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${n.id}" data-novel="true">★ Hapus dari favorit</span></div>
                 </div>
               </div>
@@ -2392,14 +3469,24 @@
         if(favAnime.length > 0) {
           html += `<h3 style="margin:2rem 0 1rem; color:rgba(255,215,0,0.8);">🎌 Anime Favorit (${favAnime.length})</h3><div class="card-grid">`;
           favAnime.forEach(a=>{
+            const isLocked = a.isLocked && !isItemPurchased(a.id);
             html+=`
               <div class="music-card">
                 <img class="card-img" src="${a.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎌</div>'">
                 <div class="card-body">
-                  <div class="card-title"><span><span class="title-icon">🎌</span> ${a.title}</span><div class="action-icons"><span class="fav-icon active" data-id="${a.id}" data-anime="true">★</span></div></div>
+                  <div class="card-title"><span><span class="title-icon">🎌</span> ${a.title} ${a.isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''}</span><div class="action-icons"><span class="fav-icon active" data-id="${a.id}" data-anime="true">★</span></div></div>
                   <div class="artist-name">${a.author} · ${a.year} · ${a.genre}</div>
                   <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); margin:8px 0;">${a.description}</div>
                   <div class="track-links"><a href="${a.myanimelist}" target="_blank">🎌 MyAnimeList</a><a href="${a.google}" target="_blank">🔍 Cari</a></div>
+                  ${a.fileUrl ? `
+                    <div style="margin-top:8px;">
+                      ${isLocked ? `
+                        <button class="btn-buy-access" data-id="${a.id}" data-category="anime" data-buy="true">🔓 Beli Akses Rp ${a.price.toLocaleString()}</button>
+                      ` : `
+                        <button class="btn-download-file" data-file="${a.fileUrl}" data-name="${a.fileName || a.title + '.file'}">📥 Download</button>
+                      `}
+                    </div>
+                  ` : ''}
                   <div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${a.id}" data-anime="true">★ Hapus dari favorit</span></div>
                 </div>
               </div>
@@ -2410,13 +3497,17 @@
       }
       app.innerHTML = html;
       attachFavEvents();
+      attachUserEvents();
+      attachDownloadEvents();
+      attachBuyEvents();
     }
     else if (currentPage === "journal") {
       let html = `
         <div class="navbar">
-          <div class="logo"><span class="logo-icon">✨</span><span class="logo-text">STARLUME</span><span class="logo-badge">Premium</span></div>
+          <div class="logo"><span class="logo-icon">✨</span><span class="logo-text">STARLUME</span></div>
           <div class="nav-links">
             <button class="nav-btn" data-page="home">🏠 Beranda</button>
+            <button class="nav-btn" data-page="upload">📤 Upload</button>
             <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length + animeFavorites.length}</span></button>
             <button class="nav-btn active" data-page="journal">📓 Journal <span class="badge-count">${Object.keys(songJournal).length}</span></button>
             ${currentUser ? `
@@ -2448,43 +3539,16 @@
       `;
       app.innerHTML = html;
       attachJournalEvents();
+      attachUserEvents();
     }
     
     attachUserEvents();
+    attachDownloadEvents();
+    attachBuyEvents();
   }
 
-  function attachUserEvents() {
-    const userBtn = document.getElementById('userMenuBtn');
-    const dropdown = document.getElementById('userDropdown');
-    const loginBtn = document.getElementById('loginBtn');
-    const logoutBtn = document.getElementById('logoutBtn');
-    
-    if (userBtn && dropdown) {
-      userBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-      });
-      document.addEventListener('click', () => {
-        if (dropdown) dropdown.style.display = 'none';
-      });
-    }
-    
-    if (loginBtn) {
-      loginBtn.addEventListener('click', () => openAuthModal('login'));
-    }
-    
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', logoutUser);
-    }
-  }
-
-  function getMoodDisplayName(moodKey) {
-    const names = { senang:"Senang", sedih:"Sedih", galau:"Galau", romantis:"Romantis", marah:"Marah", fokus:"Fokus", relax:"Relax" };
-    return names[moodKey];
-  }
-
+  // ---------- EVENT ATTACHMENT ----------
   function attachHomeEvents() {
-    // Tab buttons
     document.querySelectorAll(".tab-btn").forEach(btn => {
       btn.addEventListener("click", (e) => {
         const tab = btn.getAttribute("data-tab");
@@ -2494,7 +3558,6 @@
       });
     });
 
-    // Genre filter buttons
     document.querySelectorAll(".genre-btn").forEach(btn => {
       btn.addEventListener("click", (e) => {
         const genre = btn.getAttribute("data-genre");
@@ -2510,6 +3573,17 @@
         render();
       });
     });
+    
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const page = btn.getAttribute("data-page");
+        if(page === "home") { currentPage = "home"; render(); }
+        if(page === "upload") { currentPage = "upload"; render(); }
+        if(page === "favorites") { currentPage = "favorites"; render(); }
+        if(page === "journal") { currentPage = "journal"; render(); }
+      });
+    });
+    
     attachGlobalEvents();
   }
 
@@ -2517,6 +3591,15 @@
     attachGlobalEvents();
     const backHome = document.getElementById("backHomeBtn");
     if(backHome) backHome.addEventListener("click", () => { currentPage = "home"; render(); });
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const page = btn.getAttribute("data-page");
+        if(page === "home") { currentPage = "home"; render(); }
+        if(page === "upload") { currentPage = "upload"; render(); }
+        if(page === "favorites") { currentPage = "favorites"; render(); }
+        if(page === "journal") { currentPage = "journal"; render(); }
+      });
+    });
   }
 
   function attachJournalEvents() {
@@ -2532,9 +3615,409 @@
       btn.addEventListener("click", (e) => {
         const page = btn.getAttribute("data-page");
         if(page === "home") { currentPage = "home"; render(); }
+        if(page === "upload") { currentPage = "upload"; render(); }
         if(page === "favorites") { currentPage = "favorites"; render(); }
         if(page === "journal") { currentPage = "journal"; render(); }
       });
+    });
+  }
+
+  function attachUploadDashboardEvents() {
+    // Navigation
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const page = btn.getAttribute("data-page");
+        if(page === "home") { currentPage = "home"; render(); }
+        if(page === "upload") { currentPage = "upload"; render(); }
+        if(page === "favorites") { currentPage = "favorites"; render(); }
+        if(page === "journal") { currentPage = "journal"; render(); }
+      });
+    });
+
+    const backHome = document.getElementById("backHomeFromUploadBtn");
+    if(backHome) backHome.addEventListener("click", () => { currentPage = "home"; render(); });
+
+    // Category change - dynamic fields
+    const categorySelect = document.getElementById('uploadCategory');
+    const dynamicFields = document.getElementById('dynamicFields');
+    
+    function updateDynamicFields() {
+      const category = categorySelect.value;
+      let html = '';
+      
+      if (category === 'music') {
+        html = `
+          <div class="form-row">
+            <div>
+              <label>🎤 Artis</label>
+              <input type="text" id="uploadArtist" placeholder="Nama artis" />
+            </div>
+            <div>
+              <label>🎭 Mood</label>
+              <select id="uploadMood">
+                <option value="senang">Senang</option>
+                <option value="sedih">Sedih</option>
+                <option value="galau">Galau</option>
+                <option value="romantis">Romantis</option>
+                <option value="marah">Marah</option>
+                <option value="fokus">Fokus</option>
+                <option value="relax">Relax</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label>📝 Kutipan</label>
+              <input type="text" id="uploadQuote" placeholder="Kutipan lagu..." />
+            </div>
+            <div>
+              <label>🔗 Link YouTube</label>
+              <input type="text" id="uploadYoutube" placeholder="https://youtube.com/..." />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label>🔗 Link Spotify</label>
+              <input type="text" id="uploadSpotify" placeholder="https://open.spotify.com/..." />
+            </div>
+          </div>
+        `;
+      } else if (category === 'movies') {
+        html = `
+          <div class="form-row">
+            <div>
+              <label>🎭 Genre</label>
+              <select id="uploadGenre">
+                <option value="Aksi">Aksi</option>
+                <option value="Horor">Horor</option>
+                <option value="Romantis">Romantis</option>
+                <option value="Komedi">Komedi</option>
+                <option value="Drama">Drama</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Petualangan">Petualangan</option>
+                <option value="Fantasi">Fantasi</option>
+              </select>
+            </div>
+            <div>
+              <label>🌍 Asal</label>
+              <input type="text" id="uploadOrigin" placeholder="Barat / Korea / China / dll" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label>📅 Tahun</label>
+              <input type="number" id="uploadYear" placeholder="2024" />
+            </div>
+            <div>
+              <label>🎬 Sutradara</label>
+              <input type="text" id="uploadDirector" placeholder="Nama sutradara" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label>⭐ Rating</label>
+              <input type="text" id="uploadRating" placeholder="4.5" />
+            </div>
+            <div>
+              <label>🔗 Link IMDb</label>
+              <input type="text" id="uploadImdb" placeholder="https://www.imdb.com/..." />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label>📝 Deskripsi</label>
+              <textarea id="uploadDescription" rows="2" placeholder="Deskripsi film..."></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label>🎬 Link Trailer</label>
+              <input type="text" id="uploadTrailer" placeholder="https://youtube.com/..." />
+            </div>
+          </div>
+        `;
+      } else if (category === 'novels') {
+        html = `
+          <div class="form-row">
+            <div>
+              <label>🎭 Genre</label>
+              <select id="uploadGenre">
+                <option value="Fiksi">Fiksi</option>
+                <option value="Non-Fiksi">Non-Fiksi</option>
+                <option value="Romantis">Romantis</option>
+                <option value="Inspiratif">Inspiratif</option>
+                <option value="Petualangan">Petualangan</option>
+                <option value="Filosofi">Filosofi</option>
+                <option value="Self-Help">Self-Help</option>
+                <option value="Sejarah">Sejarah</option>
+              </select>
+            </div>
+            <div>
+              <label>✍️ Penulis</label>
+              <input type="text" id="uploadAuthor" placeholder="Nama penulis" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label>📅 Tahun</label>
+              <input type="number" id="uploadYear" placeholder="2024" />
+            </div>
+            <div>
+              <label>🔗 Link Goodreads</label>
+              <input type="text" id="uploadGoodreads" placeholder="https://www.goodreads.com/..." />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label>📝 Deskripsi</label>
+              <textarea id="uploadDescription" rows="2" placeholder="Deskripsi novel..."></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label>🔗 Link Google</label>
+              <input type="text" id="uploadGoogle" placeholder="https://www.google.com/..." />
+            </div>
+          </div>
+        `;
+      } else if (category === 'anime') {
+        html = `
+          <div class="form-row">
+            <div>
+              <label>🎭 Genre</label>
+              <select id="uploadGenre">
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Romance">Romance</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Sports">Sports</option>
+                <option value="Drama">Drama</option>
+                <option value="Slice of Life">Slice of Life</option>
+              </select>
+            </div>
+            <div>
+              <label>✍️ Author/Mangaka</label>
+              <input type="text" id="uploadAuthor" placeholder="Nama mangaka" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label>📅 Tahun</label>
+              <input type="number" id="uploadYear" placeholder="2024" />
+            </div>
+            <div>
+              <label>🔗 Link MyAnimeList</label>
+              <input type="text" id="uploadMAL" placeholder="https://myanimelist.net/..." />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label>📝 Deskripsi</label>
+              <textarea id="uploadDescription" rows="2" placeholder="Deskripsi anime..."></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label>🔗 Link Google</label>
+              <input type="text" id="uploadGoogle" placeholder="https://www.google.com/..." />
+            </div>
+          </div>
+        `;
+      }
+      dynamicFields.innerHTML = html;
+    }
+
+    categorySelect.addEventListener('change', updateDynamicFields);
+    updateDynamicFields();
+
+    // Price toggle
+    const hasPriceCheckbox = document.getElementById('uploadHasPrice');
+    const priceInput = document.getElementById('priceInput');
+    
+    hasPriceCheckbox.addEventListener('change', function() {
+      priceInput.classList.toggle('show', this.checked);
+    });
+
+    // File upload
+    const fileInput = document.getElementById('fileInput');
+    const filePreview = document.getElementById('filePreview');
+    const previewName = document.getElementById('previewName');
+    const previewSize = document.getElementById('previewSize');
+    const previewIcon = document.getElementById('previewIcon');
+    const fileRemove = document.getElementById('fileRemove');
+    const dropArea = document.getElementById('fileDropArea');
+
+    fileInput.addEventListener('change', function(e) {
+      const file = this.files[0];
+      if (file) {
+        uploadFileData = null;
+        uploadFileName = file.name;
+        handleFileUpload(file).then(result => {
+          uploadFileData = result;
+          previewName.textContent = file.name;
+          previewSize.textContent = (file.size / 1024).toFixed(1) + ' KB';
+          const ext = file.name.split('.').pop().toLowerCase();
+          const icons = { 'mp4':'🎬', 'webm':'🎬', 'ogg':'🎵', 'mp3':'🎵', 'wav':'🎵', 'flac':'🎵', 'pdf':'📚', 'epub':'📚', 'mobi':'📚', 'jpg':'🖼️', 'jpeg':'🖼️', 'png':'🖼️', 'gif':'🖼️', 'webp':'🖼️' };
+          previewIcon.textContent = icons[ext] || '📄';
+          filePreview.style.display = 'flex';
+        });
+      }
+    });
+
+    if (dropArea) {
+      dropArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        this.style.borderColor = 'rgba(255,215,0,0.5)';
+        this.style.background = 'rgba(255,215,0,0.06)';
+      });
+      dropArea.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        this.style.borderColor = 'rgba(255,215,0,0.15)';
+        this.style.background = 'rgba(255,215,0,0.02)';
+      });
+      dropArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        this.style.borderColor = 'rgba(255,215,0,0.15)';
+        this.style.background = 'rgba(255,215,0,0.02)';
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          fileInput.files = files;
+          fileInput.dispatchEvent(new Event('change'));
+        }
+      });
+    }
+
+    if (fileRemove) {
+      fileRemove.addEventListener('click', function() {
+        fileInput.value = '';
+        uploadFileData = null;
+        uploadFileName = '';
+        filePreview.style.display = 'none';
+        showNotif('📁 File dibatalkan');
+      });
+    }
+
+    // Upload button
+    const uploadBtn = document.getElementById('uploadBtn');
+    uploadBtn.addEventListener('click', function() {
+      const formData = new FormData();
+      const titleInput = document.getElementById('uploadTitle');
+      if (!titleInput || !titleInput.value.trim()) {
+        showNotif('⚠️ Judul harus diisi!');
+        return;
+      }
+      formData.set('title', titleInput.value.trim());
+      
+      const category = categorySelect.value;
+      
+      // Collect category specific fields
+      if (category === 'music') {
+        const artist = document.getElementById('uploadArtist');
+        const mood = document.getElementById('uploadMood');
+        const quote = document.getElementById('uploadQuote');
+        const youtube = document.getElementById('uploadYoutube');
+        const spotify = document.getElementById('uploadSpotify');
+        if (artist) formData.set('artist', artist.value.trim() || 'Uploader');
+        if (mood) formData.set('mood', mood.value);
+        if (quote) formData.set('quote', quote.value.trim() || '✨ Karya yang diupload oleh pengguna');
+        if (youtube) formData.set('youtube', youtube.value.trim());
+        if (spotify) formData.set('spotify', spotify.value.trim());
+      } else if (category === 'movies') {
+        const genre = document.getElementById('uploadGenre');
+        const origin = document.getElementById('uploadOrigin');
+        const year = document.getElementById('uploadYear');
+        const director = document.getElementById('uploadDirector');
+        const rating = document.getElementById('uploadRating');
+        const imdb = document.getElementById('uploadImdb');
+        const description = document.getElementById('uploadDescription');
+        const trailer = document.getElementById('uploadTrailer');
+        if (genre) formData.set('genre', genre.value);
+        if (origin) formData.set('origin', origin.value.trim() || 'Upload');
+        if (year) formData.set('year', year.value || new Date().getFullYear());
+        if (director) formData.set('director', director.value.trim() || 'Uploader');
+        if (rating) formData.set('rating', rating.value || '4.0');
+        if (imdb) formData.set('imdb', imdb.value.trim());
+        if (description) formData.set('description', description.value.trim() || `Film yang diupload oleh pengguna.`);
+        if (trailer) formData.set('trailer', trailer.value.trim());
+      } else if (category === 'novels') {
+        const genre = document.getElementById('uploadGenre');
+        const author = document.getElementById('uploadAuthor');
+        const year = document.getElementById('uploadYear');
+        const goodreads = document.getElementById('uploadGoodreads');
+        const description = document.getElementById('uploadDescription');
+        const google = document.getElementById('uploadGoogle');
+        if (genre) formData.set('genre', genre.value);
+        if (author) formData.set('author', author.value.trim() || 'Uploader');
+        if (year) formData.set('year', year.value || new Date().getFullYear());
+        if (goodreads) formData.set('goodreads', goodreads.value.trim());
+        if (description) formData.set('description', description.value.trim() || `Novel yang diupload oleh pengguna.`);
+        if (google) formData.set('google', google.value.trim());
+      } else if (category === 'anime') {
+        const genre = document.getElementById('uploadGenre');
+        const author = document.getElementById('uploadAuthor');
+        const year = document.getElementById('uploadYear');
+        const mal = document.getElementById('uploadMAL');
+        const description = document.getElementById('uploadDescription');
+        const google = document.getElementById('uploadGoogle');
+        if (genre) formData.set('genre', genre.value);
+        if (author) formData.set('author', author.value.trim() || 'Uploader');
+        if (year) formData.set('year', year.value || new Date().getFullYear());
+        if (mal) formData.set('myanimelist', mal.value.trim());
+        if (description) formData.set('description', description.value.trim() || `Anime yang diupload oleh pengguna.`);
+        if (google) formData.set('google', google.value.trim());
+      }
+      
+      // Price
+      if (hasPriceCheckbox.checked) {
+        formData.set('hasPrice', 'on');
+        const priceVal = document.getElementById('uploadPrice').value;
+        formData.set('price', priceVal || '10000');
+      } else {
+        formData.set('hasPrice', 'off');
+        formData.set('price', '0');
+      }
+      
+      processUpload(category, formData);
+    });
+
+    // Search and filter
+    const searchInput = document.getElementById('uploadSearch');
+    const filterSelect = document.getElementById('uploadFilter');
+    
+    searchInput.addEventListener('input', function() {
+      uploadSearchQuery = this.value;
+      render();
+    });
+    
+    filterSelect.addEventListener('change', function() {
+      uploadFilterType = this.value;
+      render();
+    });
+
+    // Delete and toggle price buttons (event delegation)
+    document.addEventListener('click', function(e) {
+      const target = e.target;
+      
+      if (target.classList.contains('btn-delete-upload')) {
+        const id = target.getAttribute('data-id');
+        const category = target.getAttribute('data-category');
+        if (id && category) {
+          if (confirm('Yakin ingin menghapus item ini?')) {
+            deleteUpload(id, category);
+          }
+        }
+      }
+      
+      if (target.classList.contains('btn-toggle-price')) {
+        const id = target.getAttribute('data-id');
+        const category = target.getAttribute('data-category');
+        if (id && category) {
+          togglePrice(id, category);
+        }
+      }
     });
   }
 
@@ -2575,7 +4058,6 @@
       });
     });
 
-    // Favorite untuk lagu
     document.querySelectorAll(".fav-icon:not([data-movie='true']):not([data-novel='true']):not([data-anime='true'])").forEach(el => {
       el.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -2584,7 +4066,6 @@
       });
     });
 
-    // Favorite untuk film
     document.querySelectorAll(".fav-icon[data-movie='true']").forEach(el => {
       el.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -2593,7 +4074,6 @@
       });
     });
 
-    // Favorite untuk novel
     document.querySelectorAll(".fav-icon[data-novel='true']").forEach(el => {
       el.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -2602,7 +4082,6 @@
       });
     });
 
-    // Favorite untuk anime
     document.querySelectorAll(".fav-icon[data-anime='true']").forEach(el => {
       el.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -2619,7 +4098,6 @@
       });
     });
 
-    // Watch movie
     document.querySelectorAll(".watch-icon[data-watch='true']").forEach(el => {
       el.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -2645,7 +4123,6 @@
       });
     });
 
-    // Read novel
     document.querySelectorAll(".read-icon[data-read='true']").forEach(el => {
       el.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -2654,6 +4131,12 @@
         if(novel) {
           window.open(novel.google, '_blank');
           showNotif(`📚 Membuka: ${novel.title}`);
+        } else {
+          const anime = allAnime.find(a => a.id === id);
+          if(anime) {
+            window.open(anime.google, '_blank');
+            showNotif(`🎌 Membuka: ${anime.title}`);
+          }
         }
       });
     });
@@ -2676,23 +4159,76 @@
         }
       });
     });
+  }
 
-    document.querySelectorAll(".nav-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const page = btn.getAttribute("data-page");
-        if(page === "home") { currentPage = "home"; render(); }
-        if(page === "favorites") { currentPage = "favorites"; render(); }
-        if(page === "journal") { currentPage = "journal"; render(); }
+  function attachBuyEvents() {
+    document.querySelectorAll('.btn-buy-access[data-buy="true"]').forEach(el => {
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const id = this.getAttribute('data-id');
+        const category = this.getAttribute('data-category');
+        let item = null;
+        
+        if (category === 'music') item = allSongs.find(s => s.id === id);
+        else if (category === 'movie') item = allMovies.find(m => m.id === id);
+        else if (category === 'novel') item = allNovels.find(n => n.id === id);
+        else if (category === 'anime') item = allAnime.find(a => a.id === id);
+        
+        if (item) {
+          openPaymentModal(item);
+        }
       });
     });
   }
 
+  function attachDownloadEvents() {
+    document.querySelectorAll('.btn-download-file').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const fileData = this.getAttribute('data-file');
+        const fileName = this.getAttribute('data-name') || 'file';
+        if (fileData) {
+          downloadFile(fileData, fileName);
+        }
+      });
+    });
+  }
+
+  function attachUserEvents() {
+    const userBtn = document.getElementById('userMenuBtn');
+    const dropdown = document.getElementById('userDropdown');
+    const loginBtn = document.getElementById('loginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    
+    if (userBtn && dropdown) {
+      userBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      });
+      document.addEventListener('click', () => {
+        if (dropdown) dropdown.style.display = 'none';
+      });
+    }
+    
+    if (loginBtn) {
+      loginBtn.addEventListener('click', () => openAuthModal('login'));
+    }
+    
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', logoutUser);
+    }
+  }
+
+  // ---------- INIT ----------
   document.getElementById('closeAuthBtn').addEventListener('click', closeAuthModal);
   document.getElementById('authModal').addEventListener('click', (e) => {
     if(e.target === e.currentTarget) closeAuthModal();
   });
   document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape') closeAuthModal();
+    if(e.key === 'Escape') {
+      closeAuthModal();
+      closePaymentModal();
+    }
   });
   document.getElementById('authSubmitBtn').addEventListener('click', handleAuth);
   document.getElementById('authPassword').addEventListener('keydown', (e) => {
@@ -2701,6 +4237,13 @@
   document.getElementById('authEmail').addEventListener('keydown', (e) => {
     if(e.key === 'Enter') handleAuth();
   });
+
+  // Payment modal events
+  document.getElementById('paymentCancelBtn').addEventListener('click', closePaymentModal);
+  document.getElementById('paymentModal').addEventListener('click', (e) => {
+    if(e.target === e.currentTarget) closePaymentModal();
+  });
+  document.getElementById('paymentConfirmBtn').addEventListener('click', confirmPayment);
 
   render();
   if ('serviceWorker' in navigator) {
