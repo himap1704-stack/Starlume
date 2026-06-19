@@ -781,6 +781,21 @@
       border: 1px solid rgba(255, 215, 0, 0.1);
     }
 
+    /* Badge khusus Novel Only */
+    .novel-only-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.05));
+      color: #FFD700;
+      font-size: 0.55rem;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-weight: 700;
+      margin-left: 8px;
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
     .player-wrapper {
       margin-top: 12px;
       border-radius: 12px;
@@ -1642,10 +1657,10 @@
 <!-- Payment Modal -->
 <div class="modal" id="paymentModal">
   <div class="modal-content payment-modal">
-    <h3>💳 Beli Akses</h3>
-    <div class="modal-song" id="paymentItemInfo">Membuka akses untuk: -</div>
+    <h3>💳 Beli Akses Novel</h3>
+    <div class="modal-song" id="paymentItemInfo">Membuka akses novel: -</div>
     <div class="price-display" id="paymentPriceDisplay">Rp 10.000</div>
-    <div class="payment-detail">Setelah pembayaran, file akan terbuka dan dapat diunduh</div>
+    <div class="payment-detail">📚 Setelah pembayaran, novel akan terbuka dan dapat diunduh</div>
     <div class="modal-buttons">
       <button class="btn-cancel" id="paymentCancelBtn">Batal</button>
       <button class="btn-pay" id="paymentConfirmBtn">✅ Bayar Sekarang</button>
@@ -2472,9 +2487,14 @@
       openAuthModal('login');
       return;
     }
+    // HANYA NOVEL YANG BISA DIBELI
+    if (item.type !== 'novel') {
+      showNotif('📚 Hanya novel yang bisa dibeli!');
+      return;
+    }
     pendingPaymentItem = item;
     const modal = document.getElementById('paymentModal');
-    document.getElementById('paymentItemInfo').textContent = `Membuka akses untuk: ${item.title}`;
+    document.getElementById('paymentItemInfo').textContent = `Membuka akses novel: ${item.title}`;
     document.getElementById('paymentPriceDisplay').textContent = `Rp ${item.price.toLocaleString()}`;
     modal.style.display = 'flex';
   }
@@ -2487,7 +2507,7 @@
   function confirmPayment() {
     if (pendingPaymentItem) {
       purchaseItem(pendingPaymentItem.id);
-      showNotif(`✅ Akses berhasil dibuka untuk: ${pendingPaymentItem.title}`);
+      showNotif(`✅ Akses novel berhasil dibuka untuk: ${pendingPaymentItem.title}`);
       closePaymentModal();
       render();
     }
@@ -2570,6 +2590,12 @@
       else if (fileType.match(/jpg|jpeg|png|gif|webp/)) fileIcon = '🖼️';
     }
 
+    // Hanya novel yang bisa dikunci
+    const isNovel = category === 'novels';
+    const finalHasPrice = isNovel && hasPrice;
+    const finalPrice = isNovel ? price : 0;
+    const finalLocked = isNovel && hasPrice;
+
     const newItem = {
       id: `upload_${category}_${Date.now()}`,
       title: title,
@@ -2579,12 +2605,16 @@
       fileName: uploadFileName,
       fileType: fileType,
       fileIcon: fileIcon,
-      hasPrice: hasPrice,
-      price: hasPrice ? price : 0,
-      isLocked: hasPrice,
-      img: file && fileType.match(/jpg|jpeg|png|gif|webp/) ? file.data : getIconImage(Date.now() + Math.random() * 1000)
+      hasPrice: finalHasPrice,
+      price: finalPrice,
+      isLocked: finalLocked,
+      img: file && fileType.match(/jpg|jpeg|png|gif|webp/) ? file.data : getIconImage(Date.now() + Math.random() * 1000),
+      // Tambahan untuk menandai ini uploadan dan tipenya
+      isUploaded: true,
+      type: category === 'music' ? 'music' : category === 'movies' ? 'movie' : category === 'novels' ? 'novel' : 'anime'
     };
 
+    // Tambahkan properti tambahan sesuai kategori
     if (category === 'music') {
       const mood = formData.get('mood') || 'relax';
       const artist = formData.get('artist') || 'Uploader';
@@ -2594,7 +2624,6 @@
       newItem.youtube = formData.get('youtube') || `https://www.youtube.com/results?search_query=${encodeURIComponent(title)}`;
       newItem.spotify = formData.get('spotify') || `https://open.spotify.com/search/${encodeURIComponent(title)}`;
       newItem.youtubeId = getYoutubeId(title) || null;
-      newItem.type = 'music';
       uploaded.songs.push(newItem);
       showNotif('🎵 Lagu berhasil diupload!');
     } else if (category === 'movies') {
@@ -2610,7 +2639,6 @@
       newItem.imdb = formData.get('imdb') || `https://www.imdb.com/find?q=${encodeURIComponent(title)}`;
       newItem.youtube = formData.get('trailer') || `https://www.youtube.com/results?search_query=${encodeURIComponent(title + " trailer")}`;
       newItem.description = formData.get('description') || `Film ${genre} yang diupload oleh pengguna.`;
-      newItem.type = 'movie';
       uploaded.movies.push(newItem);
       showNotif('🎬 Film berhasil diupload!');
     } else if (category === 'novels') {
@@ -2623,9 +2651,15 @@
       newItem.goodreads = formData.get('goodreads') || `https://www.goodreads.com/search?q=${encodeURIComponent(title)}`;
       newItem.google = formData.get('google') || `https://www.google.com/search?q=${encodeURIComponent(title)}`;
       newItem.description = formData.get('description') || `Novel ${genre} yang diupload oleh pengguna.`;
+      // Tandai ini novel
       newItem.type = 'novel';
       uploaded.novels.push(newItem);
-      showNotif('📚 Novel berhasil diupload!');
+      
+      if (finalHasPrice) {
+        showNotif(`📚 Novel berhasil diupload dengan harga Rp ${finalPrice.toLocaleString()}!`);
+      } else {
+        showNotif('📚 Novel berhasil diupload!');
+      }
     } else if (category === 'anime') {
       const genre = formData.get('genre') || 'Action';
       const author = formData.get('author') || 'Uploader';
@@ -2636,7 +2670,6 @@
       newItem.myanimelist = formData.get('myanimelist') || `https://myanimelist.net/search/all?q=${encodeURIComponent(title)}`;
       newItem.google = formData.get('google') || `https://www.google.com/search?q=${encodeURIComponent(title + " anime")}`;
       newItem.description = formData.get('description') || `Anime ${genre} yang diupload oleh pengguna.`;
-      newItem.type = 'anime';
       uploaded.anime.push(newItem);
       showNotif('🎌 Anime berhasil diupload!');
     }
@@ -2699,15 +2732,17 @@
       showNotif('🔒 Login dulu untuk mengubah!');
       return;
     }
+    
+    // Hanya novel yang bisa diubah harganya
+    if (category !== 'novel') {
+      showNotif('📚 Hanya novel yang bisa dikunci/dibuka!');
+      return;
+    }
+    
     const uploaded = getUploadedData();
-    let items = [];
-    
-    if (category === 'music') items = uploaded.songs;
-    else if (category === 'movie') items = uploaded.movies;
-    else if (category === 'novel') items = uploaded.novels;
-    else if (category === 'anime') items = uploaded.anime;
-    
+    const items = uploaded.novels;
     const item = items.find(i => i.id === itemId);
+    
     if (item) {
       item.hasPrice = !item.hasPrice;
       if (!item.hasPrice) {
@@ -2719,7 +2754,7 @@
       }
       saveUploadedData(uploaded);
       refreshAllData();
-      showNotif(item.hasPrice ? '🔒 Item dikunci dengan harga' : '🔓 Item dibuka gratis');
+      showNotif(item.hasPrice ? '🔒 Novel dikunci dengan harga' : '🔓 Novel dibuka gratis');
       render();
     }
   }
@@ -2741,14 +2776,15 @@
       const isFav = isFavorite(song.id);
       const hasYoutube = song.youtubeId;
       const isUploaded = song.isUploaded;
-      const isLocked = song.isLocked && !isItemPurchased(song.id);
+      // Hanya novel yang bisa dikunci, jadi music tidak pernah terkunci
+      const isLocked = false;
       
       html += `
         <div class="music-card">
           <img class="card-img" src="${song.img}" alt="${song.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎵</div>'">
           <div class="card-body">
             <div class="card-title">
-              <span><span class="title-icon">🎵</span> ${song.title} ${isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''} ${song.hasPrice && !isLocked ? '<span class="price-badge">💰</span>' : ''}</span>
+              <span><span class="title-icon">🎵</span> ${song.title} ${isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''}</span>
               <div class="action-icons">
                 ${hasYoutube ? `<span class="play-icon" data-id="${song.id}" data-play="true">▶️</span>` : ''}
                 <span class="journal-icon ${hasNote ? 'has-note' : ''}" data-id="${song.id}" data-journal="true">📖</span>
@@ -2764,11 +2800,7 @@
             </div>
             ${song.fileUrl ? `
               <div style="margin-top:8px;">
-                ${isLocked ? `
-                  <button class="btn-buy-access" data-id="${song.id}" data-category="music" data-buy="true">🔓 Beli Akses Rp ${song.price.toLocaleString()}</button>
-                ` : `
-                  <button class="btn-download-file" data-file="${song.fileUrl}" data-name="${song.fileName || song.title + '.file'}">📥 Download</button>
-                `}
+                <button class="btn-download-file" data-file="${song.fileUrl}" data-name="${song.fileName || song.title + '.file'}">📥 Download</button>
               </div>
             ` : ''}
             ${hasYoutube ? `
@@ -2803,14 +2835,15 @@
     filteredMovies.forEach(movie => {
       const isFav = isMovieFavorite(movie.id);
       const isUploaded = movie.isUploaded;
-      const isLocked = movie.isLocked && !isItemPurchased(movie.id);
+      // Film tidak pernah terkunci
+      const isLocked = false;
       
       html += `
         <div class="music-card">
           <img class="card-img" src="${movie.img}" alt="${movie.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎬</div>'">
           <div class="card-body">
             <div class="card-title">
-              <span><span class="title-icon">🎬</span> ${movie.title} ${isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''} ${movie.hasPrice && !isLocked ? '<span class="price-badge">💰</span>' : ''}</span>
+              <span><span class="title-icon">🎬</span> ${movie.title} ${isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''}</span>
               <div class="action-icons">
                 <span class="watch-icon" data-id="${movie.id}" data-watch="true">▶️</span>
                 <span class="fav-icon ${isFav ? 'active' : ''}" data-id="${movie.id}" data-movie="true">${isFav ? '★' : '☆'}</span>
@@ -2826,11 +2859,7 @@
             </div>
             ${movie.fileUrl ? `
               <div style="margin-top:8px;">
-                ${isLocked ? `
-                  <button class="btn-buy-access" data-id="${movie.id}" data-category="movie" data-buy="true">🔓 Beli Akses Rp ${movie.price.toLocaleString()}</button>
-                ` : `
-                  <button class="btn-download-file" data-file="${movie.fileUrl}" data-name="${movie.fileName || movie.title + '.file'}">📥 Download</button>
-                `}
+                <button class="btn-download-file" data-file="${movie.fileUrl}" data-name="${movie.fileName || movie.title + '.file'}">📥 Download</button>
               </div>
             ` : ''}
             ${isFav ? `<div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${movie.id}" data-movie="true">★ Hapus dari favorit</span></div>` : ''}
@@ -2910,14 +2939,15 @@
     filteredAnime.forEach(anime => {
       const isFav = isAnimeFavorite(anime.id);
       const isUploaded = anime.isUploaded;
-      const isLocked = anime.isLocked && !isItemPurchased(anime.id);
+      // Anime tidak pernah terkunci
+      const isLocked = false;
       
       html += `
         <div class="music-card">
           <img class="card-img" src="${anime.img}" alt="${anime.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎌</div>'">
           <div class="card-body">
             <div class="card-title">
-              <span><span class="title-icon">🎌</span> ${anime.title} ${isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''} ${anime.hasPrice && !isLocked ? '<span class="price-badge">💰</span>' : ''}</span>
+              <span><span class="title-icon">🎌</span> ${anime.title} ${isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''}</span>
               <div class="action-icons">
                 <span class="read-icon" data-id="${anime.id}" data-read="true">📺</span>
                 <span class="fav-icon ${isFav ? 'active' : ''}" data-id="${anime.id}" data-anime="true">${isFav ? '★' : '☆'}</span>
@@ -2932,11 +2962,7 @@
             </div>
             ${anime.fileUrl ? `
               <div style="margin-top:8px;">
-                ${isLocked ? `
-                  <button class="btn-buy-access" data-id="${anime.id}" data-category="anime" data-buy="true">🔓 Beli Akses Rp ${anime.price.toLocaleString()}</button>
-                ` : `
-                  <button class="btn-download-file" data-file="${anime.fileUrl}" data-name="${anime.fileName || anime.title + '.file'}">📥 Download</button>
-                `}
+                <button class="btn-download-file" data-file="${anime.fileUrl}" data-name="${anime.fileName || anime.title + '.file'}">📥 Download</button>
               </div>
             ` : ''}
             ${isFav ? `<div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${anime.id}" data-anime="true">★ Hapus dari favorit</span></div>` : ''}
@@ -3002,8 +3028,8 @@
     const movieCount = userUploads.filter(i => i.type === 'movie').length;
     const novelCount = userUploads.filter(i => i.type === 'novel').length;
     const animeCount = userUploads.filter(i => i.type === 'anime').length;
-    const lockedCount = userUploads.filter(i => i.isLocked).length;
-    const totalEarnings = userUploads.filter(i => i.hasPrice).reduce((sum, i) => sum + (i.price || 0), 0);
+    const lockedCount = userUploads.filter(i => i.isLocked && i.type === 'novel').length;
+    const totalEarnings = userUploads.filter(i => i.hasPrice && i.type === 'novel').reduce((sum, i) => sum + (i.price || 0), 0);
 
     let html = `
       <div class="upload-dashboard">
@@ -3030,7 +3056,7 @@
           </div>
           <div class="upload-stat-card">
             <div class="stat-number">${lockedCount}</div>
-            <div class="stat-label">🔒 Terkunci</div>
+            <div class="stat-label">🔒 Novel Terkunci</div>
           </div>
           <div class="upload-stat-card">
             <div class="stat-number">Rp ${totalEarnings.toLocaleString()}</div>
@@ -3062,13 +3088,14 @@
             </div>
             <div class="form-row">
               <div>
-                <label>🔒 Kunci File?</label>
+                <label>🔒 Kunci File? (Hanya Novel)</label>
                 <div class="price-toggle-group">
                   <label>
                     <input type="checkbox" id="uploadHasPrice" />
-                    Ya, kunci dengan harga
+                    Ya, kunci dengan harga (khusus Novel)
                   </label>
                 </div>
+                <small style="color:rgba(255,255,255,0.3); font-size:0.7rem;">⚠️ Fitur kunci hanya berlaku untuk kategori Novel</small>
               </div>
               <div class="price-input" id="priceInput">
                 <label>💰 Harga (Rp)</label>
@@ -3118,12 +3145,15 @@
         const typeIcon = item.type === 'music' ? '🎵' : item.type === 'movie' ? '🎬' : item.type === 'novel' ? '📚' : '🎌';
         const typeLabel = item.type === 'music' ? 'Musik' : item.type === 'movie' ? 'Film' : item.type === 'novel' ? 'Novel' : 'Anime';
         
+        // Cek apakah ini novel - hanya novel yang bisa dikunci
+        const isNovel = item.type === 'novel';
+        
         html += `
           <div class="upload-item-card">
             <img class="card-img" src="${item.img}" alt="${item.title}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>${typeIcon}</div>'">
             <div class="card-body">
               <div class="card-title">
-                <span>${typeIcon} ${item.title}</span>
+                <span>${typeIcon} ${item.title} ${isNovel ? '<span class="novel-only-badge">📚 Novel</span>' : ''}</span>
                 <span style="font-size:0.7rem; color:rgba(255,255,255,0.3);">${isLocked ? '🔒' : '🔓'}</span>
               </div>
               <div class="upload-meta">
@@ -3134,9 +3164,15 @@
               </div>
               <div class="upload-actions">
                 <button class="btn-delete-upload" data-id="${item.id}" data-category="${item.type}">🗑 Hapus</button>
-                <button class="btn-toggle-price ${isLocked ? 'active' : ''}" data-id="${item.id}" data-category="${item.type}">
-                  ${isLocked ? '🔓 Buka' : '🔒 Kunci'}
-                </button>
+                ${isNovel ? `
+                  <button class="btn-toggle-price ${isLocked ? 'active' : ''}" data-id="${item.id}" data-category="${item.type}">
+                    ${isLocked ? '🔓 Buka' : '🔒 Kunci'}
+                  </button>
+                ` : `
+                  <button class="btn-toggle-price" style="opacity:0.5; cursor:not-allowed; background:rgba(255,255,255,0.03); color:rgba(255,255,255,0.2);" disabled>
+                    ⛔ Hanya Novel
+                  </button>
+                `}
                 ${item.fileUrl ? `<button class="btn-download-file" data-file="${item.fileUrl}" data-name="${item.fileName || item.title + '.file'}">📥 Download</button>` : ''}
               </div>
             </div>
@@ -3373,22 +3409,17 @@
           favSongs.forEach(s=>{
             const hasNote = hasJournal(s.id);
             const hasYoutube = s.youtubeId;
-            const isLocked = s.isLocked && !isItemPurchased(s.id);
             html+=`
               <div class="music-card">
                 <img class="card-img" src="${s.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎵</div>'">
                 <div class="card-body">
-                  <div class="card-title"><span><span class="title-icon">🎵</span> ${s.title} ${s.isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''}</span><div class="action-icons">${hasYoutube ? `<span class="play-icon" data-id="${s.id}" data-play="true">▶️</span>` : ''}<span class="journal-icon ${hasNote ? 'has-note' : ''}" data-id="${s.id}" data-journal="true">📖</span><span class="fav-icon active" data-id="${s.id}">★</span></div></div>
+                  <div class="card-title"><span><span class="title-icon">🎵</span> ${s.title} ${s.isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''}</span><div class="action-icons">${hasYoutube ? `<span class="play-icon" data-id="${s.id}" data-play="true">▶️</span>` : ''}<span class="journal-icon ${hasNote ? 'has-note' : ''}" data-id="${s.id}" data-journal="true">📖</span><span class="fav-icon active" data-id="${s.id}">★</span></div></div>
                   <div class="artist-name">${s.artist}</div>
                   <div class="music-quote">“${s.quote}”</div>
                   <div class="track-links"><a href="${s.youtube}" target="_blank">▶️ YouTube</a><a href="${s.spotify}" target="_blank">🎧 Spotify</a>${hasYoutube ? `<a href="#" class="btn-play-now" data-id="${s.id}" data-play-now="true">🔊 Putar</a>` : ''}</div>
                   ${s.fileUrl ? `
                     <div style="margin-top:8px;">
-                      ${isLocked ? `
-                        <button class="btn-buy-access" data-id="${s.id}" data-category="music" data-buy="true">🔓 Beli Akses Rp ${s.price.toLocaleString()}</button>
-                      ` : `
-                        <button class="btn-download-file" data-file="${s.fileUrl}" data-name="${s.fileName || s.title + '.file'}">📥 Download</button>
-                      `}
+                      <button class="btn-download-file" data-file="${s.fileUrl}" data-name="${s.fileName || s.title + '.file'}">📥 Download</button>
                     </div>
                   ` : ''}
                   ${hasYoutube ? `
@@ -3411,22 +3442,17 @@
         if(favMovies.length > 0) {
           html += `<h3 style="margin:2rem 0 1rem; color:rgba(255,215,0,0.8);">🎬 Film Favorit (${favMovies.length})</h3><div class="card-grid">`;
           favMovies.forEach(m=>{
-            const isLocked = m.isLocked && !isItemPurchased(m.id);
             html+=`
               <div class="music-card">
                 <img class="card-img" src="${m.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎬</div>'">
                 <div class="card-body">
-                  <div class="card-title"><span><span class="title-icon">🎬</span> ${m.title} ${m.isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''}</span><div class="action-icons"><span class="fav-icon active" data-id="${m.id}" data-movie="true">★</span></div></div>
+                  <div class="card-title"><span><span class="title-icon">🎬</span> ${m.title} ${m.isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''}</span><div class="action-icons"><span class="fav-icon active" data-id="${m.id}" data-movie="true">★</span></div></div>
                   <div class="artist-name">${m.origin} · ${m.year} · ${m.genre} · ⭐ ${m.rating}</div>
                   <div style="font-size:0.75rem; color:rgba(255,255,255,0.4); margin:8px 0;">Sutradara: ${m.director}</div>
                   <div class="track-links"><a href="${m.imdb}" target="_blank">🎬 IMDb</a><a href="${m.youtube}" target="_blank">▶️ Trailer</a></div>
                   ${m.fileUrl ? `
                     <div style="margin-top:8px;">
-                      ${isLocked ? `
-                        <button class="btn-buy-access" data-id="${m.id}" data-category="movie" data-buy="true">🔓 Beli Akses Rp ${m.price.toLocaleString()}</button>
-                      ` : `
-                        <button class="btn-download-file" data-file="${m.fileUrl}" data-name="${m.fileName || m.title + '.file'}">📥 Download</button>
-                      `}
+                      <button class="btn-download-file" data-file="${m.fileUrl}" data-name="${m.fileName || m.title + '.file'}">📥 Download</button>
                     </div>
                   ` : ''}
                   <div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${m.id}" data-movie="true">★ Hapus dari favorit</span></div>
@@ -3469,22 +3495,17 @@
         if(favAnime.length > 0) {
           html += `<h3 style="margin:2rem 0 1rem; color:rgba(255,215,0,0.8);">🎌 Anime Favorit (${favAnime.length})</h3><div class="card-grid">`;
           favAnime.forEach(a=>{
-            const isLocked = a.isLocked && !isItemPurchased(a.id);
             html+=`
               <div class="music-card">
                 <img class="card-img" src="${a.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎌</div>'">
                 <div class="card-body">
-                  <div class="card-title"><span><span class="title-icon">🎌</span> ${a.title} ${a.isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''} ${isLocked ? '<span class="locked-badge">🔒</span>' : ''}</span><div class="action-icons"><span class="fav-icon active" data-id="${a.id}" data-anime="true">★</span></div></div>
+                  <div class="card-title"><span><span class="title-icon">🎌</span> ${a.title} ${a.isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''}</span><div class="action-icons"><span class="fav-icon active" data-id="${a.id}" data-anime="true">★</span></div></div>
                   <div class="artist-name">${a.author} · ${a.year} · ${a.genre}</div>
                   <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); margin:8px 0;">${a.description}</div>
                   <div class="track-links"><a href="${a.myanimelist}" target="_blank">🎌 MyAnimeList</a><a href="${a.google}" target="_blank">🔍 Cari</a></div>
                   ${a.fileUrl ? `
                     <div style="margin-top:8px;">
-                      ${isLocked ? `
-                        <button class="btn-buy-access" data-id="${a.id}" data-category="anime" data-buy="true">🔓 Beli Akses Rp ${a.price.toLocaleString()}</button>
-                      ` : `
-                        <button class="btn-download-file" data-file="${a.fileUrl}" data-name="${a.fileName || a.title + '.file'}">📥 Download</button>
-                      `}
+                      <button class="btn-download-file" data-file="${a.fileUrl}" data-name="${a.fileName || a.title + '.file'}">📥 Download</button>
                     </div>
                   ` : ''}
                   <div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${a.id}" data-anime="true">★ Hapus dari favorit</span></div>
@@ -3833,12 +3854,29 @@
     categorySelect.addEventListener('change', updateDynamicFields);
     updateDynamicFields();
 
-    // Price toggle
+    // Price toggle - hanya untuk novel
     const hasPriceCheckbox = document.getElementById('uploadHasPrice');
     const priceInput = document.getElementById('priceInput');
     
+    // Cek kategori saat checkbox diubah
     hasPriceCheckbox.addEventListener('change', function() {
+      const category = categorySelect.value;
+      if (category !== 'novels') {
+        this.checked = false;
+        showNotif('📚 Fitur kunci hanya untuk kategori Novel!');
+        priceInput.classList.remove('show');
+        return;
+      }
       priceInput.classList.toggle('show', this.checked);
+    });
+
+    // Cek kategori saat kategori diubah
+    categorySelect.addEventListener('change', function() {
+      if (this.value !== 'novels' && hasPriceCheckbox.checked) {
+        hasPriceCheckbox.checked = false;
+        priceInput.classList.remove('show');
+        showNotif('📚 Fitur kunci hanya untuk kategori Novel!');
+      }
     });
 
     // File upload
@@ -3970,8 +4008,8 @@
         if (google) formData.set('google', google.value.trim());
       }
       
-      // Price
-      if (hasPriceCheckbox.checked) {
+      // Price - hanya untuk novel
+      if (category === 'novels' && hasPriceCheckbox.checked) {
         formData.set('hasPrice', 'on');
         const priceVal = document.getElementById('uploadPrice').value;
         formData.set('price', priceVal || '10000');
@@ -4169,13 +4207,15 @@
         const category = this.getAttribute('data-category');
         let item = null;
         
-        if (category === 'music') item = allSongs.find(s => s.id === id);
-        else if (category === 'movie') item = allMovies.find(m => m.id === id);
-        else if (category === 'novel') item = allNovels.find(n => n.id === id);
-        else if (category === 'anime') item = allAnime.find(a => a.id === id);
+        // Hanya novel yang bisa dibeli
+        if (category === 'novel') {
+          item = allNovels.find(n => n.id === id);
+        }
         
         if (item) {
           openPaymentModal(item);
+        } else {
+          showNotif('📚 Hanya novel yang bisa dibeli!');
         }
       });
     });
