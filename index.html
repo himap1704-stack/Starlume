@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#0a0a0a" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icons/IkonStarlume.png" />
-  <title>Starlume · Music, Movie, Novel & Anime Experience</title>
+  <title>Starlume · Music, Movie & Novel Experience</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     * {
@@ -2152,63 +2152,12 @@
     return novels;
   }
 
-  // ---------- DATA ANIME ----------
-  function generateAnime() {
-    const animeTitles = [
-      "Attack on Titan", "Demon Slayer", "Jujutsu Kaisen", "Chainsaw Man", "One Punch Man",
-      "Spy x Family", "My Hero Academia", "Death Note", "Fullmetal Alchemist", "Hunter x Hunter",
-      "Naruto", "One Piece", "Dragon Ball", "Bleach", "Detective Conan",
-      "Tokyo Ghoul", "Berserk", "Vagabond", "Monster", "20th Century Boys",
-      "Pluto", "Slam Dunk", "Kuroko's Basketball", "Haikyuu", "Captain Tsubasa",
-      "Gantz", "Inuyasha", "Rurouni Kenshin", "Yu Yu Hakusho", "Fairy Tail",
-      "The Seven Deadly Sins", "Black Clover", "Dr. Stone", "The Promised Neverland", "Vinland Saga",
-      "Kingdom", "Golden Kamuy", "Dorohedoro", "Mob Psycho 100", "Kaguya-sama",
-      "Komi Can't Communicate", "Horimiya", "Nisekoi", "Ao Ashi", "Blue Lock",
-      "Oshi no Ko", "Dandadan", "Sakamoto Days", "Solo Leveling", "Tower of God"
-    ];
-
-    const authors = [
-      "Hajime Isayama", "Koyoharu Gotouge", "Gege Akutami", "Tatsuki Fujimoto", "One",
-      "Tatsuya Endo", "Kohei Horikoshi", "Tsugumi Ohba", "Hiromu Arakawa", "Yoshihiro Togashi",
-      "Masashi Kishimoto", "Eiichiro Oda", "Akira Toriyama", "Tite Kubo", "Gosho Aoyama",
-      "Sui Ishida", "Kentaro Miura", "Takehiko Inoue", "Naoki Urasawa", "Naoki Urasawa",
-      "Naoki Urasawa", "Takehiko Inoue", "Tadatoshi Fujimaki", "Haruichi Furudate", "Yoichi Takahashi",
-      "Hiroya Oku", "Rumiko Takahashi", "Nobuhiro Watsuki", "Yoshihiro Togashi", "Hiro Mashima",
-      "Nakaba Suzuki", "Yuki Tabata", "Riichiro Inagaki", "Kaiu Shirai", "Makoto Yukimura",
-      "Yasuhisa Hara", "Satoru Noda", "Q Hayashida", "One", "Aka Akasaka",
-      "Tomohito Oda", "Daisuke Hagiwara", "Naoshi Komi", "Yugo Kobayashi", "Muneyuki Kaneshiro",
-      "Aka Akasaka", "Yukinobu Tatsu", "Yuto Suzuki", "Chugong", "SIU"
-    ];
-
-    const genres = ["Action", "Adventure", "Comedy", "Fantasy", "Romance", "Sci-Fi", "Sports"];
-
-    let animes = [];
-    animeTitles.forEach((title, i) => {
-      const genre = genres[i % genres.length];
-      animes.push({
-        id: `anime_${i}`,
-        title: title,
-        author: authors[i % authors.length],
-        genre: genre,
-        year: 1990 + (i % 33),
-        img: getIconImage(i + 900),
-        myanimelist: `https://myanimelist.net/search/all?q=${encodeURIComponent(title)}`,
-        google: `https://www.google.com/search?q=${encodeURIComponent(title + " anime")}`,
-        type: 'anime',
-        description: `Anime ${genre} legendaris dari Jepang karya ${authors[i % authors.length]}.`,
-        isUploaded: false
-      });
-    });
-    return animes;
-  }
-
   // ---------- UPLOADED DATA WITH PRICE ----------
   function getUploadedData() {
     return JSON.parse(localStorage.getItem('starlume_uploads')) || {
       songs: [],
       movies: [],
-      novels: [],
-      anime: []
+      novels: []
     };
   }
 
@@ -2274,28 +2223,14 @@
     return [...defaultNovels, ...uploadedNovels];
   }
 
-  function getAllAnime() {
-    const uploaded = getUploadedData();
-    const defaultAnime = generateAnime();
-    const uploadedAnime = uploaded.anime.map(a => ({
-      ...a,
-      isUploaded: true,
-      img: a.img || getIconImage(Date.now() + Math.random() * 1000),
-      type: 'anime'
-    }));
-    return [...defaultAnime, ...uploadedAnime];
-  }
-
   let allSongs = getAllSongs();
   let allMovies = getAllMovies();
   let allNovels = getAllNovels();
-  let allAnime = getAllAnime();
 
   function refreshAllData() {
     allSongs = getAllSongs();
     allMovies = getAllMovies();
     allNovels = getAllNovels();
-    allAnime = getAllAnime();
   }
 
   let currentPage = "home";
@@ -2303,7 +2238,6 @@
   let favorites = JSON.parse(localStorage.getItem("starlume_fav")) || [];
   let movieFavorites = JSON.parse(localStorage.getItem("starlume_movie_fav")) || [];
   let novelFavorites = JSON.parse(localStorage.getItem("starlume_novel_fav")) || [];
-  let animeFavorites = JSON.parse(localStorage.getItem("starlume_anime_fav")) || [];
   let songJournal = JSON.parse(localStorage.getItem("starlume_journal")) || {};
   let activeTab = 'music';
   let selectedGenre = 'Semua';
@@ -2313,7 +2247,6 @@
   function saveFav() { localStorage.setItem("starlume_fav", JSON.stringify(favorites)); }
   function saveMovieFav() { localStorage.setItem("starlume_movie_fav", JSON.stringify(movieFavorites)); }
   function saveNovelFav() { localStorage.setItem("starlume_novel_fav", JSON.stringify(novelFavorites)); }
-  function saveAnimeFav() { localStorage.setItem("starlume_anime_fav", JSON.stringify(animeFavorites)); }
   function saveJournal() { localStorage.setItem("starlume_journal", JSON.stringify(songJournal)); }
 
   function showNotif(message) {
@@ -2366,23 +2299,9 @@
     render();
   }
 
-  function toggleAnimeFavorite(animeId) {
-    if (!currentUser) {
-      showNotif('🔒 Login dulu untuk menambahkan favorit!');
-      openAuthModal('login');
-      return;
-    }
-    const index = animeFavorites.indexOf(animeId);
-    if(index === -1) { animeFavorites.push(animeId); showNotif("🎌 Ditambahkan ke favorit anime!"); }
-    else { animeFavorites.splice(index,1); showNotif("🗾 Dihapus dari favorit anime"); }
-    saveAnimeFav();
-    render();
-  }
-
   function isFavorite(songId) { return favorites.includes(songId); }
   function isMovieFavorite(movieId) { return movieFavorites.includes(movieId); }
   function isNovelFavorite(novelId) { return novelFavorites.includes(novelId); }
-  function isAnimeFavorite(animeId) { return animeFavorites.includes(animeId); }
   function hasJournal(songId) { return !!songJournal[songId]; }
 
   // ---------- PLAYER ----------
@@ -2609,12 +2528,10 @@
       price: finalPrice,
       isLocked: finalLocked,
       img: file && fileType.match(/jpg|jpeg|png|gif|webp/) ? file.data : getIconImage(Date.now() + Math.random() * 1000),
-      // Tambahan untuk menandai ini uploadan dan tipenya
       isUploaded: true,
-      type: category === 'music' ? 'music' : category === 'movies' ? 'movie' : category === 'novels' ? 'novel' : 'anime'
+      type: category === 'music' ? 'music' : category === 'movies' ? 'movie' : 'novel'
     };
 
-    // Tambahkan properti tambahan sesuai kategori
     if (category === 'music') {
       const mood = formData.get('mood') || 'relax';
       const artist = formData.get('artist') || 'Uploader';
@@ -2651,7 +2568,6 @@
       newItem.goodreads = formData.get('goodreads') || `https://www.goodreads.com/search?q=${encodeURIComponent(title)}`;
       newItem.google = formData.get('google') || `https://www.google.com/search?q=${encodeURIComponent(title)}`;
       newItem.description = formData.get('description') || `Novel ${genre} yang diupload oleh pengguna.`;
-      // Tandai ini novel
       newItem.type = 'novel';
       uploaded.novels.push(newItem);
       
@@ -2660,18 +2576,6 @@
       } else {
         showNotif('📚 Novel berhasil diupload!');
       }
-    } else if (category === 'anime') {
-      const genre = formData.get('genre') || 'Action';
-      const author = formData.get('author') || 'Uploader';
-      const year = parseInt(formData.get('year')) || new Date().getFullYear();
-      newItem.author = author;
-      newItem.genre = genre;
-      newItem.year = year;
-      newItem.myanimelist = formData.get('myanimelist') || `https://myanimelist.net/search/all?q=${encodeURIComponent(title)}`;
-      newItem.google = formData.get('google') || `https://www.google.com/search?q=${encodeURIComponent(title + " anime")}`;
-      newItem.description = formData.get('description') || `Anime ${genre} yang diupload oleh pengguna.`;
-      uploaded.anime.push(newItem);
-      showNotif('🎌 Anime berhasil diupload!');
     }
 
     saveUploadedData(uploaded);
@@ -2708,12 +2612,6 @@
         uploaded.novels.splice(index, 1);
         found = true;
       }
-    } else if (category === 'anime') {
-      const index = uploaded.anime.findIndex(a => a.id === itemId);
-      if (index > -1) {
-        uploaded.anime.splice(index, 1);
-        found = true;
-      }
     }
     
     if (found) {
@@ -2733,7 +2631,6 @@
       return;
     }
     
-    // Hanya novel yang bisa diubah harganya
     if (category !== 'novel') {
       showNotif('📚 Hanya novel yang bisa dikunci/dibuka!');
       return;
@@ -2776,8 +2673,6 @@
       const isFav = isFavorite(song.id);
       const hasYoutube = song.youtubeId;
       const isUploaded = song.isUploaded;
-      // Hanya novel yang bisa dikunci, jadi music tidak pernah terkunci
-      const isLocked = false;
       
       html += `
         <div class="music-card">
@@ -2835,8 +2730,6 @@
     filteredMovies.forEach(movie => {
       const isFav = isMovieFavorite(movie.id);
       const isUploaded = movie.isUploaded;
-      // Film tidak pernah terkunci
-      const isLocked = false;
       
       html += `
         <div class="music-card">
@@ -2924,56 +2817,6 @@
     return html;
   }
 
-  function renderAnime() {
-    let filteredAnime = allAnime;
-    
-    if (selectedGenre !== 'Semua') {
-      filteredAnime = filteredAnime.filter(a => a.genre === selectedGenre);
-    }
-
-    if (filteredAnime.length === 0) {
-      return `<div class="empty-fav"><span class="empty-icon">🎌</span>Tidak ada anime untuk genre ${selectedGenre}</div>`;
-    }
-
-    let html = `<div class="results-container"><div class="card-grid">`;
-    filteredAnime.forEach(anime => {
-      const isFav = isAnimeFavorite(anime.id);
-      const isUploaded = anime.isUploaded;
-      // Anime tidak pernah terkunci
-      const isLocked = false;
-      
-      html += `
-        <div class="music-card">
-          <img class="card-img" src="${anime.img}" alt="${anime.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎌</div>'">
-          <div class="card-body">
-            <div class="card-title">
-              <span><span class="title-icon">🎌</span> ${anime.title} ${isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''}</span>
-              <div class="action-icons">
-                <span class="read-icon" data-id="${anime.id}" data-read="true">📺</span>
-                <span class="fav-icon ${isFav ? 'active' : ''}" data-id="${anime.id}" data-anime="true">${isFav ? '★' : '☆'}</span>
-              </div>
-            </div>
-            <div class="artist-name">${anime.author} · ${anime.year} · ${anime.genre}</div>
-            <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); margin:8px 0; line-height:1.5;">${anime.description}</div>
-            <div class="track-links">
-              <a href="${anime.myanimelist}" target="_blank">🎌 MyAnimeList</a>
-              <a href="${anime.google}" target="_blank">🔍 Cari</a>
-              <a href="#" class="btn-read-now" data-id="${anime.id}" data-read-now="true">📺 Tonton</a>
-            </div>
-            ${anime.fileUrl ? `
-              <div style="margin-top:8px;">
-                <button class="btn-download-file" data-file="${anime.fileUrl}" data-name="${anime.fileName || anime.title + '.file'}">📥 Download</button>
-              </div>
-            ` : ''}
-            ${isFav ? `<div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${anime.id}" data-anime="true">★ Hapus dari favorit</span></div>` : ''}
-          </div>
-        </div>
-      `;
-    });
-    html += `</div></div>`;
-    return html;
-  }
-
   function renderJournalEntries() {
     const entries = Object.entries(songJournal);
     if(entries.length === 0) return `<div class="empty-journal"><span class="empty-icon">📭</span>Belum ada catatan jurnal. Klik ikon 📖 di lagu mana pun untuk mulai menulis kenanganmu.</div>`;
@@ -3009,7 +2852,7 @@
   // ---------- RENDER UPLOAD DASHBOARD ----------
   function renderUploadDashboard() {
     const uploaded = getUploadedData();
-    const allUploads = [...uploaded.songs, ...uploaded.movies, ...uploaded.novels, ...uploaded.anime];
+    const allUploads = [...uploaded.songs, ...uploaded.movies, ...uploaded.novels];
     const userUploads = allUploads.filter(item => item.uploadedBy === currentUser?.email);
     
     let filteredUploads = userUploads;
@@ -3027,7 +2870,6 @@
     const musicCount = userUploads.filter(i => i.type === 'music').length;
     const movieCount = userUploads.filter(i => i.type === 'movie').length;
     const novelCount = userUploads.filter(i => i.type === 'novel').length;
-    const animeCount = userUploads.filter(i => i.type === 'anime').length;
     const lockedCount = userUploads.filter(i => i.isLocked && i.type === 'novel').length;
     const totalEarnings = userUploads.filter(i => i.hasPrice && i.type === 'novel').reduce((sum, i) => sum + (i.price || 0), 0);
 
@@ -3051,10 +2893,6 @@
             <div class="stat-label">📚 Novel</div>
           </div>
           <div class="upload-stat-card">
-            <div class="stat-number">${animeCount}</div>
-            <div class="stat-label">🎌 Anime</div>
-          </div>
-          <div class="upload-stat-card">
             <div class="stat-number">${lockedCount}</div>
             <div class="stat-label">🔒 Novel Terkunci</div>
           </div>
@@ -3075,7 +2913,6 @@
                   <option value="music">🎵 Musik</option>
                   <option value="movies">🎬 Film</option>
                   <option value="novels">📚 Novel</option>
-                  <option value="anime">🎌 Anime</option>
                 </select>
               </div>
               <div>
@@ -3127,7 +2964,6 @@
             <option value="music" ${uploadFilterType === 'music' ? 'selected' : ''}>🎵 Musik</option>
             <option value="movie" ${uploadFilterType === 'movie' ? 'selected' : ''}>🎬 Film</option>
             <option value="novel" ${uploadFilterType === 'novel' ? 'selected' : ''}>📚 Novel</option>
-            <option value="anime" ${uploadFilterType === 'anime' ? 'selected' : ''}>🎌 Anime</option>
           </select>
         </div>
 
@@ -3142,10 +2978,9 @@
       filteredUploads.forEach(item => {
         const isLocked = item.isLocked;
         const priceDisplay = item.hasPrice ? `Rp ${item.price.toLocaleString()}` : 'Gratis';
-        const typeIcon = item.type === 'music' ? '🎵' : item.type === 'movie' ? '🎬' : item.type === 'novel' ? '📚' : '🎌';
-        const typeLabel = item.type === 'music' ? 'Musik' : item.type === 'movie' ? 'Film' : item.type === 'novel' ? 'Novel' : 'Anime';
+        const typeIcon = item.type === 'music' ? '🎵' : item.type === 'movie' ? '🎬' : '📚';
+        const typeLabel = item.type === 'music' ? 'Musik' : item.type === 'movie' ? 'Film' : 'Novel';
         
-        // Cek apakah ini novel - hanya novel yang bisa dikunci
         const isNovel = item.type === 'novel';
         
         html += `
@@ -3202,7 +3037,7 @@
           <div class="nav-links">
             <button class="nav-btn active" data-page="home">🏠 Beranda</button>
             <button class="nav-btn" data-page="upload">📤 Upload</button>
-            <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length + animeFavorites.length}</span></button>
+            <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length}</span></button>
             <button class="nav-btn" data-page="journal">📓 Journal <span class="badge-count">${Object.keys(songJournal).length}</span></button>
             ${currentUser ? `
               <button class="user-btn" id="userMenuBtn">
@@ -3228,20 +3063,18 @@
           <div class="wave-line"></div>
           <span class="hero-emoji">🎶</span>
           <h2>Pilih Mood, Rasakan Getaran</h2>
-          <p>${allSongs.length}+ lagu · ${allMovies.length} film · ${allNovels.length} novel · ${allAnime.length} anime</p>
+          <p>${allSongs.length}+ lagu · ${allMovies.length} film · ${allNovels.length} novel</p>
         </div>
         <div class="stats-bar">
           <div class="stat-card"><span class="stat-icon">🎵</span><span class="stat-number">${allSongs.length}</span><span class="stat-label">Lagu</span></div>
           <div class="stat-card"><span class="stat-icon">🎬</span><span class="stat-number">${allMovies.length}</span><span class="stat-label">Film</span></div>
           <div class="stat-card"><span class="stat-icon">📚</span><span class="stat-number">${allNovels.length}</span><span class="stat-label">Novel</span></div>
-          <div class="stat-card"><span class="stat-icon">🎌</span><span class="stat-number">${allAnime.length}</span><span class="stat-label">Anime</span></div>
-          <div class="stat-card"><span class="stat-icon">⭐</span><span class="stat-number">${favorites.length + movieFavorites.length + novelFavorites.length + animeFavorites.length}</span><span class="stat-label">Favorit</span></div>
+          <div class="stat-card"><span class="stat-icon">⭐</span><span class="stat-number">${favorites.length + movieFavorites.length + novelFavorites.length}</span><span class="stat-label">Favorit</span></div>
         </div>
         <div class="tab-container">
           <button class="tab-btn ${activeTab === 'music' ? 'active' : ''}" data-tab="music">🎵 Musik</button>
           <button class="tab-btn ${activeTab === 'movies' ? 'active' : ''}" data-tab="movies">🎬 Film</button>
           <button class="tab-btn ${activeTab === 'novels' ? 'active' : ''}" data-tab="novels">📚 Novel</button>
-          <button class="tab-btn ${activeTab === 'anime' ? 'active' : ''}" data-tab="anime">🎌 Anime</button>
         </div>
         ${activeTab === 'music' ? `
           <div class="mood-section">
@@ -3258,7 +3091,7 @@
           ${selectedMood ? renderRecommendations() : '<div style="text-align:center; padding:3rem; background:rgba(255,215,0,0.02); border-radius:2rem; border:1px solid rgba(255,215,0,0.03);"><span style="font-size:3rem;">✨</span><p style="margin-top:1rem; color:rgba(255,255,255,0.4);">Klik salah satu mood di atas untuk memulai</p></div>'}
         ` : `
           <div style="text-align:center; margin-bottom:1.5rem;">
-            <p style="color:rgba(255,255,255,0.5);">${activeTab === 'movies' ? `🎬 ${allMovies.length} Rekomendasi Film dari 3 Negara` : activeTab === 'novels' ? `📚 ${allNovels.length} Rekomendasi Novel Pilihan` : `🎌 ${allAnime.length} Rekomendasi Anime Legendaris`}</p>
+            <p style="color:rgba(255,255,255,0.5);">${activeTab === 'movies' ? `🎬 ${allMovies.length} Rekomendasi Film dari 3 Negara` : `📚 ${allNovels.length} Rekomendasi Novel Pilihan`}</p>
           </div>
           ${activeTab !== 'music' ? `
             <div class="genre-filter">
@@ -3268,26 +3101,18 @@
                 <button class="genre-btn ${selectedGenre === 'Aksi' ? 'active' : ''}" data-genre="Aksi">💥 Aksi</button>
                 <button class="genre-btn ${selectedGenre === 'Romantis' ? 'active' : ''}" data-genre="Romantis">❤️ Romantis</button>
                 <button class="genre-btn ${selectedGenre === 'Komedi' ? 'active' : ''}" data-genre="Komedi">😂 Komedi</button>
-              ` : activeTab === 'novels' ? `
+              ` : `
                 <button class="genre-btn ${selectedGenre === 'Fiksi' ? 'active' : ''}" data-genre="Fiksi">📖 Fiksi</button>
                 <button class="genre-btn ${selectedGenre === 'Non-Fiksi' ? 'active' : ''}" data-genre="Non-Fiksi">📊 Non-Fiksi</button>
                 <button class="genre-btn ${selectedGenre === 'Romantis' ? 'active' : ''}" data-genre="Romantis">❤️ Romantis</button>
                 <button class="genre-btn ${selectedGenre === 'Inspiratif' ? 'active' : ''}" data-genre="Inspiratif">💡 Inspiratif</button>
                 <button class="genre-btn ${selectedGenre === 'Self-Help' ? 'active' : ''}" data-genre="Self-Help">🧠 Self-Help</button>
-              ` : `
-                <button class="genre-btn ${selectedGenre === 'Action' ? 'active' : ''}" data-genre="Action">💥 Action</button>
-                <button class="genre-btn ${selectedGenre === 'Adventure' ? 'active' : ''}" data-genre="Adventure">🗺️ Adventure</button>
-                <button class="genre-btn ${selectedGenre === 'Comedy' ? 'active' : ''}" data-genre="Comedy">😂 Comedy</button>
-                <button class="genre-btn ${selectedGenre === 'Fantasy' ? 'active' : ''}" data-genre="Fantasy">🐉 Fantasy</button>
-                <button class="genre-btn ${selectedGenre === 'Romance' ? 'active' : ''}" data-genre="Romance">❤️ Romance</button>
-                <button class="genre-btn ${selectedGenre === 'Sci-Fi' ? 'active' : ''}" data-genre="Sci-Fi">🚀 Sci-Fi</button>
-                <button class="genre-btn ${selectedGenre === 'Sports' ? 'active' : ''}" data-genre="Sports">⚽ Sports</button>
               `}
             </div>
           ` : ''}
-          ${activeTab === 'movies' ? renderMovies() : activeTab === 'novels' ? renderNovels() : renderAnime()}
+          ${activeTab === 'movies' ? renderMovies() : renderNovels()}
         `}
-        <footer>© 2025 Starlume — Musik, Film, Novel & Anime dalam satu tempat 📖</footer>
+        <footer>© 2025 Starlume — Musik, Film & Novel dalam satu tempat 📖</footer>
       `;
       app.innerHTML = html;
       attachHomeEvents();
@@ -3300,7 +3125,7 @@
             <div class="nav-links">
               <button class="nav-btn" data-page="home">🏠 Beranda</button>
               <button class="nav-btn" data-page="upload">📤 Upload</button>
-              <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length + animeFavorites.length}</span></button>
+              <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length}</span></button>
               <button class="nav-btn" data-page="journal">📓 Journal <span class="badge-count">${Object.keys(songJournal).length}</span></button>
               <button class="login-btn" id="loginBtn">🔑 Login</button>
             </div>
@@ -3333,7 +3158,7 @@
           <div class="nav-links">
             <button class="nav-btn" data-page="home">🏠 Beranda</button>
             <button class="nav-btn active" data-page="upload">📤 Upload</button>
-            <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length + animeFavorites.length}</span></button>
+            <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length}</span></button>
             <button class="nav-btn" data-page="journal">📓 Journal <span class="badge-count">${Object.keys(songJournal).length}</span></button>
             <button class="user-btn" id="userMenuBtn">
               <span class="user-avatar">${userName.charAt(0).toUpperCase()}</span>
@@ -3364,8 +3189,7 @@
       const favSongs = allSongs.filter(s => favorites.includes(s.id));
       const favMovies = allMovies.filter(m => movieFavorites.includes(m.id));
       const favNovels = allNovels.filter(n => novelFavorites.includes(n.id));
-      const favAnime = allAnime.filter(a => animeFavorites.includes(a.id));
-      const totalFav = favSongs.length + favMovies.length + favNovels.length + favAnime.length;
+      const totalFav = favSongs.length + favMovies.length + favNovels.length;
       
       let html = `
         <div class="navbar">
@@ -3396,13 +3220,13 @@
           <div class="wave-line"></div>
           <span class="hero-emoji">⭐</span>
           <h2 style="font-size:2.2rem;">Koleksi Favoritmu</h2>
-          <p>${favSongs.length} lagu · ${favMovies.length} film · ${favNovels.length} novel · ${favAnime.length} anime</p>
+          <p>${favSongs.length} lagu · ${favMovies.length} film · ${favNovels.length} novel</p>
         </div>
         <button class="back-btn" id="backHomeBtn">← Kembali ke Beranda</button>
       `;
       
       if(totalFav === 0) {
-        html += `<div class="empty-fav"><span class="empty-icon">✨</span>Belum ada favorit. Pilih lagu, film, novel atau anime dan klik bintang</div>`;
+        html += `<div class="empty-fav"><span class="empty-icon">✨</span>Belum ada favorit. Pilih lagu, film, atau novel dan klik bintang</div>`;
       } else {
         if(favSongs.length > 0) {
           html += `<h3 style="margin:1.5rem 0 1rem; color:rgba(255,215,0,0.8);">🎵 Lagu Favorit (${favSongs.length})</h3><div class="card-grid">`;
@@ -3491,30 +3315,6 @@
           });
           html+=`</div>`;
         }
-        
-        if(favAnime.length > 0) {
-          html += `<h3 style="margin:2rem 0 1rem; color:rgba(255,215,0,0.8);">🎌 Anime Favorit (${favAnime.length})</h3><div class="card-grid">`;
-          favAnime.forEach(a=>{
-            html+=`
-              <div class="music-card">
-                <img class="card-img" src="${a.img}" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>🎌</div>'">
-                <div class="card-body">
-                  <div class="card-title"><span><span class="title-icon">🎌</span> ${a.title} ${a.isUploaded ? '<span class="uploaded-badge">📤 Upload</span>' : ''}</span><div class="action-icons"><span class="fav-icon active" data-id="${a.id}" data-anime="true">★</span></div></div>
-                  <div class="artist-name">${a.author} · ${a.year} · ${a.genre}</div>
-                  <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); margin:8px 0;">${a.description}</div>
-                  <div class="track-links"><a href="${a.myanimelist}" target="_blank">🎌 MyAnimeList</a><a href="${a.google}" target="_blank">🔍 Cari</a></div>
-                  ${a.fileUrl ? `
-                    <div style="margin-top:8px;">
-                      <button class="btn-download-file" data-file="${a.fileUrl}" data-name="${a.fileName || a.title + '.file'}">📥 Download</button>
-                    </div>
-                  ` : ''}
-                  <div style="margin-top:10px;"><span style="font-size:0.7rem; cursor:pointer; color:rgba(255,255,255,0.3);" class="fav-icon active" data-id="${a.id}" data-anime="true">★ Hapus dari favorit</span></div>
-                </div>
-              </div>
-            `;
-          });
-          html+=`</div>`;
-        }
       }
       app.innerHTML = html;
       attachFavEvents();
@@ -3529,7 +3329,7 @@
           <div class="nav-links">
             <button class="nav-btn" data-page="home">🏠 Beranda</button>
             <button class="nav-btn" data-page="upload">📤 Upload</button>
-            <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length + animeFavorites.length}</span></button>
+            <button class="nav-btn" data-page="favorites">⭐ Favorit <span class="badge-count">${favorites.length + movieFavorites.length + novelFavorites.length}</span></button>
             <button class="nav-btn active" data-page="journal">📓 Journal <span class="badge-count">${Object.keys(songJournal).length}</span></button>
             ${currentUser ? `
               <button class="user-btn" id="userMenuBtn">
@@ -3644,7 +3444,6 @@
   }
 
   function attachUploadDashboardEvents() {
-    // Navigation
     document.querySelectorAll(".nav-btn").forEach(btn => {
       btn.addEventListener("click", (e) => {
         const page = btn.getAttribute("data-page");
@@ -3658,7 +3457,6 @@
     const backHome = document.getElementById("backHomeFromUploadBtn");
     if(backHome) backHome.addEventListener("click", () => { currentPage = "home"; render(); });
 
-    // Category change - dynamic fields
     const categorySelect = document.getElementById('uploadCategory');
     const dynamicFields = document.getElementById('dynamicFields');
     
@@ -3802,51 +3600,6 @@
             </div>
           </div>
         `;
-      } else if (category === 'anime') {
-        html = `
-          <div class="form-row">
-            <div>
-              <label>🎭 Genre</label>
-              <select id="uploadGenre">
-                <option value="Action">Action</option>
-                <option value="Adventure">Adventure</option>
-                <option value="Comedy">Comedy</option>
-                <option value="Fantasy">Fantasy</option>
-                <option value="Romance">Romance</option>
-                <option value="Sci-Fi">Sci-Fi</option>
-                <option value="Sports">Sports</option>
-                <option value="Drama">Drama</option>
-                <option value="Slice of Life">Slice of Life</option>
-              </select>
-            </div>
-            <div>
-              <label>✍️ Author/Mangaka</label>
-              <input type="text" id="uploadAuthor" placeholder="Nama mangaka" />
-            </div>
-          </div>
-          <div class="form-row">
-            <div>
-              <label>📅 Tahun</label>
-              <input type="number" id="uploadYear" placeholder="2024" />
-            </div>
-            <div>
-              <label>🔗 Link MyAnimeList</label>
-              <input type="text" id="uploadMAL" placeholder="https://myanimelist.net/..." />
-            </div>
-          </div>
-          <div class="form-row">
-            <div>
-              <label>📝 Deskripsi</label>
-              <textarea id="uploadDescription" rows="2" placeholder="Deskripsi anime..."></textarea>
-            </div>
-          </div>
-          <div class="form-row">
-            <div>
-              <label>🔗 Link Google</label>
-              <input type="text" id="uploadGoogle" placeholder="https://www.google.com/..." />
-            </div>
-          </div>
-        `;
       }
       dynamicFields.innerHTML = html;
     }
@@ -3854,11 +3607,9 @@
     categorySelect.addEventListener('change', updateDynamicFields);
     updateDynamicFields();
 
-    // Price toggle - hanya untuk novel
     const hasPriceCheckbox = document.getElementById('uploadHasPrice');
     const priceInput = document.getElementById('priceInput');
     
-    // Cek kategori saat checkbox diubah
     hasPriceCheckbox.addEventListener('change', function() {
       const category = categorySelect.value;
       if (category !== 'novels') {
@@ -3870,7 +3621,6 @@
       priceInput.classList.toggle('show', this.checked);
     });
 
-    // Cek kategori saat kategori diubah
     categorySelect.addEventListener('change', function() {
       if (this.value !== 'novels' && hasPriceCheckbox.checked) {
         hasPriceCheckbox.checked = false;
@@ -3879,7 +3629,6 @@
       }
     });
 
-    // File upload
     const fileInput = document.getElementById('fileInput');
     const filePreview = document.getElementById('filePreview');
     const previewName = document.getElementById('previewName');
@@ -3938,7 +3687,6 @@
       });
     }
 
-    // Upload button
     const uploadBtn = document.getElementById('uploadBtn');
     uploadBtn.addEventListener('click', function() {
       const formData = new FormData();
@@ -3951,7 +3699,6 @@
       
       const category = categorySelect.value;
       
-      // Collect category specific fields
       if (category === 'music') {
         const artist = document.getElementById('uploadArtist');
         const mood = document.getElementById('uploadMood');
@@ -3993,22 +3740,8 @@
         if (goodreads) formData.set('goodreads', goodreads.value.trim());
         if (description) formData.set('description', description.value.trim() || `Novel yang diupload oleh pengguna.`);
         if (google) formData.set('google', google.value.trim());
-      } else if (category === 'anime') {
-        const genre = document.getElementById('uploadGenre');
-        const author = document.getElementById('uploadAuthor');
-        const year = document.getElementById('uploadYear');
-        const mal = document.getElementById('uploadMAL');
-        const description = document.getElementById('uploadDescription');
-        const google = document.getElementById('uploadGoogle');
-        if (genre) formData.set('genre', genre.value);
-        if (author) formData.set('author', author.value.trim() || 'Uploader');
-        if (year) formData.set('year', year.value || new Date().getFullYear());
-        if (mal) formData.set('myanimelist', mal.value.trim());
-        if (description) formData.set('description', description.value.trim() || `Anime yang diupload oleh pengguna.`);
-        if (google) formData.set('google', google.value.trim());
       }
       
-      // Price - hanya untuk novel
       if (category === 'novels' && hasPriceCheckbox.checked) {
         formData.set('hasPrice', 'on');
         const priceVal = document.getElementById('uploadPrice').value;
@@ -4021,7 +3754,6 @@
       processUpload(category, formData);
     });
 
-    // Search and filter
     const searchInput = document.getElementById('uploadSearch');
     const filterSelect = document.getElementById('uploadFilter');
     
@@ -4035,7 +3767,6 @@
       render();
     });
 
-    // Delete and toggle price buttons (event delegation)
     document.addEventListener('click', function(e) {
       const target = e.target;
       
@@ -4096,7 +3827,7 @@
       });
     });
 
-    document.querySelectorAll(".fav-icon:not([data-movie='true']):not([data-novel='true']):not([data-anime='true'])").forEach(el => {
+    document.querySelectorAll(".fav-icon:not([data-movie='true']):not([data-novel='true'])").forEach(el => {
       el.addEventListener("click", (e) => {
         e.stopPropagation();
         const id = el.getAttribute("data-id");
@@ -4117,14 +3848,6 @@
         e.stopPropagation();
         const id = el.getAttribute("data-id");
         if(id) toggleNovelFavorite(id);
-      });
-    });
-
-    document.querySelectorAll(".fav-icon[data-anime='true']").forEach(el => {
-      el.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const id = el.getAttribute("data-id");
-        if(id) toggleAnimeFavorite(id);
       });
     });
 
@@ -4169,12 +3892,6 @@
         if(novel) {
           window.open(novel.google, '_blank');
           showNotif(`📚 Membuka: ${novel.title}`);
-        } else {
-          const anime = allAnime.find(a => a.id === id);
-          if(anime) {
-            window.open(anime.google, '_blank');
-            showNotif(`🎌 Membuka: ${anime.title}`);
-          }
         }
       });
     });
@@ -4184,16 +3901,10 @@
         e.preventDefault();
         e.stopPropagation();
         const id = el.getAttribute("data-id");
-        let item = allNovels.find(n => n.id === id);
-        if(item) {
-          window.open(item.google, '_blank');
-          showNotif(`📚 Membuka: ${item.title}`);
-        } else {
-          item = allAnime.find(a => a.id === id);
-          if(item) {
-            window.open(item.google, '_blank');
-            showNotif(`🎌 Membuka: ${item.title}`);
-          }
+        const novel = allNovels.find(n => n.id === id);
+        if(novel) {
+          window.open(novel.google, '_blank');
+          showNotif(`📚 Membuka: ${novel.title}`);
         }
       });
     });
@@ -4207,7 +3918,6 @@
         const category = this.getAttribute('data-category');
         let item = null;
         
-        // Hanya novel yang bisa dibeli
         if (category === 'novel') {
           item = allNovels.find(n => n.id === id);
         }
@@ -4278,7 +3988,6 @@
     if(e.key === 'Enter') handleAuth();
   });
 
-  // Payment modal events
   document.getElementById('paymentCancelBtn').addEventListener('click', closePaymentModal);
   document.getElementById('paymentModal').addEventListener('click', (e) => {
     if(e.target === e.currentTarget) closePaymentModal();
